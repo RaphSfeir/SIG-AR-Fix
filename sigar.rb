@@ -13,20 +13,4 @@
 #    SFEIR Raphael
 # Done for SIG-AR Project, Ecole Centrale, Nantes (France)
 
-# Definition of basics functions for the interface
-def sigar_export()
-  UI.messagebox("Export")
-end
-def sigar_manage()
-  UI.messagebox("Gestion")
-end
-def sigar_about()
-  UI.messagebox("About")
-end
-
-# Append functions to the interface
-sig_ar_plugins_menu = UI.menu("Plugins")
-sig_ar_plugins_submenu = sig_ar_plugins_menu.add_submenu("SIG-AR")
-sig_ar_plugins_submenu_itemExport = sig_ar_plugins_submenu.add_item("Export for SIG-AR") { sigar_export }
-sig_ar_plugins_submenu_itemManage = sig_ar_plugins_submenu.add_item("Manage models...") { sigar_manage }
-sig_ar_plugins_submenu_itemManage = sig_ar_plugins_submenu.add_item("About") { sigar_about }
+load "SigArFix/main.rb"
