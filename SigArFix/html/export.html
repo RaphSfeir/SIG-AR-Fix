@@ -1,1 +1,26 @@
-<p>Coucou!</p>
+<html>
+  <head>
+    <script>
+      function move_to_center() {
+   window.location = "skp:move@" + screen.width + "," + screen.height + ":" + document.body.offsetWidth + "," + document.body.offsetHeight;
+      }
+    </script>
+    <link href="./export.css" rel="stylesheet" type="text/css">
+  </head>
+  <body onLoad="move_to_center()">
+	  <div id="export_global">
+	    <div id="export_editBox">
+	    	EditBox
+	    </div>
+	    <div id="export_gMapAPI">
+	    	gMapAPI
+	    </div>
+	    <div id="export_console">
+	    	Console
+	    </div>
+	    <div id="confirm">
+	    	Confirmation
+	    </div>
+	  </div>
+  </body>
+</html>
