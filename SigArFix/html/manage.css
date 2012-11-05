@@ -7,16 +7,17 @@ ul {
 	list-style-type: none;
 }
 .google-map {
-	float:left;
+	position:absolute;
 	width:74%;
 	height:100%;
 	background:green;
 	border:1px solid red;
 }
 .navigation-right {
-	float:left;
+	position:absolute;
+	left:75%;	
 	width:25%;
 	height:100%;
-	border:1px solid black;
+	border:1px solid red;
 	background-color:green;
 }

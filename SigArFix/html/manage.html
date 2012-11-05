@@ -4,10 +4,24 @@
   <meta charset="utf-8">
   <title>Models management</title>
   <link rel="stylesheet" href="manage.css">
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHfjpw5SuQd1r9CNu7QkMorYaeDEFtgmk&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      }
+    </script>
 </head>
-<body>
+<body onload="initialize()">
 <div class="google-map">
-
+<div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <div class="navigation-right">
 	<div class="sources-list">
