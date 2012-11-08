@@ -1,7 +1,7 @@
 # Function to export the current model with Sig-Ar info
 def sigar_export()
   # Initilization of the window
-  export_width = 820
+  export_width = 825
   export_height = 600
   c = Sketchup.active_model.active_view.center
   dlgExport = UI::WebDialog.new("SIG-AR - Export your model", false, "ShowSigArFix_Export", export_width, export_height, c[0]-export_width/2, c[1]-export_height/2, true);
