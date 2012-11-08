@@ -3,56 +3,17 @@
     <script>
       function move_to_center() {
    window.location = "skp:move@" + screen.width + "," + screen.height + ":" + document.body.offsetWidth + "," + document.body.offsetHeight;
-      }
+      };
     </script>
     <link href="./export.css" rel="stylesheet" type="text/css">
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGQN08AL1QcHhK6X2zn28s0JaEpIq7lic&sensor=true">
     </script>
-     <script type="text/javascript">
-		var initialLocation;
-		var siberia = new google.maps.LatLng(60, 105);
-		var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-		var browserSupportFlag =  new Boolean();
-		
-		function initialize() {
-		  var myOptions = {
-		    zoom: 6,
-		    mapTypeId: google.maps.MapTypeId.ROADMAP
-		  };
-		  var map = new google.maps.Map(document.getElementById("export_gMapAPI"), myOptions);
-		  
-		  // Try W3C Geolocation (Preferred)
-		  if(navigator.geolocation) {
-		    browserSupportFlag = true;
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-		      map.setCenter(initialLocation);
-		    }, function() {
-		      handleNoGeolocation(browserSupportFlag);
-		    });
-		  }
-		  // Browser doesn't support Geolocation
-		  else {
-		    browserSupportFlag = false;
-		    handleNoGeolocation(browserSupportFlag);
-		  }
-		  
-		  function handleNoGeolocation(errorFlag) {
-		    if (errorFlag == true) {
-		      alert("Geolocation service failed.");
-		      initialLocation = newyork;
-		    } else {
-		      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-		      initialLocation = siberia;
-		    }
-		    map.setCenter(initialLocation);
-		  }
-		}
+    <script type="text/javascript"
+      src="./sigar.js">
     </script>
-    
   </head>
-  <body onLoad="move_to_center();initialize();">
+  <body onLoad="move_to_center();initialize('export_gMapAPI');">
 	  <div id="export_global">
 	    <div id="export_editBox">
 	    	EditBox
