@@ -47,9 +47,13 @@
 	    <div id="export_DBInfo">
 		    <form name="editDBInfo" method="post" action="#">
 		    		<label>Address:</label>
-		    		<input type="text" name="addressDB" value="127.0.0.1" size="30" maxlength="100">
+		    		<input type="text" name="addressDB" value="127.0.0.1" size="20" maxlength="100">
 		    		<label>Port:</label>
-		    		<input type="text" name="portDB" value="5432" size="30" maxlength="100">
+		    		<input type="text" name="portDB" value="5432" size="10" maxlength="10">
+		    		<label>Login:</label>
+		    		<input type="text" name="loginDB" value="" size="20" maxlength="100">
+		    		<label>Password:</label>
+		    		<input type="password" name="passDB" value="" size="20" maxlength="100">
 		    		<button onclick="clickTestDB();" id="testDBButton">Test</button> 
 		    	</form>
 	    </div>
