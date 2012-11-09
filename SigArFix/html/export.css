@@ -2,34 +2,67 @@
 	position:absolute;
 	width: 400px;
 	height: 400px;
-	border: 1px solid black;
 	margin-top: 0px;
 	margin-left: 0px;
+}
+
+#export_editBox form {
+	margin-left: 1%;
+	margin-top: 2%;
+}
+
+#export_editBox label {
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+#Export_editBox p {
+	margin-left : 5%;
+}
+
+#refreshCoordinatesButton {
+	margin-left: 80%;
 }
 
 #export_gMapAPI {
 	position:absolute;
 	width: 400px;
 	height: 400px;
-	border: 1px solid blue;
 	margin-top: 0px;
 	margin-left: 400px;
+}
+
+
+#export_DBInfo {
+	position:absolute;
+	width: 800px;
+	height: 25px;
+	margin-top: 405px;
+	margin-left: 0px;
 }
 
 #export_console {
 	position:absolute;
 	width: 800px;
-	height: 120px;
-	border: 1px solid yellow;
-	margin-top: 400px;
+	height: 90px;
+	border: 1px solid grey;
+	margin-top: 440px;
 	margin-left: 0px;
+	font-family: Courier;
+	font-size: 0.6em;
 }
 
 #confirm {
 	position:absolute;
 	width: 800px;
 	height: 20px;
-	border: 1px solid green;
-	margin-top: 520px;
+	margin-top: 540px;
 	margin-left: 0px;
+}
+
+#sendToDBButton {
+	margin-left: 685px;
+}
+
+#cancel {
+
 }

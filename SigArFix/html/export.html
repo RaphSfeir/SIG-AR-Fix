@@ -16,15 +16,49 @@
   <body onLoad="move_to_center();initialize('export_gMapAPI');">
 	  <div id="export_global">
 	    <div id="export_editBox">
-	    	EditBox
+	    	<form name="editBox" method="post" action="#">
+	    		<label>Filename:</label>
+	    		<input style="margin-left: 5px;" type="text" name="filename" value="" readonly="readonly" size="56" maxlength="100">
+	    		<br/><br/>
+	    		<label>Name of your model:</label>
+	    		<input type="text" name="modelname" value="" size="42" maxlength="100">
+	    		<br/><br/>
+	    		<label>Picture:</label>
+	    		<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
+	    		<br/><br/>
+	    		<label>Description:</label>
+	    		<textarea rows="5" cols="51" name="description"></textarea>
+	    		<br/><br/>
+	    		<label>Coordinates:</label>
+	    		<p>Latitude:
+	    		<input style="margin-left: 20px;" type="text" name="latitude" value="" size="50" maxlength="80">
+	    		<br/>
+	    		Longitude:
+	    		<input style="margin-left: 7px;" type="text" name="longitude" value="" size="50" maxlength="80">
+	    		<br/>
+	    		Altitude:
+	    		<input style="margin-left: 21px;" type="text" name="altitude" value="" size="50" maxlength="80">
+	    		</p>
+	    		<button onclick="clickRefreshCoordinates();" id="refreshCoordinatesButton">Refresh</button> 
+	    	</form>
 	    </div>
 	    <div id="export_gMapAPI">
 	    </div>
+	    <div id="export_DBInfo">
+		    <form name="editDBInfo" method="post" action="#">
+		    		<label>Address:</label>
+		    		<input type="text" name="addressDB" value="127.0.0.1" size="30" maxlength="100">
+		    		<label>Port:</label>
+		    		<input type="text" name="portDB" value="5432" size="30" maxlength="100">
+		    		<button onclick="clickTestDB();" id="testDBButton">Test</button> 
+		    	</form>
+	    </div>
 	    <div id="export_console">
-	    	Console
+	    	SIG-AR Project - Google SketchUp Plugin - Export Window
 	    </div>
 	    <div id="confirm">
-	    	Confirmation
+	    	<button onclick="clickSendOnDB();" id="sendToDBButton">Export</button>
+	    	<button onclick="cancel();" id="cancel">Cancel</button>
 	    </div>
 	  </div>
   </body>
