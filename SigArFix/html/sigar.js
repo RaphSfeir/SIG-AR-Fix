@@ -74,6 +74,14 @@
 		function rubyReturner(message) {
 			alert(message);
 		}
+		// *************
+		// Models management
+		// *************
+				
+		//Refresh models list
+		function sigar_model_refresh() {
+			//callRuby('sigar_model_refresh', "");
+		}
 		
 		// *************
 		// Export dialog
@@ -92,6 +100,7 @@
 			sigar_export_console("-- Error: not implemented yet!");
 			return false;
 		}
+
 		
 		// Add the ability to refresh coordinatesin both ways
 		function sigar_export_refresh() {

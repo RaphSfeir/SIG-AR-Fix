@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Models management</title>
-  <link rel="stylesheet" href="manage.css">
-  <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHfjpw5SuQd1r9CNu7QkMorYaeDEFtgmk&sensor=true">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="./manage.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGQN08AL1QcHhK6X2zn28s0JaEpIq7lic&sensor=true">
     </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
-      }
+    <script type="text/javascript"
+      src="./sigar.js">
     </script>
-</head>
-<body onload="initialize()">
-<div class="google-map">
-	<div id="map_canvas" style="width:100%; height:100%"></div>
+  </head>
+<body onLoad="move_to_center();initialize('manage_gMapAPI');">
+<div id="manage_gMapAPI">
 </div>
 <div class="navigation-right">
 	<div class="sources-list">
@@ -35,6 +25,7 @@
 	</div>
 	<div class="models-list">
 	<h3>Models</h3>
+	<input id="refreshModelButton" onclick="sigar_model_refresh();" type="button" value ="Refresh Models" />
 		<ul>
 			<li><input type="checkbox" name="model1" value = "model1"/>Model 1</li>
 			<li><input type="checkbox" name="model2" value = "model2"/>Model 2</li>
