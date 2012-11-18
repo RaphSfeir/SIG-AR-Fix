@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+table:EFI""Sequel::SQL::JoinClause#table;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"The actual table to join:encoding"
+CP850:
+@file0FI"lib/sequel/sql.rb;@

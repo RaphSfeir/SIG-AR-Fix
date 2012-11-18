@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+nulls:EFI")Sequel::SQL::OrderedExpression#nulls;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"%Whether to sort NULLS FIRST/LAST:encoding"
+CP850:
+@file0FI"lib/sequel/sql.rb;@

@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI" pg_typecast_on_load_columns:EFI"PSequel::Plugins::PgTypecastOnLoad::ClassMethods#pg_typecast_on_load_columns;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"4The columns to typecast on load for this model.:encoding"
+CP850:
+@file0FI".lib/sequel/plugins/pg_typecast_on_load.rb;@

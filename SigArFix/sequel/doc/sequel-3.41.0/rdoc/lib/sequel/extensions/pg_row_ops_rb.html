@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: pg_row_ops.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>The pg_row_ops extension adds support to Sequel's DSL to make it easier to
+deal with PostgreSQL row-valued/composite types.</p>
+
+<p>To load the extension:</p>
+
+<pre>Sequel.extension :pg_row_ops</pre>
+
+<p>The most common usage is passing an expression to Sequel.pg_row_op:</p>
+
+<pre>r = Sequel.pg_row_op(:row_column)</pre>
+
+<p>If you have also loaded the pg_row extension, you can use Sequel.pg_row as
+well:</p>
+
+<pre>r = Sequel.pg_row(:row_column)</pre>
+
+<p>Also, on most <a href="../../../Sequel.html">Sequel</a> expression objects,
+you can call the pg_row method:</p>
+
+<pre>r = Sequel.expr(:row_column).pg_row</pre>
+
+<p>If you have loaded the <a
+href="../../../files/doc/core_extensions_rdoc.html">core_extensions
+extension</a>), you can also call <a
+href="../../../Sequel/Postgres/PGRowOp/ExpressionMethods.html#method-i-pg_row">Symbol#pg_row</a>:</p>
+
+<pre>r = :row_column.pg_row</pre>
+
+<p>There's only fairly basic support currently.  You can use the [] method to
+access a member of the composite type:</p>
+
+<pre>r[:a] # (row_column).a</pre>
+
+<p>This can be chained:</p>
+
+<pre>r[:a][:b] # ((row_column).a).b</pre>
+
+<p>If you've loaded the pg_array_ops extension, you there is also support for
+composite types that include arrays, or arrays of composite types:</p>
+
+<pre>r[1][:a] # (row_column[1]).a
+r[:a][1] # (row_column).a[1]</pre>
+
+<p>The only other support is the splat method:</p>
+
+<pre>r.splat # (row_column.*)</pre>
+
+<p>The splat method is necessary if you are trying to reference a table's type
+when the table has the same name as one of it's columns.  For example:</p>
+
+<pre>DB.create_table(:a){Integer :a; Integer :b}</pre>
+
+<p>Let's say you want to reference the composite type for the table:</p>
+
+<pre>a = Sequel.pg_row_op(:a)
+DB[:a].select(a[:b]) # SELECT (a).b FROM a</pre>
+
+<p>Unfortunately, that doesn't work, as it references the integer column, not
+the table. The splat method works around this:</p>
+
+<pre>DB[:a].select(a.splat[:b]) # SELECT (a.*).b FROM a</pre>
+
+<p>Splat also takes an argument which is used for casting.  This is necessary
+if you want to return the composite type itself, instead of the columns in
+the composite type.  For example:</p>
+
+<pre>DB[:a].select(a.splat).first # SELECT (a.*) FROM a
+# =&gt; {:a=&gt;1, :b=&gt;2}</pre>
+
+<p>By casting the expression, you can get a composite type returned:</p>
+
+<pre>DB[:a].select(a.splat).first # SELECT (a.*)::a FROM a
+# =&gt; {:a=&gt;&quot;(1,2)&quot;} # or {:a=&gt;{:a=&gt;1, :b=&gt;2}} if the &quot;a&quot; type has been registered
+                   # with the the pg_row extension</pre>
+
+<p>This feature is mostly useful for a different way to graph tables:</p>
+
+<pre>DB[:a].join(:b, :id=&gt;:b_id).select(Sequel.pg_row_op(:a).splat(:a),
+                                   Sequel.pg_row_op(:b).splat(:b))
+# SELECT (a.*)::a, (b.*)::b FROM a INNER JOIN b ON (b.id = a.b_id)
+# =&gt; {:a=&gt;{:id=&gt;1, :b_id=&gt;2}, :b=&gt;{:id=&gt;2}}</pre>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

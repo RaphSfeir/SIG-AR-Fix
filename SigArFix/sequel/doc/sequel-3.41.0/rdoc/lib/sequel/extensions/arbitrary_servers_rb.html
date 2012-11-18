@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: arbitrary_servers.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>The arbitrary_servers extension allows you to connect to arbitrary
+servers/shards that were not defined when you created the database. To use
+it, you first load the extension into the Database object:</p>
+
+<pre>DB.extension :arbitrary_servers</pre>
+
+<p>Then you can pass arbitrary connection options for the server/shard to use
+as a hash:</p>
+
+<pre>DB[:table].server(:host=&gt;'...', :database=&gt;'...').all</pre>
+
+<p>Because <a href="../../../Sequel.html">Sequel</a> can never be sure that
+the connection will be reused, arbitrary connections are disconnected as
+soon as the outermost block that uses them exits.  So this example uses the
+same connection:</p>
+
+<pre>DB.transaction(:server=&gt;{:host=&gt;'...', :database=&gt;'...'}) do |c|
+  DB.transaction(:server=&gt;{:host=&gt;'...', :database=&gt;'...'}) do |c2|
+    # c == c2
+  end
+end</pre>
+
+<p>But this example does not:</p>
+
+<pre>DB.transaction(:server=&gt;{:host=&gt;'...', :database=&gt;'...'}) do |c|
+end
+DB.transaction(:server=&gt;{:host=&gt;'...', :database=&gt;'...'}) do |c2|
+  # c != c2
+end</pre>
+
+<p>You can use this extension in conjunction with the server_block extension:</p>
+
+<pre>DB.with_server(:host=&gt;'...', :database=&gt;'...') do
+  DB.synchronize do
+    # All of these use the host/database given to with_server
+    DB[:table].insert(...)
+    DB[:table].update(...)
+    DB.tables
+    DB[:table].all
+  end
+end</pre>
+
+<p>Anyone using this extension in conjunction with the server_block extension
+may want to do the following to so that you don't need to call synchronize
+separately:</p>
+
+<pre>def DB.with_server(*)
+  super{synchronize{yield}}
+end</pre>
+
+<p>Note that this extension only works with the sharded threaded connection
+pool.  If you are using the sharded single connection pool, you need to
+switch to the sharded threaded connection pool before using this extension.</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

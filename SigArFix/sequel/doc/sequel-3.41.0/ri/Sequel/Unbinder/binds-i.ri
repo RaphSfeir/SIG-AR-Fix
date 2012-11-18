@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+binds:EFI"Sequel::Unbinder#binds;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"LThe hash of bind variables that were extracted from the dataset filter.:encoding"
+CP850:
+@file0FI""lib/sequel/ast_transformer.rb;@

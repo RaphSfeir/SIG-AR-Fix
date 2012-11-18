@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: pg_array_ops.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>The pg_array_ops extension adds support to Sequel's DSL to make it easier
+to call PostgreSQL array functions and operators.</p>
+
+<p>To load the extension:</p>
+
+<pre>Sequel.extension :pg_array_ops</pre>
+
+<p>The most common usage is passing an expression to Sequel.pg_array_op:</p>
+
+<pre>ia = Sequel.pg_array_op(:int_array_column)</pre>
+
+<p>If you have also loaded the pg_array extension, you can use Sequel.pg_array
+as well:</p>
+
+<pre>ia = Sequel.pg_array(:int_array_column)</pre>
+
+<p>Also, on most <a href="../../../Sequel.html">Sequel</a> expression objects,
+you can call the pg_array method:</p>
+
+<pre>ia = Sequel.expr(:int_array_column).pg_array</pre>
+
+<p>If you have loaded the <a
+href="../../../files/doc/core_extensions_rdoc.html">core_extensions
+extension</a>), you can also call <a
+href="../../../Sequel/Postgres/ArrayOpMethods.html#method-i-pg_array">Symbol#pg_array</a>:</p>
+
+<pre>ia = :int_array_column.pg_array</pre>
+
+<p>This creates a <a
+href="../../../Sequel/Postgres/ArrayOp.html">Sequel::Postgres::ArrayOp</a>
+object that can be used for easier querying:</p>
+
+<pre>ia[1]     # int_array_column[1]
+ia[1][2]  # int_array_column[1][2]
+
+ia.contains(:other_int_array_column)     # @&gt; 
+ia.contained_by(:other_int_array_column) # &lt;@
+ia.overlaps(:other_int_array_column)     # &amp;&amp;
+ia.concat(:other_int_array_column)       # ||
+
+ia.push(1)         # int_array_column || 1
+ia.unshift(1)      # 1 || int_array_column
+
+ia.any             # ANY(int_array_column)
+ia.all             # ALL(int_array_column)
+ia.dims            # array_dims(int_array_column)
+ia.length          # array_length(int_array_column, 1)
+ia.length(2)       # array_length(int_array_column, 2)
+ia.lower           # array_lower(int_array_column, 1)
+ia.lower(2)        # array_lower(int_array_column, 2)
+ia.join            # array_to_string(int_array_column, '', NULL)
+ia.join(':')       # array_to_string(int_array_column, ':', NULL)
+ia.join(':', ' ')  # array_to_string(int_array_column, ':', ' ')
+ia.unnest          # unnest(int_array_column)</pre>
+
+<p>See the PostgreSQL array function and operator documentation for more
+details on what these functions and operators do.</p>
+
+<p>If you are also using the pg_array extension, you should load it before
+loading this extension.  Doing so will allow you to use PGArray#op to get
+an ArrayOp, allowing you to perform array operations on array literals.</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

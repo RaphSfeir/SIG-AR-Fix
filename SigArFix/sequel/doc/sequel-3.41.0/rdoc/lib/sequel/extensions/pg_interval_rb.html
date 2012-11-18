@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: pg_interval.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+          <li>active_support/duration</li>
+        
+          <li>adapters/utils/pg_types</li>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>The pg_interval extension adds support for PostgreSQL's interval type.</p>
+
+<p>This extension integrates with Sequel's native postgres adapter, so that
+when interval type values are retrieved, they are parsed and returned as
+instances of ActiveSupport::Duration.</p>
+
+<p>In addition to the parser, this extension adds literalizers for
+ActiveSupport::Duration that use the standard <a
+href="../../../Sequel.html">Sequel</a> literalization callbacks, so they
+work on all adapters.</p>
+
+<p>If you would like to use interval columns in your model objects, you
+probably want to modify the typecasting so that it recognizes and correctly
+handles the interval columns, which you can do by:</p>
+
+<pre>DB.extension :pg_interval</pre>
+
+<p>If you are not using the native postgres adapter, you probably also want to
+use the typecast_on_load plugin in the model, and set it to typecast the
+interval type column(s) on load.</p>
+
+<p>This extension integrates with the pg_array extension.  If you plan to use
+arrays of interval types, load the pg_array extension before the
+pg_interval extension:</p>
+
+<pre>DB.extension :pg_array, :pg_interval</pre>
+
+<p>The parser this extension uses requires that IntervalStyle for PostgreSQL
+is set to postgres (the default setting).  If IntervalStyle is changed from
+the default setting, the parser will probably not work.  The parser used is
+very simple, and is only designed to parse PostgreSQL's default output
+format, it is not designed to support all input formats that PostgreSQL
+supports.</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

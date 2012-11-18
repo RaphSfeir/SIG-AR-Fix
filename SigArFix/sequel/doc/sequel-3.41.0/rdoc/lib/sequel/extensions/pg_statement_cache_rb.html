@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: pg_statement_cache.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>This extension adds a statement cache to Sequel's postgres adapter, with
+the ability to automatically prepare statements that are executed
+repeatedly.  When combined with the pg_auto_parameterize extension, it can
+take <a href="../../../Sequel.html">Sequel</a> code such as:</p>
+
+<pre>DB.extension :pg_auto_parameterize, :pg_statement_cache
+DB[:table].filter(:a=&gt;1)
+DB[:table].filter(:a=&gt;2)
+DB[:table].filter(:a=&gt;3)</pre>
+
+<p>And use the same prepared statement to execute the queries.</p>
+
+<p>The backbone of this extension is a modified LRU cache.  It considers both
+the last executed time and the number of executions when determining which
+queries to keep in the cache.  It only cleans the cache when a high water
+mark has been passed, and removes queries until it reaches the low water
+mark, in order to avoid thrashing when you are using more than the maximum
+number of queries.  To avoid preparing queries when it isn't necessary, it
+does not prepare them on the server side unless they are being executed
+more than once. The cache is very tunable, allowing you to set the high and
+low water marks, the number of executions before preparing the query, and
+even use a custom callback for determine which queries to keep in the
+cache.</p>
+
+<p>Note that automatically preparing statements does have some issues. Most
+notably, if you change the result type that the query returns, PostgreSQL
+will raise an error.  This can happen if you have prepared a statement that
+selects all columns from a table, and then you add or remove a column from
+that table.  This extension does attempt to check that case and clear the
+statement caches if you use alter_table from within <a
+href="../../../Sequel.html">Sequel</a>, but it cannot fix the case when
+such a change is made externally.</p>
+
+<p>This extension only works when the pg driver is used as the backend for the
+postgres adapter.</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

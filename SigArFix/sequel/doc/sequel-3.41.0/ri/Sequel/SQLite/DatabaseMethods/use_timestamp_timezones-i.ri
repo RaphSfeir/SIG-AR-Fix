@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"use_timestamp_timezones:EFI"<Sequel::SQLite::DatabaseMethods#use_timestamp_timezones;FI"W;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
+I"MOverride the default setting for whether to use timezones in timestamps.:encoding"
+CP850I"AFor backwards compatibility, it is set to +true+ by default.;@I"OAnyone wanting to use SQLite's datetime functions should set it to +false+;@I"Xusing this method.  It's possible that the default will change in a future version,;@I"Lso anyone relying on timezones in timestamps should set this to +true+.;@:
+@file0FI")lib/sequel/adapters/shared/sqlite.rb;@

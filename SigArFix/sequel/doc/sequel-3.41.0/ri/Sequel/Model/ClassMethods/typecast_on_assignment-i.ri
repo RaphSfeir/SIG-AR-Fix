@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"typecast_on_assignment:EFI"7Sequel::Model::ClassMethods#typecast_on_assignment;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"HWhether to typecast attribute values on assignment (default: true).:encoding"
+CP850I"JIf set to false, no typecasting is done, so it will be left up to the;@I".database to typecast the value correctly.;@:
+@file0FI"lib/sequel/model/base.rb;@

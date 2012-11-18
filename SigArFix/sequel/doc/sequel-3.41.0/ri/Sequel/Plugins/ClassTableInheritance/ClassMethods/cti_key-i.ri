@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"cti_key:EFI"ASequel::Plugins::ClassTableInheritance::ClassMethods#cti_key;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?The column containing the class name as a string.  Used to:encoding"
+CP850I"Areturn instances of subclasses when calling the superclass's;@I"load method.;@:
+@file0FI"2lib/sequel/plugins/class_table_inheritance.rb;@

@@ -1,0 +1,4 @@
+U:RDoc::AnyMethod[iI"require:EFI"Sequel::require;FT:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"ORequire all given +files+ which should be in the same or a subdirectory of:encoding"
+CP850I"Othis file.  If a +subdir+ is given, assume all +files+ are in that subdir.;@I"NThis is used to ensure that the files loaded are from the same version of;@I"Sequel as this file.;@:
+@file000[[I"k_require;Fo;;	[o;
+;	[I"-Alias to the standard version of require;@;0I"(files, subdir=nil);@I"lib/sequel/core.rb;@

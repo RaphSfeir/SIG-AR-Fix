@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"force_standard_strings:EFI"-Sequel::Postgres::force_standard_strings;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
+I"CBy default, Sequel forces the use of standard strings, so that:encoding"
+CP850I"I'\\' is interpreted as \\ and not \.  While PostgreSQL <9.1 defaults;@I"Jto interpreting plain strings, newer versions use standard strings by;@I"Ndefault.  Sequel assumes that SQL standard strings will be used.  Setting;@I"@this to false means Sequel will use the database's default.;@:
+@file0TI"+lib/sequel/adapters/shared/postgres.rb;@

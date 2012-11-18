@@ -8,16 +8,16 @@ ul {
 }
 .google-map {
 	position:absolute;
-	width:74%;
-	height:100%;
+	width:75%;
+	height:98%;
 	background:green;
 	border:1px solid red;
 }
 .navigation-right {
 	position:absolute;
 	left:75%;	
-	width:25%;
-	height:100%;
+	width:24%;
+	height:97%;
 	border:1px solid red;
 	background-color:green;
 }

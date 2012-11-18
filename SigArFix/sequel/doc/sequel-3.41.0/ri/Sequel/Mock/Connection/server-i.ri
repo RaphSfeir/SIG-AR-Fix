@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"server:EFI"$Sequel::Mock::Connection#server;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I";Shard this connection operates on, when using Sequel's:encoding"
+CP850I">sharding support (always :default for databases not using;@I"sharding).;@:
+@file0FI" lib/sequel/adapters/mock.rb;@

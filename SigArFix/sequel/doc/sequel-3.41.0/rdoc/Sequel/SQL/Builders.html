@@ -1,0 +1,2890 @@
+<?xml version="1.0" encoding="CP850"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>Module: Sequel::SQL::Builders</title>
+
+  <link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="module">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../../lib/sequel/extensions/pg_array_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_array.rb">lib/sequel/extensions/pg_array.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_array_ops_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_array_ops.rb">lib/sequel/extensions/pg_array_ops.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_hstore_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_hstore.rb">lib/sequel/extensions/pg_hstore.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_hstore_ops_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_hstore_ops.rb">lib/sequel/extensions/pg_hstore_ops.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_json_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_json.rb">lib/sequel/extensions/pg_json.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_range_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_range.rb">lib/sequel/extensions/pg_range.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_range_ops_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_range_ops.rb">lib/sequel/extensions/pg_range_ops.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_row_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_row.rb">lib/sequel/extensions/pg_row.rb</a></li>
+          
+            <li><a href="../../lib/sequel/extensions/pg_row_ops_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/extensions/pg_row_ops.rb">lib/sequel/extensions/pg_row_ops.rb</a></li>
+          
+            <li><a href="../../lib/sequel/sql_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/sequel/sql.rb">lib/sequel/sql.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-as">#as</a></li>
+          
+          <li><a href="#method-i-asc">#asc</a></li>
+          
+          <li><a href="#method-i-blob">#blob</a></li>
+          
+          <li><a href="#method-i-case">#case</a></li>
+          
+          <li><a href="#method-i-cast">#cast</a></li>
+          
+          <li><a href="#method-i-cast_numeric">#cast_numeric</a></li>
+          
+          <li><a href="#method-i-cast_string">#cast_string</a></li>
+          
+          <li><a href="#method-i-char_length">#char_length</a></li>
+          
+          <li><a href="#method-i-delay">#delay</a></li>
+          
+          <li><a href="#method-i-desc">#desc</a></li>
+          
+          <li><a href="#method-i-expr">#expr</a></li>
+          
+          <li><a href="#method-i-extract">#extract</a></li>
+          
+          <li><a href="#method-i-function">#function</a></li>
+          
+          <li><a href="#method-i-hstore">#hstore</a></li>
+          
+          <li><a href="#method-i-hstore_op">#hstore_op</a></li>
+          
+          <li><a href="#method-i-identifier">#identifier</a></li>
+          
+          <li><a href="#method-i-ilike">#ilike</a></li>
+          
+          <li><a href="#method-i-join">#join</a></li>
+          
+          <li><a href="#method-i-like">#like</a></li>
+          
+          <li><a href="#method-i-lit">#lit</a></li>
+          
+          <li><a href="#method-i-negate">#negate</a></li>
+          
+          <li><a href="#method-i-or">#or</a></li>
+          
+          <li><a href="#method-i-pg_array">#pg_array</a></li>
+          
+          <li><a href="#method-i-pg_array_op">#pg_array_op</a></li>
+          
+          <li><a href="#method-i-pg_json">#pg_json</a></li>
+          
+          <li><a href="#method-i-pg_range">#pg_range</a></li>
+          
+          <li><a href="#method-i-pg_range_op">#pg_range_op</a></li>
+          
+          <li><a href="#method-i-pg_row">#pg_row</a></li>
+          
+          <li><a href="#method-i-pg_row_op">#pg_row_op</a></li>
+          
+          <li><a href="#method-i-qualify">#qualify</a></li>
+          
+          <li><a href="#method-i-subscript">#subscript</a></li>
+          
+          <li><a href="#method-i-trim">#trim</a></li>
+          
+          <li><a href="#method-i-value_list">#value_list</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../../CHANGELOG.html">CHANGELOG</a></li>
+        
+          <li class="file"><a href="../../MIT-LICENSE.html">MIT-LICENSE</a></li>
+        
+          <li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/active_record_rdoc.html">active_record.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/advanced_associations_rdoc.html">advanced_associations.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/association_basics_rdoc.html">association_basics.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/bin_sequel_rdoc.html">bin_sequel.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/core_extensions_rdoc.html">core_extensions.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/dataset_basics_rdoc.html">dataset_basics.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/mass_assignment_rdoc.html">mass_assignment.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/migration_rdoc.html">migration.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/model_hooks_rdoc.html">model_hooks.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/object_model_rdoc.html">object_model.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/opening_databases_rdoc.html">opening_databases.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/prepared_statements_rdoc.html">prepared_statements.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/querying_rdoc.html">querying.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/reflection_rdoc.html">reflection.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/1_0_txt.html">1.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/1_1_txt.html">1.1.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/1_3_txt.html">1.3.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0.txt</a></li>
+        
+          <li class="file"><a href="../../doc/schema_modification_rdoc.html">schema_modification.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/sharding_rdoc.html">sharding.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/sql_rdoc.html">sql.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/testing_rdoc.html">testing.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/thread_safety_rdoc.html">thread_safety.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/transactions_rdoc.html">transactions.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/validations_rdoc.html">validations.rdoc</a></li>
+        
+          <li class="file"><a href="../../doc/virtual_rows_rdoc.html">virtual_rows.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../../Sequel.html">Sequel</a></li>
+        
+          <li><a href="../../Sequel/ADO.html">Sequel::ADO</a></li>
+        
+          <li><a href="../../Sequel/ADO/Access.html">Sequel::ADO::Access</a></li>
+        
+          <li><a href="../../Sequel/ADO/Access/AdoSchema.html">Sequel::ADO::Access::AdoSchema</a></li>
+        
+          <li><a href="../../Sequel/ADO/Access/AdoSchema/Column.html">Sequel::ADO::Access::AdoSchema::Column</a></li>
+        
+          <li><a href="../../Sequel/ADO/Access/DatabaseMethods.html">Sequel::ADO::Access::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/ADO/Access/Dataset.html">Sequel::ADO::Access::Dataset</a></li>
+        
+          <li><a href="../../Sequel/ADO/Database.html">Sequel::ADO::Database</a></li>
+        
+          <li><a href="../../Sequel/ADO/Dataset.html">Sequel::ADO::Dataset</a></li>
+        
+          <li><a href="../../Sequel/ADO/MSSQL.html">Sequel::ADO::MSSQL</a></li>
+        
+          <li><a href="../../Sequel/ADO/MSSQL/DatabaseMethods.html">Sequel::ADO::MSSQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/ADO/MSSQL/Dataset.html">Sequel::ADO::MSSQL::Dataset</a></li>
+        
+          <li><a href="../../Sequel/ASTTransformer.html">Sequel::ASTTransformer</a></li>
+        
+          <li><a href="../../Sequel/Access.html">Sequel::Access</a></li>
+        
+          <li><a href="../../Sequel/Access/DatabaseMethods.html">Sequel::Access::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Access/DatasetMethods.html">Sequel::Access::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/AdapterNotFound.html">Sequel::AdapterNotFound</a></li>
+        
+          <li><a href="../../Sequel/Amalgalite.html">Sequel::Amalgalite</a></li>
+        
+          <li><a href="../../Sequel/Amalgalite/Database.html">Sequel::Amalgalite::Database</a></li>
+        
+          <li><a href="../../Sequel/Amalgalite/Dataset.html">Sequel::Amalgalite::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Amalgalite/SequelTypeMap.html">Sequel::Amalgalite::SequelTypeMap</a></li>
+        
+          <li><a href="../../Sequel/ArbitraryServers.html">Sequel::ArbitraryServers</a></li>
+        
+          <li><a href="../../Sequel/BasicObject.html">Sequel::BasicObject</a></li>
+        
+          <li><a href="../../Sequel/HookFailed.html">Sequel::BeforeHookFailed</a></li>
+        
+          <li><a href="../../Sequel/ColumnsIntrospection.html">Sequel::ColumnsIntrospection</a></li>
+        
+          <li><a href="../../Sequel/ConnectionPool.html">Sequel::ConnectionPool</a></li>
+        
+          <li><a href="../../Sequel/ConnectionPool/ClassMethods.html">Sequel::ConnectionPool::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/ConnectionValidator.html">Sequel::ConnectionValidator</a></li>
+        
+          <li><a href="../../Sequel/ConnectionValidator/Retry.html">Sequel::ConnectionValidator::Retry</a></li>
+        
+          <li><a href="../../Sequel/ConstraintValidations.html">Sequel::ConstraintValidations</a></li>
+        
+          <li><a href="../../Sequel/ConstraintValidations/AlterTableGeneratorMethods.html">Sequel::ConstraintValidations::AlterTableGeneratorMethods</a></li>
+        
+          <li><a href="../../Sequel/ConstraintValidations/CreateTableGeneratorMethods.html">Sequel::ConstraintValidations::CreateTableGeneratorMethods</a></li>
+        
+          <li><a href="../../Sequel/ConstraintValidations/Generator.html">Sequel::ConstraintValidations::Generator</a></li>
+        
+          <li><a href="../../Sequel/Cubrid.html">Sequel::Cubrid</a></li>
+        
+          <li><a href="../../Sequel/Cubrid/Database.html">Sequel::Cubrid::Database</a></li>
+        
+          <li><a href="../../Sequel/Cubrid/DatabaseMethods.html">Sequel::Cubrid::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Cubrid/Dataset.html">Sequel::Cubrid::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Cubrid/DatasetMethods.html">Sequel::Cubrid::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/DB2.html">Sequel::DB2</a></li>
+        
+          <li><a href="../../Sequel/DB2/DB2Error.html">Sequel::DB2::DB2Error</a></li>
+        
+          <li><a href="../../Sequel/DB2/Database.html">Sequel::DB2::Database</a></li>
+        
+          <li><a href="../../Sequel/DB2/DatabaseMethods.html">Sequel::DB2::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/DB2/Dataset.html">Sequel::DB2::Dataset</a></li>
+        
+          <li><a href="../../Sequel/DB2/DatasetMethods.html">Sequel::DB2::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/DBI.html">Sequel::DBI</a></li>
+        
+          <li><a href="../../Sequel/DBI/Database.html">Sequel::DBI::Database</a></li>
+        
+          <li><a href="../../Sequel/DBI/Dataset.html">Sequel::DBI::Dataset</a></li>
+        
+          <li><a href="../../Sequel/DataObjects.html">Sequel::DataObjects</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/Database.html">Sequel::DataObjects::Database</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/Dataset.html">Sequel::DataObjects::Dataset</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/MySQL.html">Sequel::DataObjects::MySQL</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/MySQL/DatabaseMethods.html">Sequel::DataObjects::MySQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/MySQL/Dataset.html">Sequel::DataObjects::MySQL::Dataset</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/Postgres.html">Sequel::DataObjects::Postgres</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/Postgres/DatabaseMethods.html">Sequel::DataObjects::Postgres::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/SQLite.html">Sequel::DataObjects::SQLite</a></li>
+        
+          <li><a href="../../Sequel/DataObjects/SQLite/DatabaseMethods.html">Sequel::DataObjects::SQLite::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Database.html">Sequel::Database</a></li>
+        
+          <li><a href="../../Sequel/Dataset.html">Sequel::Database::DatasetClass</a></li>
+        
+          <li><a href="../../Sequel/Database/SplitAlterTable.html">Sequel::Database::SplitAlterTable</a></li>
+        
+          <li><a href="../../Sequel/DatabaseConnectionError.html">Sequel::DatabaseConnectionError</a></li>
+        
+          <li><a href="../../Sequel/DatabaseDisconnectError.html">Sequel::DatabaseDisconnectError</a></li>
+        
+          <li><a href="../../Sequel/DatabaseError.html">Sequel::DatabaseError</a></li>
+        
+          <li><a href="../../Sequel/Dataset.html">Sequel::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Dataset/ArgumentMapper.html">Sequel::Dataset::ArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/Dataset/NullDataset.html">Sequel::Dataset::NullDataset</a></li>
+        
+          <li><a href="../../Sequel/Dataset/Pagination.html">Sequel::Dataset::Pagination</a></li>
+        
+          <li><a href="../../Sequel/Dataset/PreparedStatementMethods.html">Sequel::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/Dataset/QueryBlockCopy.html">Sequel::Dataset::QueryBlockCopy</a></li>
+        
+          <li><a href="../../Sequel/Dataset/SplitArrayNil.html">Sequel::Dataset::SplitArrayNil</a></li>
+        
+          <li><a href="../../Sequel/Dataset/StoredProcedureMethods.html">Sequel::Dataset::StoredProcedureMethods</a></li>
+        
+          <li><a href="../../Sequel/Dataset/StoredProcedures.html">Sequel::Dataset::StoredProcedures</a></li>
+        
+          <li><a href="../../Sequel/Dataset/UnnumberedArgumentMapper.html">Sequel::Dataset::UnnumberedArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/EmulateOffsetWithRowNumber.html">Sequel::EmulateOffsetWithRowNumber</a></li>
+        
+          <li><a href="../../Sequel/Error.html">Sequel::Error</a></li>
+        
+          <li><a href="../../Sequel/AdapterNotFound.html">Sequel::Error::AdapterNotFound</a></li>
+        
+          <li><a href="../../Sequel/InvalidOperation.html">Sequel::Error::InvalidOperation</a></li>
+        
+          <li><a href="../../Sequel/InvalidValue.html">Sequel::Error::InvalidValue</a></li>
+        
+          <li><a href="../../Sequel/PoolTimeout.html">Sequel::Error::PoolTimeoutError</a></li>
+        
+          <li><a href="../../Sequel/Rollback.html">Sequel::Error::Rollback</a></li>
+        
+          <li><a href="../../Sequel/EvalInspect.html">Sequel::EvalInspect</a></li>
+        
+          <li><a href="../../Sequel/Firebird.html">Sequel::Firebird</a></li>
+        
+          <li><a href="../../Sequel/Firebird/Database.html">Sequel::Firebird::Database</a></li>
+        
+          <li><a href="../../Sequel/Firebird/DatabaseMethods.html">Sequel::Firebird::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Firebird/Dataset.html">Sequel::Firebird::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Firebird/DatasetMethods.html">Sequel::Firebird::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/HookFailed.html">Sequel::HookFailed</a></li>
+        
+          <li><a href="../../Sequel/IBMDB.html">Sequel::IBMDB</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Connection.html">Sequel::IBMDB::Connection</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Connection/Error.html">Sequel::IBMDB::Connection::Error</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Database.html">Sequel::IBMDB::Database</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Dataset.html">Sequel::IBMDB::Dataset</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Dataset/CallableStatementMethods.html">Sequel::IBMDB::Dataset::CallableStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Dataset/PreparedStatementMethods.html">Sequel::IBMDB::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/IBMDB/Statement.html">Sequel::IBMDB::Statement</a></li>
+        
+          <li><a href="../../Sequel/Inflections.html">Sequel::Inflections</a></li>
+        
+          <li><a href="../../Sequel/Informix.html">Sequel::Informix</a></li>
+        
+          <li><a href="../../Sequel/Informix/Database.html">Sequel::Informix::Database</a></li>
+        
+          <li><a href="../../Sequel/Informix/DatabaseMethods.html">Sequel::Informix::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Informix/Dataset.html">Sequel::Informix::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Informix/DatasetMethods.html">Sequel::Informix::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/IntegerMigrator.html">Sequel::IntegerMigrator</a></li>
+        
+          <li><a href="../../Sequel/InvalidOperation.html">Sequel::InvalidOperation</a></li>
+        
+          <li><a href="../../Sequel/InvalidValue.html">Sequel::InvalidValue</a></li>
+        
+          <li><a href="../../Sequel/JDBC.html">Sequel::JDBC</a></li>
+        
+          <li><a href="../../Sequel/JDBC/AS400.html">Sequel::JDBC::AS400</a></li>
+        
+          <li><a href="../../Sequel/JDBC/AS400/DatabaseMethods.html">Sequel::JDBC::AS400::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/AS400/Dataset.html">Sequel::JDBC::AS400::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Cubrid.html">Sequel::JDBC::Cubrid</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Cubrid/DatabaseMethods.html">Sequel::JDBC::Cubrid::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/DB2.html">Sequel::JDBC::DB2</a></li>
+        
+          <li><a href="../../Sequel/JDBC/DB2/DatabaseMethods.html">Sequel::JDBC::DB2::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/DB2/Dataset.html">Sequel::JDBC::DB2::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Database.html">Sequel::JDBC::Database</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Dataset.html">Sequel::JDBC::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Dataset/PreparedStatementMethods.html">Sequel::JDBC::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Dataset/StoredProcedureMethods.html">Sequel::JDBC::Dataset::StoredProcedureMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Dataset/TYPE_TRANSLATOR.html">Sequel::JDBC::Dataset::TYPE_TRANSLATOR</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Derby.html">Sequel::JDBC::Derby</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Derby/DatabaseMethods.html">Sequel::JDBC::Derby::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Derby/Dataset.html">Sequel::JDBC::Derby::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Firebird.html">Sequel::JDBC::Firebird</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Firebird/DatabaseMethods.html">Sequel::JDBC::Firebird::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/H2.html">Sequel::JDBC::H2</a></li>
+        
+          <li><a href="../../Sequel/JDBC/H2/DatabaseMethods.html">Sequel::JDBC::H2::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/H2/Dataset.html">Sequel::JDBC::H2::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/HSQLDB.html">Sequel::JDBC::HSQLDB</a></li>
+        
+          <li><a href="../../Sequel/JDBC/HSQLDB/DatabaseMethods.html">Sequel::JDBC::HSQLDB::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/HSQLDB/Dataset.html">Sequel::JDBC::HSQLDB::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Informix.html">Sequel::JDBC::Informix</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Informix/DatabaseMethods.html">Sequel::JDBC::Informix::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JTDS.html">Sequel::JDBC::JTDS</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JTDS/DatabaseMethods.html">Sequel::JDBC::JTDS::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JTDS/Dataset.html">Sequel::JDBC::JTDS::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JavaLang.html">Sequel::JDBC::JavaLang</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JavaSQL.html">Sequel::JDBC::JavaSQL</a></li>
+        
+          <li><a href="../../Sequel/JDBC/JavaxNaming.html">Sequel::JDBC::JavaxNaming</a></li>
+        
+          <li><a href="../../Sequel/JDBC/MSSQL.html">Sequel::JDBC::MSSQL</a></li>
+        
+          <li><a href="../../Sequel/JDBC/MSSQL/DatabaseMethods.html">Sequel::JDBC::MSSQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/MySQL.html">Sequel::JDBC::MySQL</a></li>
+        
+          <li><a href="../../Sequel/JDBC/MySQL/DatabaseMethods.html">Sequel::JDBC::MySQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Oracle.html">Sequel::JDBC::Oracle</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Oracle/DatabaseMethods.html">Sequel::JDBC::Oracle::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Oracle/Dataset.html">Sequel::JDBC::Oracle::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Postgres.html">Sequel::JDBC::Postgres</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Postgres/DatabaseMethods.html">Sequel::JDBC::Postgres::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Postgres/Dataset.html">Sequel::JDBC::Postgres::Dataset</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Postgres/Dataset/PGArrayConverter.html">Sequel::JDBC::Postgres::Dataset::PGArrayConverter</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Progress.html">Sequel::JDBC::Progress</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Progress/DatabaseMethods.html">Sequel::JDBC::Progress::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/SQLServer.html">Sequel::JDBC::SQLServer</a></li>
+        
+          <li><a href="../../Sequel/JDBC/SQLServer/DatabaseMethods.html">Sequel::JDBC::SQLServer::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/SQLServer/DatabaseMethods/MetadataDatasetMethods.html">Sequel::JDBC::SQLServer::DatabaseMethods::MetadataDatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/SQLite.html">Sequel::JDBC::SQLite</a></li>
+        
+          <li><a href="../../Sequel/JDBC/SQLite/DatabaseMethods.html">Sequel::JDBC::SQLite::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/JDBC/Transactions.html">Sequel::JDBC::Transactions</a></li>
+        
+          <li><a href="../../Sequel/LiteralString.html">Sequel::LiteralString</a></li>
+        
+          <li><a href="../../Sequel/LooserTypecasting.html">Sequel::LooserTypecasting</a></li>
+        
+          <li><a href="../../Sequel/MSSQL.html">Sequel::MSSQL</a></li>
+        
+          <li><a href="../../Sequel/MSSQL/DatabaseMethods.html">Sequel::MSSQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/MSSQL/DatasetMethods.html">Sequel::MSSQL::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Metaprogramming.html">Sequel::Metaprogramming</a></li>
+        
+          <li><a href="../../Sequel/Migration.html">Sequel::Migration</a></li>
+        
+          <li><a href="../../Sequel/MigrationAlterTableReverser.html">Sequel::MigrationAlterTableReverser</a></li>
+        
+          <li><a href="../../Sequel/MigrationDSL.html">Sequel::MigrationDSL</a></li>
+        
+          <li><a href="../../Sequel/MigrationReverser.html">Sequel::MigrationReverser</a></li>
+        
+          <li><a href="../../Sequel/Migrator.html">Sequel::Migrator</a></li>
+        
+          <li><a href="../../Sequel/Migrator/Error.html">Sequel::Migrator::Error</a></li>
+        
+          <li><a href="../../Sequel/Migrator/NotCurrentError.html">Sequel::Migrator::NotCurrentError</a></li>
+        
+          <li><a href="../../Sequel/Mock.html">Sequel::Mock</a></li>
+        
+          <li><a href="../../Sequel/Mock/Connection.html">Sequel::Mock::Connection</a></li>
+        
+          <li><a href="../../Sequel/Mock/Database.html">Sequel::Mock::Database</a></li>
+        
+          <li><a href="../../Sequel/Mock/Dataset.html">Sequel::Mock::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Model.html">Sequel::Model</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations.html">Sequel::Model::Associations</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/AssociationDatasetMethods.html">Sequel::Model::Associations::AssociationDatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/AssociationReflection.html">Sequel::Model::Associations::AssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/ClassMethods.html">Sequel::Model::Associations::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/DatasetMethods.html">Sequel::Model::Associations::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/EagerGraphLoader.html">Sequel::Model::Associations::EagerGraphLoader</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/InstanceMethods.html">Sequel::Model::Associations::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/ManyToManyAssociationReflection.html">Sequel::Model::Associations::ManyToManyAssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/ManyToOneAssociationReflection.html">Sequel::Model::Associations::ManyToOneAssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/OneToManyAssociationReflection.html">Sequel::Model::Associations::OneToManyAssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Model/Associations/OneToOneAssociationReflection.html">Sequel::Model::Associations::OneToOneAssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Model/ClassMethods.html">Sequel::Model::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/DatasetMethods.html">Sequel::Model::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Model/Errors.html">Sequel::Model::Errors</a></li>
+        
+          <li><a href="../../Sequel/Model/InstanceMethods.html">Sequel::Model::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL.html">Sequel::MySQL</a></li>
+        
+          <li><a href="../../Sequel/MySQL/Database.html">Sequel::MySQL::Database</a></li>
+        
+          <li><a href="../../Sequel/MySQL/DatabaseMethods.html">Sequel::MySQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/Dataset.html">Sequel::MySQL::Dataset</a></li>
+        
+          <li><a href="../../Sequel/MySQL/DatasetMethods.html">Sequel::MySQL::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements.html">Sequel::MySQL::PreparedStatements</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements/DatabaseMethods.html">Sequel::MySQL::PreparedStatements::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements/DatasetMethods.html">Sequel::MySQL::PreparedStatements::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements/DatasetMethods/CallableStatementMethods.html">Sequel::MySQL::PreparedStatements::DatasetMethods::CallableStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements/DatasetMethods/PreparedStatementMethods.html">Sequel::MySQL::PreparedStatements::DatasetMethods::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/MySQL/PreparedStatements/DatasetMethods/StoredProcedureMethods.html">Sequel::MySQL::PreparedStatements::DatasetMethods::StoredProcedureMethods</a></li>
+        
+          <li><a href="../../Sequel/Mysql2.html">Sequel::Mysql2</a></li>
+        
+          <li><a href="../../Sequel/Mysql2/Database.html">Sequel::Mysql2::Database</a></li>
+        
+          <li><a href="../../Sequel/Mysql2/Dataset.html">Sequel::Mysql2::Dataset</a></li>
+        
+          <li><a href="../../Sequel/NamedTimezones.html">Sequel::NamedTimezones</a></li>
+        
+          <li><a href="../../Sequel/NoExistingObject.html">Sequel::NoExistingObject</a></li>
+        
+          <li><a href="../../Sequel/NotImplemented.html">Sequel::NotImplemented</a></li>
+        
+          <li><a href="../../Sequel/ODBC.html">Sequel::ODBC</a></li>
+        
+          <li><a href="../../Sequel/ODBC/Database.html">Sequel::ODBC::Database</a></li>
+        
+          <li><a href="../../Sequel/ODBC/Dataset.html">Sequel::ODBC::Dataset</a></li>
+        
+          <li><a href="../../Sequel/ODBC/MSSQL.html">Sequel::ODBC::MSSQL</a></li>
+        
+          <li><a href="../../Sequel/ODBC/MSSQL/DatabaseMethods.html">Sequel::ODBC::MSSQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/ODBC/MSSQL/Dataset.html">Sequel::ODBC::MSSQL::Dataset</a></li>
+        
+          <li><a href="../../Sequel/OpenBase.html">Sequel::OpenBase</a></li>
+        
+          <li><a href="../../Sequel/OpenBase/Database.html">Sequel::OpenBase::Database</a></li>
+        
+          <li><a href="../../Sequel/OpenBase/Dataset.html">Sequel::OpenBase::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Oracle.html">Sequel::Oracle</a></li>
+        
+          <li><a href="../../Sequel/Oracle/Database.html">Sequel::Oracle::Database</a></li>
+        
+          <li><a href="../../Sequel/Oracle/DatabaseMethods.html">Sequel::Oracle::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Oracle/Dataset.html">Sequel::Oracle::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Oracle/Dataset/ArgumentMapper.html">Sequel::Oracle::Dataset::ArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/Oracle/Dataset/BindArgumentMethods.html">Sequel::Oracle::Dataset::BindArgumentMethods</a></li>
+        
+          <li><a href="../../Sequel/Oracle/Dataset/PreparedStatementMethods.html">Sequel::Oracle::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/Oracle/DatasetMethods.html">Sequel::Oracle::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins.html">Sequel::Plugins</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ActiveModel.html">Sequel::Plugins::ActiveModel</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ActiveModel/ClassMethods.html">Sequel::Plugins::ActiveModel::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ActiveModel/InstanceMethods.html">Sequel::Plugins::ActiveModel::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationAutoreloading.html">Sequel::Plugins::AssociationAutoreloading</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationAutoreloading/ClassMethods.html">Sequel::Plugins::AssociationAutoreloading::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationDependencies.html">Sequel::Plugins::AssociationDependencies</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationDependencies/ClassMethods.html">Sequel::Plugins::AssociationDependencies::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationDependencies/InstanceMethods.html">Sequel::Plugins::AssociationDependencies::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationPks.html">Sequel::Plugins::AssociationPks</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationPks/ClassMethods.html">Sequel::Plugins::AssociationPks::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationPks/InstanceMethods.html">Sequel::Plugins::AssociationPks::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationProxies.html">Sequel::Plugins::AssociationProxies</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationProxies/AssociationProxy.html">Sequel::Plugins::AssociationProxies::AssociationProxy</a></li>
+        
+          <li><a href="../../Sequel/Plugins/AssociationProxies/ClassMethods.html">Sequel::Plugins::AssociationProxies::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/BooleanReaders.html">Sequel::Plugins::BooleanReaders</a></li>
+        
+          <li><a href="../../Sequel/Plugins/BooleanReaders/ClassMethods.html">Sequel::Plugins::BooleanReaders::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Caching.html">Sequel::Plugins::Caching</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Caching/ClassMethods.html">Sequel::Plugins::Caching::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Caching/InstanceMethods.html">Sequel::Plugins::Caching::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ClassTableInheritance.html">Sequel::Plugins::ClassTableInheritance</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ClassTableInheritance/ClassMethods.html">Sequel::Plugins::ClassTableInheritance::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ClassTableInheritance/InstanceMethods.html">Sequel::Plugins::ClassTableInheritance::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Composition.html">Sequel::Plugins::Composition</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Composition/ClassMethods.html">Sequel::Plugins::Composition::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Composition/InstanceMethods.html">Sequel::Plugins::Composition::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ConstraintValidations.html">Sequel::Plugins::ConstraintValidations</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ConstraintValidations/ClassMethods.html">Sequel::Plugins::ConstraintValidations::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ConstraintValidations/DatabaseMethods.html">Sequel::Plugins::ConstraintValidations::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ConstraintValidations/InstanceMethods.html">Sequel::Plugins::ConstraintValidations::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DatasetAssociations.html">Sequel::Plugins::DatasetAssociations</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DatasetAssociations/ClassMethods.html">Sequel::Plugins::DatasetAssociations::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DatasetAssociations/DatasetMethods.html">Sequel::Plugins::DatasetAssociations::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DefaultsSetter.html">Sequel::Plugins::DefaultsSetter</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DefaultsSetter/ClassMethods.html">Sequel::Plugins::DefaultsSetter::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/DefaultsSetter/InstanceMethods.html">Sequel::Plugins::DefaultsSetter::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Dirty.html">Sequel::Plugins::Dirty</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Dirty/InstanceMethods.html">Sequel::Plugins::Dirty::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/EagerEach.html">Sequel::Plugins::EagerEach</a></li>
+        
+          <li><a href="../../Sequel/Plugins/EagerEach/DatasetMethods.html">Sequel::Plugins::EagerEach::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/EagerEach/EagerDatasetMethods.html">Sequel::Plugins::EagerEach::EagerDatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ForceEncoding.html">Sequel::Plugins::ForceEncoding</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ForceEncoding/ClassMethods.html">Sequel::Plugins::ForceEncoding::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ForceEncoding/InstanceMethods.html">Sequel::Plugins::ForceEncoding::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/HookClassMethods.html">Sequel::Plugins::HookClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/HookClassMethods/ClassMethods.html">Sequel::Plugins::HookClassMethods::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/HookClassMethods/InstanceMethods.html">Sequel::Plugins::HookClassMethods::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/IdentityMap.html">Sequel::Plugins::IdentityMap</a></li>
+        
+          <li><a href="../../Sequel/Plugins/IdentityMap/ClassMethods.html">Sequel::Plugins::IdentityMap::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/IdentityMap/InstanceMethods.html">Sequel::Plugins::IdentityMap::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/InstanceFilters.html">Sequel::Plugins::InstanceFilters</a></li>
+        
+          <li><a href="../../Sequel/NoExistingObject.html">Sequel::Plugins::InstanceFilters::Error</a></li>
+        
+          <li><a href="../../Sequel/Plugins/InstanceFilters/InstanceMethods.html">Sequel::Plugins::InstanceFilters::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/InstanceHooks.html">Sequel::Plugins::InstanceHooks</a></li>
+        
+          <li><a href="../../Sequel/Plugins/InstanceHooks/InstanceMethods.html">Sequel::Plugins::InstanceHooks::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/JsonSerializer.html">Sequel::Plugins::JsonSerializer</a></li>
+        
+          <li><a href="../../Sequel/Plugins/JsonSerializer/ClassMethods.html">Sequel::Plugins::JsonSerializer::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/JsonSerializer/DatasetMethods.html">Sequel::Plugins::JsonSerializer::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/JsonSerializer/InstanceMethods.html">Sequel::Plugins::JsonSerializer::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/JsonSerializer/Literal.html">Sequel::Plugins::JsonSerializer::Literal</a></li>
+        
+          <li><a href="../../Sequel/Plugins/LazyAttributes.html">Sequel::Plugins::LazyAttributes</a></li>
+        
+          <li><a href="../../Sequel/Plugins/LazyAttributes/ClassMethods.html">Sequel::Plugins::LazyAttributes::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/LazyAttributes/InstanceMethods.html">Sequel::Plugins::LazyAttributes::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/List.html">Sequel::Plugins::List</a></li>
+        
+          <li><a href="../../Sequel/Plugins/List/ClassMethods.html">Sequel::Plugins::List::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/List/InstanceMethods.html">Sequel::Plugins::List::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyThroughMany.html">Sequel::Plugins::ManyThroughMany</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyThroughMany/ClassMethods.html">Sequel::Plugins::ManyThroughMany::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyThroughMany/DatasetMethods.html">Sequel::Plugins::ManyThroughMany::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyThroughMany/ManyThroughManyAssociationReflection.html">Sequel::Plugins::ManyThroughMany::ManyThroughManyAssociationReflection</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyToOnePkLookup.html">Sequel::Plugins::ManyToOnePkLookup</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ManyToOnePkLookup/InstanceMethods.html">Sequel::Plugins::ManyToOnePkLookup::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/NestedAttributes.html">Sequel::Plugins::NestedAttributes</a></li>
+        
+          <li><a href="../../Sequel/Plugins/NestedAttributes/ClassMethods.html">Sequel::Plugins::NestedAttributes::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/NestedAttributes/InstanceMethods.html">Sequel::Plugins::NestedAttributes::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/OptimisticLocking.html">Sequel::Plugins::OptimisticLocking</a></li>
+        
+          <li><a href="../../Sequel/Plugins/OptimisticLocking/ClassMethods.html">Sequel::Plugins::OptimisticLocking::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/OptimisticLocking/InstanceMethods.html">Sequel::Plugins::OptimisticLocking::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgRow.html">Sequel::Plugins::PgRow</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgRow/ClassMethods.html">Sequel::Plugins::PgRow::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgRow/DatabaseMethods.html">Sequel::Plugins::PgRow::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgRow/InstanceMethods.html">Sequel::Plugins::PgRow::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgTypecastOnLoad.html">Sequel::Plugins::PgTypecastOnLoad</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgTypecastOnLoad/ClassMethods.html">Sequel::Plugins::PgTypecastOnLoad::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PgTypecastOnLoad/InstanceMethods.html">Sequel::Plugins::PgTypecastOnLoad::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatements.html">Sequel::Plugins::PreparedStatements</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatements/ClassMethods.html">Sequel::Plugins::PreparedStatements::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatements/InstanceMethods.html">Sequel::Plugins::PreparedStatements::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsAssociations.html">Sequel::Plugins::PreparedStatementsAssociations</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsAssociations/ClassMethods.html">Sequel::Plugins::PreparedStatementsAssociations::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsAssociations/InstanceMethods.html">Sequel::Plugins::PreparedStatementsAssociations::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsSafe.html">Sequel::Plugins::PreparedStatementsSafe</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsSafe/ClassMethods.html">Sequel::Plugins::PreparedStatementsSafe::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsSafe/InstanceMethods.html">Sequel::Plugins::PreparedStatementsSafe::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsWithPk.html">Sequel::Plugins::PreparedStatementsWithPk</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsWithPk/ClassMethods.html">Sequel::Plugins::PreparedStatementsWithPk::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/PreparedStatementsWithPk/DatasetMethods.html">Sequel::Plugins::PreparedStatementsWithPk::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/RcteTree.html">Sequel::Plugins::RcteTree</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Schema.html">Sequel::Plugins::Schema</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Schema/ClassMethods.html">Sequel::Plugins::Schema::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Serialization.html">Sequel::Plugins::Serialization</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Serialization/ClassMethods.html">Sequel::Plugins::Serialization::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Serialization/InstanceMethods.html">Sequel::Plugins::Serialization::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SerializationModificationDetection.html">Sequel::Plugins::SerializationModificationDetection</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SerializationModificationDetection/InstanceMethods.html">Sequel::Plugins::SerializationModificationDetection::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Sharding.html">Sequel::Plugins::Sharding</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Sharding/ClassMethods.html">Sequel::Plugins::Sharding::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Sharding/DatasetMethods.html">Sequel::Plugins::Sharding::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Sharding/InstanceMethods.html">Sequel::Plugins::Sharding::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SingleTableInheritance.html">Sequel::Plugins::SingleTableInheritance</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SingleTableInheritance/ClassMethods.html">Sequel::Plugins::SingleTableInheritance::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SingleTableInheritance/InstanceMethods.html">Sequel::Plugins::SingleTableInheritance::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SkipCreateRefresh.html">Sequel::Plugins::SkipCreateRefresh</a></li>
+        
+          <li><a href="../../Sequel/Plugins/SkipCreateRefresh/InstanceMethods.html">Sequel::Plugins::SkipCreateRefresh::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/StaticCache.html">Sequel::Plugins::StaticCache</a></li>
+        
+          <li><a href="../../Sequel/Plugins/StaticCache/ClassMethods.html">Sequel::Plugins::StaticCache::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/StringStripper.html">Sequel::Plugins::StringStripper</a></li>
+        
+          <li><a href="../../Sequel/Plugins/StringStripper/InstanceMethods.html">Sequel::Plugins::StringStripper::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Subclasses.html">Sequel::Plugins::Subclasses</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Subclasses/ClassMethods.html">Sequel::Plugins::Subclasses::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TacticalEagerLoading.html">Sequel::Plugins::TacticalEagerLoading</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TacticalEagerLoading/DatasetMethods.html">Sequel::Plugins::TacticalEagerLoading::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TacticalEagerLoading/InstanceMethods.html">Sequel::Plugins::TacticalEagerLoading::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Timestamps.html">Sequel::Plugins::Timestamps</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Timestamps/ClassMethods.html">Sequel::Plugins::Timestamps::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Timestamps/InstanceMethods.html">Sequel::Plugins::Timestamps::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Touch.html">Sequel::Plugins::Touch</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Touch/ClassMethods.html">Sequel::Plugins::Touch::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Touch/InstanceMethods.html">Sequel::Plugins::Touch::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree.html">Sequel::Plugins::Tree</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/ClassMethods.html">Sequel::Plugins::Tree::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/InstanceMethods.html">Sequel::Plugins::Tree::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/SingleRoot.html">Sequel::Plugins::Tree::SingleRoot</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/SingleRoot/ClassMethods.html">Sequel::Plugins::Tree::SingleRoot::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/SingleRoot/InstanceMethods.html">Sequel::Plugins::Tree::SingleRoot::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/Tree/TreeMultipleRootError.html">Sequel::Plugins::Tree::TreeMultipleRootError</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TypecastOnLoad.html">Sequel::Plugins::TypecastOnLoad</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TypecastOnLoad/ClassMethods.html">Sequel::Plugins::TypecastOnLoad::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/TypecastOnLoad/InstanceMethods.html">Sequel::Plugins::TypecastOnLoad::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/UpdatePrimaryKey.html">Sequel::Plugins::UpdatePrimaryKey</a></li>
+        
+          <li><a href="../../Sequel/Plugins/UpdatePrimaryKey/ClassMethods.html">Sequel::Plugins::UpdatePrimaryKey::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/UpdatePrimaryKey/InstanceMethods.html">Sequel::Plugins::UpdatePrimaryKey::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationClassMethods.html">Sequel::Plugins::ValidationClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationClassMethods/ClassMethods.html">Sequel::Plugins::ValidationClassMethods::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationClassMethods/ClassMethods/Generator.html">Sequel::Plugins::ValidationClassMethods::ClassMethods::Generator</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationClassMethods/InstanceMethods.html">Sequel::Plugins::ValidationClassMethods::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationHelpers.html">Sequel::Plugins::ValidationHelpers</a></li>
+        
+          <li><a href="../../Sequel/Plugins/ValidationHelpers/InstanceMethods.html">Sequel::Plugins::ValidationHelpers::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/XmlSerializer.html">Sequel::Plugins::XmlSerializer</a></li>
+        
+          <li><a href="../../Sequel/Plugins/XmlSerializer/ClassMethods.html">Sequel::Plugins::XmlSerializer::ClassMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/XmlSerializer/DatasetMethods.html">Sequel::Plugins::XmlSerializer::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Plugins/XmlSerializer/InstanceMethods.html">Sequel::Plugins::XmlSerializer::InstanceMethods</a></li>
+        
+          <li><a href="../../Sequel/PoolTimeout.html">Sequel::PoolTimeout</a></li>
+        
+          <li><a href="../../Sequel/Postgres.html">Sequel::Postgres</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Adapter.html">Sequel::Postgres::Adapter</a></li>
+        
+          <li><a href="../../Sequel/Postgres/AlterTableGenerator.html">Sequel::Postgres::AlterTableGenerator</a></li>
+        
+          <li><a href="../../Sequel/Postgres/ArrayOp.html">Sequel::Postgres::ArrayOp</a></li>
+        
+          <li><a href="../../Sequel/Postgres/ArrayOpMethods.html">Sequel::Postgres::ArrayOpMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/AutoParameterize.html">Sequel::Postgres::AutoParameterize</a></li>
+        
+          <li><a href="../../Sequel/Postgres/AutoParameterize/DatabaseMethods.html">Sequel::Postgres::AutoParameterize::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/AutoParameterize/DatasetMethods.html">Sequel::Postgres::AutoParameterize::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/AutoParameterize/StringWithArray.html">Sequel::Postgres::AutoParameterize::StringWithArray</a></li>
+        
+          <li><a href="../../Sequel/Postgres/CreateTableGenerator.html">Sequel::Postgres::CreateTableGenerator</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Database.html">Sequel::Postgres::Database</a></li>
+        
+          <li><a href="../../Sequel/Postgres/DatabaseMethods.html">Sequel::Postgres::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Dataset.html">Sequel::Postgres::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Dataset/ArgumentMapper.html">Sequel::Postgres::Dataset::ArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Dataset/BindArgumentMethods.html">Sequel::Postgres::Dataset::BindArgumentMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/Dataset/PreparedStatementMethods.html">Sequel::Postgres::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/DatasetMethods.html">Sequel::Postgres::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/DatasetMethods/PreparedStatementMethods.html">Sequel::Postgres::DatasetMethods::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/HStore.html">Sequel::Postgres::HStore</a></li>
+        
+          <li><a href="../../Sequel/Postgres/HStore/DatabaseMethods.html">Sequel::Postgres::HStore::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/HStore/Parser.html">Sequel::Postgres::HStore::Parser</a></li>
+        
+          <li><a href="../../Sequel/Postgres/HStoreOp.html">Sequel::Postgres::HStoreOp</a></li>
+        
+          <li><a href="../../Sequel/Postgres/HStoreOpMethods.html">Sequel::Postgres::HStoreOpMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/InetDatabaseMethods.html">Sequel::Postgres::InetDatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/InetDatasetMethods.html">Sequel::Postgres::InetDatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/IntervalDatabaseMethods.html">Sequel::Postgres::IntervalDatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/IntervalDatabaseMethods/Parser.html">Sequel::Postgres::IntervalDatabaseMethods::Parser</a></li>
+        
+          <li><a href="../../Sequel/Postgres/IntervalDatasetMethods.html">Sequel::Postgres::IntervalDatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/JSONArray.html">Sequel::Postgres::JSONArray</a></li>
+        
+          <li><a href="../../Sequel/Postgres/JSONDatabaseMethods.html">Sequel::Postgres::JSONDatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/JSONHash.html">Sequel::Postgres::JSONHash</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGArray.html">Sequel::Postgres::PGArray</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGArray/Creator.html">Sequel::Postgres::PGArray::Creator</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGArray/DatabaseMethods.html">Sequel::Postgres::PGArray::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGArray/JSONCreator.html">Sequel::Postgres::PGArray::JSONCreator</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGArray/Parser.html">Sequel::Postgres::PGArray::Parser</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRange.html">Sequel::Postgres::PGRange</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRange/DatabaseMethods.html">Sequel::Postgres::PGRange::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRange/DatasetMethods.html">Sequel::Postgres::PGRange::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRange/Parser.html">Sequel::Postgres::PGRange::Parser</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow.html">Sequel::Postgres::PGRow</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow/ArrayRow.html">Sequel::Postgres::PGRow::ArrayRow</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow/DatabaseMethods.html">Sequel::Postgres::PGRow::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow/HashRow.html">Sequel::Postgres::PGRow::HashRow</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow/Parser.html">Sequel::Postgres::PGRow::Parser</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRow/Splitter.html">Sequel::Postgres::PGRow::Splitter</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRowOp.html">Sequel::Postgres::PGRowOp</a></li>
+        
+          <li><a href="../../Sequel/Postgres/PGRowOp/ExpressionMethods.html">Sequel::Postgres::PGRowOp::ExpressionMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/RangeOp.html">Sequel::Postgres::RangeOp</a></li>
+        
+          <li><a href="../../Sequel/Postgres/RangeOpMethods.html">Sequel::Postgres::RangeOpMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/StatementCache.html">Sequel::Postgres::StatementCache</a></li>
+        
+          <li><a href="../../Sequel/Postgres/StatementCache/AdapterMethods.html">Sequel::Postgres::StatementCache::AdapterMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/StatementCache/DatabaseMethods.html">Sequel::Postgres::StatementCache::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Postgres/StatementCache/Statement.html">Sequel::Postgres::StatementCache::Statement</a></li>
+        
+          <li><a href="../../Sequel/Postgres/StatementCache/StatementCache.html">Sequel::Postgres::StatementCache::StatementCache</a></li>
+        
+          <li><a href="../../Sequel/PrettyTable.html">Sequel::PrettyTable</a></li>
+        
+          <li><a href="../../Sequel/Progress.html">Sequel::Progress</a></li>
+        
+          <li><a href="../../Sequel/Progress/DatabaseMethods.html">Sequel::Progress::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Progress/DatasetMethods.html">Sequel::Progress::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Qualifier.html">Sequel::Qualifier</a></li>
+        
+          <li><a href="../../Sequel/QueryLiterals.html">Sequel::QueryLiterals</a></li>
+        
+          <li><a href="../../Sequel/Rollback.html">Sequel::Rollback</a></li>
+        
+          <li><a href="../../Sequel/SQL.html">Sequel::SQL</a></li>
+        
+          <li><a href="../../Sequel/SQL/AliasMethods.html">Sequel::SQL::AliasMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/AliasedExpression.html">Sequel::SQL::AliasedExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/BitwiseMethods.html">Sequel::SQL::BitwiseMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/Blob.html">Sequel::SQL::Blob</a></li>
+        
+          <li><a href="../../Sequel/SQL/BooleanConstant.html">Sequel::SQL::BooleanConstant</a></li>
+        
+          <li><a href="../../Sequel/SQL/BooleanExpression.html">Sequel::SQL::BooleanExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/BooleanMethods.html">Sequel::SQL::BooleanMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/Builders.html">Sequel::SQL::Builders</a></li>
+        
+          <li><a href="../../Sequel/SQL/CaseExpression.html">Sequel::SQL::CaseExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/Cast.html">Sequel::SQL::Cast</a></li>
+        
+          <li><a href="../../Sequel/SQL/CastMethods.html">Sequel::SQL::CastMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/ColumnAll.html">Sequel::SQL::ColumnAll</a></li>
+        
+          <li><a href="../../Sequel/SQL/ComplexExpression.html">Sequel::SQL::ComplexExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/ComplexExpressionMethods.html">Sequel::SQL::ComplexExpressionMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/Constant.html">Sequel::SQL::Constant</a></li>
+        
+          <li><a href="../../Sequel/SQL/Constants.html">Sequel::SQL::Constants</a></li>
+        
+          <li><a href="../../Sequel/SQL/DelayedEvaluation.html">Sequel::SQL::DelayedEvaluation</a></li>
+        
+          <li><a href="../../Sequel/SQL/EmulatedFunction.html">Sequel::SQL::EmulatedFunction</a></li>
+        
+          <li><a href="../../Sequel/SQL/Expression.html">Sequel::SQL::Expression</a></li>
+        
+          <li><a href="../../Sequel/SQL/Function.html">Sequel::SQL::Function</a></li>
+        
+          <li><a href="../../Sequel/SQL/GenericExpression.html">Sequel::SQL::GenericExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/Identifier.html">Sequel::SQL::Identifier</a></li>
+        
+          <li><a href="../../Sequel/SQL/InequalityMethods.html">Sequel::SQL::InequalityMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/JoinClause.html">Sequel::SQL::JoinClause</a></li>
+        
+          <li><a href="../../Sequel/SQL/JoinOnClause.html">Sequel::SQL::JoinOnClause</a></li>
+        
+          <li><a href="../../Sequel/SQL/JoinUsingClause.html">Sequel::SQL::JoinUsingClause</a></li>
+        
+          <li><a href="../../Sequel/SQL/NegativeBooleanConstant.html">Sequel::SQL::NegativeBooleanConstant</a></li>
+        
+          <li><a href="../../Sequel/SQL/NoBooleanInputMethods.html">Sequel::SQL::NoBooleanInputMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/NumericExpression.html">Sequel::SQL::NumericExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/NumericMethods.html">Sequel::SQL::NumericMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/OperatorBuilders.html">Sequel::SQL::OperatorBuilders</a></li>
+        
+          <li><a href="../../Sequel/SQL/OrderMethods.html">Sequel::SQL::OrderMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/OrderedExpression.html">Sequel::SQL::OrderedExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/PlaceholderLiteralString.html">Sequel::SQL::PlaceholderLiteralString</a></li>
+        
+          <li><a href="../../Sequel/SQL/QualifiedIdentifier.html">Sequel::SQL::QualifiedIdentifier</a></li>
+        
+          <li><a href="../../Sequel/SQL/QualifyingMethods.html">Sequel::SQL::QualifyingMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/ValueList.html">Sequel::SQL::SQLArray</a></li>
+        
+          <li><a href="../../Sequel/SQL/StringConcatenationMethods.html">Sequel::SQL::StringConcatenationMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/StringExpression.html">Sequel::SQL::StringExpression</a></li>
+        
+          <li><a href="../../Sequel/SQL/StringMethods.html">Sequel::SQL::StringMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/Subscript.html">Sequel::SQL::Subscript</a></li>
+        
+          <li><a href="../../Sequel/SQL/SubscriptMethods.html">Sequel::SQL::SubscriptMethods</a></li>
+        
+          <li><a href="../../Sequel/SQL/ValueList.html">Sequel::SQL::ValueList</a></li>
+        
+          <li><a href="../../Sequel/SQL/VirtualRow.html">Sequel::SQL::VirtualRow</a></li>
+        
+          <li><a href="../../Sequel/SQL/Window.html">Sequel::SQL::Window</a></li>
+        
+          <li><a href="../../Sequel/SQL/WindowFunction.html">Sequel::SQL::WindowFunction</a></li>
+        
+          <li><a href="../../Sequel/SQL/Wrapper.html">Sequel::SQL::Wrapper</a></li>
+        
+          <li><a href="../../Sequel/SQLTime.html">Sequel::SQLTime</a></li>
+        
+          <li><a href="../../Sequel/SQLite.html">Sequel::SQLite</a></li>
+        
+          <li><a href="../../Sequel/SQLite/Database.html">Sequel::SQLite::Database</a></li>
+        
+          <li><a href="../../Sequel/SQLite/DatabaseMethods.html">Sequel::SQLite::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/SQLite/Dataset.html">Sequel::SQLite::Dataset</a></li>
+        
+          <li><a href="../../Sequel/SQLite/Dataset/ArgumentMapper.html">Sequel::SQLite::Dataset::ArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/SQLite/Dataset/BindArgumentMethods.html">Sequel::SQLite::Dataset::BindArgumentMethods</a></li>
+        
+          <li><a href="../../Sequel/SQLite/Dataset/PreparedStatementMethods.html">Sequel::SQLite::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/SQLite/DatasetMethods.html">Sequel::SQLite::DatasetMethods</a></li>
+        
+          <li><a href="../../Sequel/Schema.html">Sequel::Schema</a></li>
+        
+          <li><a href="../../Sequel/Schema/AlterTableGenerator.html">Sequel::Schema::AlterTableGenerator</a></li>
+        
+          <li><a href="../../Sequel/Schema/CreateTableGenerator.html">Sequel::Schema::CreateTableGenerator</a></li>
+        
+          <li><a href="../../Sequel/Schema/CreateTableGenerator.html">Sequel::Schema::Generator</a></li>
+        
+          <li><a href="../../Sequel/ServerBlock.html">Sequel::ServerBlock</a></li>
+        
+          <li><a href="../../Sequel/ShardedSingleConnectionPool.html">Sequel::ShardedSingleConnectionPool</a></li>
+        
+          <li><a href="../../Sequel/ShardedThreadedConnectionPool.html">Sequel::ShardedThreadedConnectionPool</a></li>
+        
+          <li><a href="../../Sequel/SimpleMigration.html">Sequel::SimpleMigration</a></li>
+        
+          <li><a href="../../Sequel/SingleConnectionPool.html">Sequel::SingleConnectionPool</a></li>
+        
+          <li><a href="../../Sequel/Swift.html">Sequel::Swift</a></li>
+        
+          <li><a href="../../Sequel/Swift/Database.html">Sequel::Swift::Database</a></li>
+        
+          <li><a href="../../Sequel/Swift/Dataset.html">Sequel::Swift::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Swift/MySQL.html">Sequel::Swift::MySQL</a></li>
+        
+          <li><a href="../../Sequel/Swift/MySQL/DatabaseMethods.html">Sequel::Swift::MySQL::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Swift/MySQL/Dataset.html">Sequel::Swift::MySQL::Dataset</a></li>
+        
+          <li><a href="../../Sequel/Swift/Postgres.html">Sequel::Swift::Postgres</a></li>
+        
+          <li><a href="../../Sequel/Swift/Postgres/DatabaseMethods.html">Sequel::Swift::Postgres::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Swift/SQLite.html">Sequel::Swift::SQLite</a></li>
+        
+          <li><a href="../../Sequel/Swift/SQLite/DatabaseMethods.html">Sequel::Swift::SQLite::DatabaseMethods</a></li>
+        
+          <li><a href="../../Sequel/Swift/SQLite/Dataset.html">Sequel::Swift::SQLite::Dataset</a></li>
+        
+          <li><a href="../../Sequel/ThreadLocalTimezones.html">Sequel::ThreadLocalTimezones</a></li>
+        
+          <li><a href="../../Sequel/ThreadedConnectionPool.html">Sequel::ThreadedConnectionPool</a></li>
+        
+          <li><a href="../../Sequel/ThreadedServerBlock.html">Sequel::ThreadedServerBlock</a></li>
+        
+          <li><a href="../../Sequel/TimestampMigrator.html">Sequel::TimestampMigrator</a></li>
+        
+          <li><a href="../../Sequel/Timezones.html">Sequel::Timezones</a></li>
+        
+          <li><a href="../../Sequel/TinyTDS.html">Sequel::TinyTDS</a></li>
+        
+          <li><a href="../../Sequel/TinyTDS/Database.html">Sequel::TinyTDS::Database</a></li>
+        
+          <li><a href="../../Sequel/TinyTDS/Dataset.html">Sequel::TinyTDS::Dataset</a></li>
+        
+          <li><a href="../../Sequel/TinyTDS/Dataset/ArgumentMapper.html">Sequel::TinyTDS::Dataset::ArgumentMapper</a></li>
+        
+          <li><a href="../../Sequel/TinyTDS/Dataset/PreparedStatementMethods.html">Sequel::TinyTDS::Dataset::PreparedStatementMethods</a></li>
+        
+          <li><a href="../../Sequel/ToDot.html">Sequel::ToDot</a></li>
+        
+          <li><a href="../../Sequel/UnbindDuplicate.html">Sequel::UnbindDuplicate</a></li>
+        
+          <li><a href="../../Sequel/Unbinder.html">Sequel::Unbinder</a></li>
+        
+          <li><a href="../../Sequel/UndefinedAssociation.html">Sequel::UndefinedAssociation</a></li>
+        
+          <li><a href="../../Sequel/UnthreadedServerBlock.html">Sequel::UnthreadedServerBlock</a></li>
+        
+          <li><a href="../../Sequel/ValidationFailed.html">Sequel::ValidationFailed</a></li>
+        
+          <li><a href="../../String.html">String</a></li>
+        
+          <li><a href="../../String/Inflections.html">String::Inflections</a></li>
+        
+          <li><a href="../../Array.html">Array</a></li>
+        
+          <li><a href="../../FalseClass.html">FalseClass</a></li>
+        
+          <li><a href="../../Hash.html">Hash</a></li>
+        
+          <li><a href="../../NilClass.html">NilClass</a></li>
+        
+          <li><a href="../../Numeric.html">Numeric</a></li>
+        
+          <li><a href="../../Object.html">Object</a></li>
+        
+          <li><a href="../../PGconn.html">PGconn</a></li>
+        
+          <li><a href="../../PGresult.html">PGresult</a></li>
+        
+          <li><a href="../../Range.html">Range</a></li>
+        
+          <li><a href="../../Symbol.html">Symbol</a></li>
+        
+          <li><a href="../../TrueClass.html">TrueClass</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="module">Sequel::SQL::Builders</h1>
+
+    <div id="description" class="description">
+      
+<p>These methods are designed as replacements for the core extensions, so that
+<a href="../../Sequel.html">Sequel</a> is still easy to use if the core
+extensions are not enabled.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="as-method" class="method-detail ">
+          <a name="method-i-as"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">as</span><span
+              class="method-args">(exp, aliaz)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create an <a href="AliasedExpression.html">SQL::AliasedExpression</a> for
+the given expression and alias.</p>
+
+<pre>Sequel.as(:column, :alias) # &quot;column&quot; AS &quot;alias&quot;</pre>
+            
+
+            
+            <div class="method-source-code" id="as-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 306</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">as</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">aliaz</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">AliasedExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">aliaz</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- as-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- as-method -->
+
+      
+        <div id="asc-method" class="method-detail ">
+          <a name="method-i-asc"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">asc</span><span
+              class="method-args">(arg, opts={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Order the given argument ascending. Options:</p>
+<table class="rdoc-list"><tr><td class="rdoc-term"><p>:nulls </p></td>
+<td>
+<p>Set to :first to use NULLS FIRST (so NULL values are ordered before other
+values), or :last to use NULLS LAST (so NULL values are ordered after other
+values).</p>
+</td></tr></table>
+
+<pre>Sequel.asc(:a) # a ASC
+Sequel.asc(:b, :nulls=&gt;:last) # b ASC NULLS LAST</pre>
+            
+
+            
+            <div class="method-source-code" id="asc-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 319</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">asc</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">opts</span>={})
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-keyword">false</span>, <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- asc-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- asc-method -->
+
+      
+        <div id="blob-method" class="method-detail ">
+          <a name="method-i-blob"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">blob</span><span
+              class="method-args">(s)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return an <tt>SQL::Blob</tt> that holds the same data as this string. Blobs
+provide proper escaping of binary data.  If given a blob, returns it
+directly.</p>
+            
+
+            
+            <div class="method-source-code" id="blob-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 326</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">blob</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Blob</span>)
+    <span class="ruby-identifier">s</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Blob</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- blob-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- blob-method -->
+
+      
+        <div id="case-method" class="method-detail ">
+          <a name="method-i-case"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">case</span><span
+              class="method-args">(*args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return an <tt>SQL::CaseExpression</tt> created with the given arguments.</p>
+
+<pre>Sequel.case([[{:a=&gt;[2,3]}, 1]], 0) # SQL: CASE WHEN a IN (2, 3) THEN 1 ELSE 0 END
+Sequel.case({:a=&gt;1}, 0, :b) # SQL: CASE b WHEN a THEN 1 ELSE 0 END</pre>
+            
+
+            
+            <div class="method-source-code" id="case-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 338</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">case</span>(*<span class="ruby-identifier">args</span>) <span class="ruby-comment"># core_sql ignore</span>
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">CaseExpression</span>.<span class="ruby-identifier">new</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- case-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- case-method -->
+
+      
+        <div id="cast-method" class="method-detail ">
+          <a name="method-i-cast"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cast</span><span
+              class="method-args">(arg, sql_type)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p><a href="Cast.html">Cast</a> the reciever to the given <a
+href="../SQL.html">SQL</a> type.  You can specify a ruby class as a type,
+and it is handled similarly to using a database independent type in the
+schema methods.</p>
+
+<pre>Sequel.cast(:a, :integer) # CAST(a AS integer)
+Sequel.cast(:a, String) # CAST(a AS varchar(255))</pre>
+            
+
+            
+            <div class="method-source-code" id="cast-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 347</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Cast</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cast-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cast-method -->
+
+      
+        <div id="cast_numeric-method" class="method-detail ">
+          <a name="method-i-cast_numeric"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cast_numeric</span><span
+              class="method-args">(arg, sql_type = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p><a href="Cast.html">Cast</a> the reciever to the given <a
+href="../SQL.html">SQL</a> type (or the database's default Integer type if
+none given), and return the result as a <tt>NumericExpression</tt>, so you
+can use the bitwise operators on the result.</p>
+
+<pre>Sequel.cast_numeric(:a) # CAST(a AS integer)
+Sequel.cast_numeric(:a, Float) # CAST(a AS double precision)</pre>
+            
+
+            
+            <div class="method-source-code" id="cast_numeric-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 357</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_numeric</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">cast</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Integer</span>).<span class="ruby-identifier">sql_number</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cast_numeric-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cast_numeric-method -->
+
+      
+        <div id="cast_string-method" class="method-detail ">
+          <a name="method-i-cast_string"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cast_string</span><span
+              class="method-args">(arg, sql_type = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p><a href="Cast.html">Cast</a> the reciever to the given <a
+href="../SQL.html">SQL</a> type (or the database's default <a
+href="../../String.html">String</a> type if none given), and return the
+result as a <tt>StringExpression</tt>, so you can use + directly on the
+result for <a href="../SQL.html">SQL</a> string concatenation.</p>
+
+<pre>Sequel.cast_string(:a) # CAST(a AS varchar(255))
+Sequel.cast_string(:a, :text) # CAST(a AS text)</pre>
+            
+
+            
+            <div class="method-source-code" id="cast_string-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 367</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_string</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">cast</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">sql_type</span> <span class="ruby-operator">||</span> <span class="ruby-constant">String</span>).<span class="ruby-identifier">sql_string</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cast_string-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cast_string-method -->
+
+      
+        <div id="char_length-method" class="method-detail ">
+          <a name="method-i-char_length"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">char_length</span><span
+              class="method-args">(arg)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return an emulated function call for getting the number of characters in
+the argument:</p>
+
+<pre>Sequel.char_length(:a) # char_length(a) -- Most databases
+Sequel.char_length(:a) # length(a) -- SQLite</pre>
+            
+
+            
+            <div class="method-source-code" id="char_length-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 376</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">char_length</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">EmulatedFunction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:char_length</span>, <span class="ruby-identifier">arg</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- char_length-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- char_length-method -->
+
+      
+        <div id="delay-method" class="method-detail ">
+          <a name="method-i-delay"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">delay</span><span
+              class="method-args">(&block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a delayed evaluation that uses the passed block. This is used to
+delay evaluations of the code to runtime.  For example, with the following
+code:</p>
+
+<pre>ds = DB[:table].where{column &gt; Time.now}</pre>
+
+<p>The filter is fixed to the time that where was called. Unless you are only
+using the dataset once immediately after creating it, that's probably not
+desired.  If you just want to set it to the time when the query is sent to
+the database, you can wrap it in Sequel.delay:</p>
+
+<pre>ds = DB[:table].where{column &gt; Sequel.delay{Time.now}}</pre>
+
+<p>Note that for dates and timestamps, you are probably better off using
+Sequel::CURRENT_DATE and Sequel::CURRENT_TIMESTAMP instead of this generic
+delayed evaluation facility.</p>
+            
+
+            
+            <div class="method-source-code" id="delay-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 396</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delay</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;Sequel.delay requires a block&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">DelayedEvaluation</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- delay-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- delay-method -->
+
+      
+        <div id="desc-method" class="method-detail ">
+          <a name="method-i-desc"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">desc</span><span
+              class="method-args">(arg, opts={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Order the given argument descending. Options:</p>
+<table class="rdoc-list"><tr><td class="rdoc-term"><p>:nulls </p></td>
+<td>
+<p>Set to :first to use NULLS FIRST (so NULL values are ordered before other
+values), or :last to use NULLS LAST (so NULL values are ordered after other
+values).</p>
+</td></tr></table>
+
+<pre>Sequel.desc(:a) # b DESC
+Sequel.desc(:b, :nulls=&gt;:first) # b DESC NULLS FIRST</pre>
+            
+
+            
+            <div class="method-source-code" id="desc-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 410</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">desc</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">opts</span>={})
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-keyword">true</span>, <span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- desc-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- desc-method -->
+
+      
+        <div id="expr-method" class="method-detail ">
+          <a name="method-i-expr"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">expr</span><span
+              class="method-args">(arg=(no_arg=true), &block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Wraps the given object in an appropriate <a
+href="../../Sequel.html">Sequel</a> wrapper. If the given object is already
+a <a href="../../Sequel.html">Sequel</a> object, return it directly. For
+condition specifiers (hashes and arrays of two pairs), true, and false,
+return a boolean expressions.  For numeric objects, return a numeric
+expression.  For strings, return a string expression.  For procs or when
+the method is passed a block, evaluate it as a virtual row and wrap it
+appropriately.  In all other cases, use a generic wrapper.</p>
+
+<p>This method allows you to construct <a href="../SQL.html">SQL</a>
+expressions that are difficult to construct via other methods.  For
+example:</p>
+
+<pre>Sequel.expr(1) - :a # SQL: (1 - a)</pre>
+            
+
+            
+            <div class="method-source-code" id="expr-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 426</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">arg</span>=(<span class="ruby-identifier">no_arg</span>=<span class="ruby-keyword">true</span>), &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">no_arg</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'cannot provide both an argument and a block to Sequel.expr'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">no_arg</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'must provide either an argument or a block to Sequel.expr'</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">arg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Symbol</span>
+    <span class="ruby-identifier">t</span>, <span class="ruby-identifier">c</span>, <span class="ruby-identifier">a</span> = <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">split_symbol</span>(<span class="ruby-identifier">arg</span>)
+
+    <span class="ruby-identifier">arg</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>
+      <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifiedIdentifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>, <span class="ruby-identifier">c</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Identifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">c</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">a</span>
+      <span class="ruby-identifier">arg</span> = <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">AliasedExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">a</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">arg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Expression</span>, <span class="ruby-constant">LiteralString</span>, <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Blob</span>
+    <span class="ruby-identifier">arg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-value">:AND</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">condition_specifier?</span>(<span class="ruby-identifier">arg</span>)
+      <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-value">:AND</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrapper</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Numeric</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">NumericExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">TrueClass</span>, <span class="ruby-constant">FalseClass</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Proc</span>
+    <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">virtual_row</span>(&amp;<span class="ruby-identifier">arg</span>))
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrapper</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- expr-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- expr-method -->
+
+      
+        <div id="extract-method" class="method-detail ">
+          <a name="method-i-extract"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">extract</span><span
+              class="method-args">(datetime_part, exp)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Extract a datetime_part (e.g. year, month) from the given expression:</p>
+
+<pre>Sequel.extract(:year, :date) # extract(year FROM &quot;date&quot;)</pre>
+            
+
+            
+            <div class="method-source-code" id="extract-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 479</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extract</span>(<span class="ruby-identifier">datetime_part</span>, <span class="ruby-identifier">exp</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">NumericExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:extract</span>, <span class="ruby-identifier">datetime_part</span>, <span class="ruby-identifier">exp</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- extract-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- extract-method -->
+
+      
+        <div id="function-method" class="method-detail ">
+          <a name="method-i-function"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">function</span><span
+              class="method-args">(name, *args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns a <tt>Sequel::SQL::Function</tt> with the function name and the
+given arguments.</p>
+
+<pre>Sequel.function(:now) # SQL: now()
+Sequel.function(:substr, :a, 1) # SQL: substr(a, 1)</pre>
+            
+
+            
+            <div class="method-source-code" id="function-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 488</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">function</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Function</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- function-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- function-method -->
+
+      
+        <div id="hstore-method" class="method-detail ">
+          <a name="method-i-hstore"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">hstore</span><span
+              class="method-args">(v)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <a href="../Postgres/HStore.html">Postgres::HStore</a> proxy for
+the given hash.</p>
+            
+
+            
+            <div class="method-source-code" id="hstore-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_hstore.rb, line 306</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hstore</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">HStore</span>
+    <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">HStore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># May not be defined unless the pg_hstore_ops extension is used</span>
+    <span class="ruby-identifier">hstore_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- hstore-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- hstore-method -->
+
+      
+        <div id="hstore_op-method" class="method-detail ">
+          <a name="method-i-hstore_op"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">hstore_op</span><span
+              class="method-args">(v)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return the object wrapped in an <a
+href="../Postgres/HStoreOp.html">Postgres::HStoreOp</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="hstore_op-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_hstore_ops.rb, line 270</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hstore_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">HStoreOp</span>
+    <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">HStoreOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- hstore_op-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- hstore_op-method -->
+
+      
+        <div id="identifier-method" class="method-detail ">
+          <a name="method-i-identifier"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">identifier</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return the argument wrapped as an <tt>SQL::Identifier</tt>.</p>
+
+<pre>Sequel.identifier(:a__b) # &quot;a__b&quot;</pre>
+            
+
+            
+            <div class="method-source-code" id="identifier-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 495</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">identifier</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Identifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- identifier-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- identifier-method -->
+
+      
+        <div id="ilike-method" class="method-detail ">
+          <a name="method-i-ilike"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ilike</span><span
+              class="method-args">(*args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a <tt>BooleanExpression</tt> case insensitive (if the database
+supports it) pattern match of the receiver with the given patterns.  See
+<tt>SQL::StringExpression.like</tt>.</p>
+
+<pre>Sequel.ilike(:a, 'A%') # &quot;a&quot; ILIKE 'A%'</pre>
+            
+
+            
+            <div class="method-source-code" id="ilike-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 532</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ilike</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">like</span>(*(<span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:case_insensitive=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>}))
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ilike-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ilike-method -->
+
+      
+        <div id="join-method" class="method-detail ">
+          <a name="method-i-join"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">join</span><span
+              class="method-args">(args, joiner=nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <tt>Sequel::SQL::StringExpression</tt> representing an <a
+href="../SQL.html">SQL</a> string made up of the concatenation of the given
+array's elements.  If an argument is passed, it is used in between each
+element of the array in the <a href="../SQL.html">SQL</a> concatenation.</p>
+
+<pre>Sequel.join([:a]) # SQL: a
+Sequel.join([:a, :b]) # SQL: a || b
+Sequel.join([:a, 'b']) # SQL: a || 'b'
+Sequel.join(['a', :b], ' ') # SQL: 'a' || ' ' || b</pre>
+            
+
+            
+            <div class="method-source-code" id="join-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 508</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">join</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">joiner</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'argument to Sequel.join must be an array'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">joiner</span>
+    <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">zip</span>([<span class="ruby-identifier">joiner</span>]*<span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-string">''</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">a</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Symbol</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Expression</span>, <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">LiteralString</span>, <span class="ruby-constant">TrueClass</span>, <span class="ruby-constant">FalseClass</span>, <span class="ruby-constant">NilClass</span>
+      <span class="ruby-identifier">a</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:'||'</span>, *<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- join-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- join-method -->
+
+      
+        <div id="like-method" class="method-detail ">
+          <a name="method-i-like"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">like</span><span
+              class="method-args">(*args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a <tt>SQL::BooleanExpression</tt> case sensitive (if the database
+supports it) pattern match of the receiver with the given patterns.  See
+<tt>SQL::StringExpression.like</tt>.</p>
+
+<pre>Sequel.like(:a, 'A%') # &quot;a&quot; LIKE 'A%'</pre>
+            
+
+            
+            <div class="method-source-code" id="like-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 540</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">like</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">like</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- like-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- like-method -->
+
+      
+        <div id="lit-method" class="method-detail ">
+          <a name="method-i-lit"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">lit</span><span
+              class="method-args">(s, *args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Converts a string into a <tt>Sequel::LiteralString</tt>, in order to
+override string literalization, e.g.:</p>
+
+<pre>DB[:items].filter(:abc =&gt; 'def').sql #=&gt;
+  &quot;SELECT * FROM items WHERE (abc = 'def')&quot;
+
+DB[:items].filter(:abc =&gt; Sequel.lit('def')).sql #=&gt;
+  &quot;SELECT * FROM items WHERE (abc = def)&quot;</pre>
+
+<p>You can also provide arguments, to create a
+<tt>Sequel::SQL::PlaceholderLiteralString</tt>:</p>
+
+<pre>DB[:items].select{|o| o.count(Sequel.lit('DISTINCT ?', :a))}.sql #=&gt;
+  &quot;SELECT count(DISTINCT a) FROM items&quot;</pre>
+            
+
+            
+            <div class="method-source-code" id="lit-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 557</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lit</span>(<span class="ruby-identifier">s</span>, *<span class="ruby-identifier">args</span>) <span class="ruby-comment"># core_sql ignore</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">LiteralString</span>)
+      <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">LiteralString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">s</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">PlaceholderLiteralString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">s</span>, <span class="ruby-identifier">args</span>) 
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- lit-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- lit-method -->
+
+      
+        <div id="negate-method" class="method-detail ">
+          <a name="method-i-negate"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">negate</span><span
+              class="method-args">(arg)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <tt>Sequel::SQL::BooleanExpression</tt> created from the condition
+specifier, matching none of the conditions.</p>
+
+<pre>Sequel.negate(:a=&gt;true) # SQL: a IS NOT TRUE
+Sequel.negate([[:a, true]]) # SQL: a IS NOT TRUE
+Sequel.negate([[:a, 1], [:b, 2]]) # SQL: ((a != 1) AND (b != 2))</pre>
+            
+
+            
+            <div class="method-source-code" id="negate-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 575</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">negate</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">condition_specifier?</span>(<span class="ruby-identifier">arg</span>)
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-value">:AND</span>, <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'must pass a conditions specifier to Sequel.negate'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- negate-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- negate-method -->
+
+      
+        <div id="or-method" class="method-detail ">
+          <a name="method-i-or"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">or</span><span
+              class="method-args">(arg)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <tt>Sequel::SQL::BooleanExpression</tt> created from the condition
+specifier, matching any of the conditions.</p>
+
+<pre>Sequel.or(:a=&gt;true) # SQL: a IS TRUE
+Sequel.or([[:a, true]]) # SQL: a IS TRUE
+Sequel.or([[:a, 1], [:b, 2]]) # SQL: ((a = 1) OR (b = 2))</pre>
+            
+
+            
+            <div class="method-source-code" id="or-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 589</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">or</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">condition_specifier?</span>(<span class="ruby-identifier">arg</span>)
+    <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-value">:OR</span>, <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'must pass a conditions specifier to Sequel.or'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- or-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- or-method -->
+
+      
+        <div id="pg_array-method" class="method-detail ">
+          <a name="method-i-pg_array"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_array</span><span
+              class="method-args">(v, array_type=nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <a href="../Postgres/PGArray.html">Postgres::PGArray</a> proxy for
+the given array and database array type.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_array-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_array.rb, line 509</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_array</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">array_type</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGArray</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">array_type</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">array_type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">array_type</span>
+      <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">array_type</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">array_type</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># May not be defined unless the pg_array_ops extension is used</span>
+    <span class="ruby-identifier">pg_array_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_array-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_array-method -->
+
+      
+        <div id="pg_array_op-method" class="method-detail ">
+          <a name="method-i-pg_array_op"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_array_op</span><span
+              class="method-args">(v)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return the object wrapped in an <a
+href="../Postgres/ArrayOp.html">Postgres::ArrayOp</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_array_op-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_array_ops.rb, line 240</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_array_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">ArrayOp</span>
+    <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">ArrayOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_array_op-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_array_op-method -->
+
+      
+        <div id="pg_json-method" class="method-detail ">
+          <a name="method-i-pg_json"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_json</span><span
+              class="method-args">(v)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Wrap the array or hash in a <a
+href="../Postgres/JSONArray.html">Postgres::JSONArray</a> or <a
+href="../Postgres/JSONHash.html">Postgres::JSONHash</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_json-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_json.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_json</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONArray</span>, <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONHash</span>
+    <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;Sequel.pg_json requires a hash or array argument&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_json-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_json-method -->
+
+      
+        <div id="pg_range-method" class="method-detail ">
+          <a name="method-i-pg_range"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_range</span><span
+              class="method-args">(v, db_type=nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Convert the object to a <a
+href="../Postgres/PGRange.html">Postgres::PGRange</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_range-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_range.rb, line 485</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_range</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">db_type</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRange</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">db_type</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">db_type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">db_type</span>
+      <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRange</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">begin</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">end</span>, <span class="ruby-value">:exclude_begin=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">exclude_begin?</span>, <span class="ruby-value">:exclude_end=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">exclude_end?</span>, <span class="ruby-value">:db_type=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">db_type</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Range</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRange</span>.<span class="ruby-identifier">from_range</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">db_type</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># May not be defined unless the pg_range_ops extension is used</span>
+    <span class="ruby-identifier">pg_range_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_range-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_range-method -->
+
+      
+        <div id="pg_range_op-method" class="method-detail ">
+          <a name="method-i-pg_range_op"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_range_op</span><span
+              class="method-args">(v)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return the expression wrapped in the <a
+href="../Postgres/RangeOp.html">Postgres::RangeOp</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_range_op-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_range_ops.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_range_op</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">RangeOp</span>
+    <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">RangeOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_range_op-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_range_op-method -->
+
+      
+        <div id="pg_row-method" class="method-detail ">
+          <a name="method-i-pg_row"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_row</span><span
+              class="method-args">(expr)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Wraps the expr array in an anonymous <a
+href="../Postgres/PGRow/ArrayRow.html">Postgres::PGRow::ArrayRow</a>
+instance.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_row-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_row.rb, line 555</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_row</span>(<span class="ruby-identifier">expr</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">expr</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRow</span><span class="ruby-operator">::</span><span class="ruby-constant">ArrayRow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">expr</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># Will only work if pg_row_ops extension is loaded</span>
+    <span class="ruby-identifier">pg_row_op</span>(<span class="ruby-identifier">expr</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_row-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_row-method -->
+
+      
+        <div id="pg_row_op-method" class="method-detail ">
+          <a name="method-i-pg_row_op"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pg_row_op</span><span
+              class="method-args">(expr)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a PGRowOp wrapping the given expression.</p>
+            
+
+            
+            <div class="method-source-code" id="pg_row_op-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/extensions/pg_row_ops.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pg_row_op</span>(<span class="ruby-identifier">expr</span>)
+  <span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRowOp</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">expr</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- pg_row_op-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pg_row_op-method -->
+
+      
+        <div id="qualify-method" class="method-detail ">
+          <a name="method-i-qualify"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">qualify</span><span
+              class="method-args">(qualifier, identifier)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a qualified identifier with the given qualifier and identifier</p>
+
+<pre>Sequel.qualify(:table, :column) # &quot;table&quot;.&quot;column&quot;
+Sequel.qualify(:schema, :table) # &quot;schema&quot;.&quot;table&quot;
+Sequel.qualify(:table, :column).qualify(:schema) # &quot;schema&quot;.&quot;table&quot;.&quot;column&quot;</pre>
+            
+
+            
+            <div class="method-source-code" id="qualify-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 602</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">qualify</span>(<span class="ruby-identifier">qualifier</span>, <span class="ruby-identifier">identifier</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifiedIdentifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">qualifier</span>, <span class="ruby-identifier">identifier</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- qualify-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- qualify-method -->
+
+      
+        <div id="subscript-method" class="method-detail ">
+          <a name="method-i-subscript"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">subscript</span><span
+              class="method-args">(exp, *subs)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return an <tt>SQL::Subscript</tt> with the given arguments, representing an
+<a href="../SQL.html">SQL</a> array access.</p>
+
+<pre>Sequel.subscript(:array, 1) # array[1]
+Sequel.subscript(:array, 1, 2) # array[1, 2]
+Sequel.subscript(:array, [1, 2]) # array[1, 2]</pre>
+            
+
+            
+            <div class="method-source-code" id="subscript-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 612</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">subscript</span>(<span class="ruby-identifier">exp</span>, *<span class="ruby-identifier">subs</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Subscript</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">exp</span>, <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">flatten</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- subscript-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- subscript-method -->
+
+      
+        <div id="trim-method" class="method-detail ">
+          <a name="method-i-trim"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">trim</span><span
+              class="method-args">(arg)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return an emulated function call for trimming a string of spaces from both
+sides (similar to ruby's String#strip).</p>
+
+<pre>Sequel.trim(:a) # trim(a) -- Most databases
+Sequel.trim(:a) # ltrim(rtrim(a)) -- Microsoft SQL Server</pre>
+            
+
+            
+            <div class="method-source-code" id="trim-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 621</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">trim</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">EmulatedFunction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:trim</span>, <span class="ruby-identifier">arg</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- trim-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- trim-method -->
+
+      
+        <div id="value_list-method" class="method-detail ">
+          <a name="method-i-value_list"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">value_list</span><span
+              class="method-args">(arg)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Return a <tt>SQL::ValueList</tt> created from the given array.  Used if the
+array contains all two element arrays and you want it treated as an <a
+href="../SQL.html">SQL</a> value list (IN predicate)  instead of as a
+conditions specifier (similar to a hash).  This is not necessary if you are
+using this array as a value in a filter, but may be necessary if you are
+using it as a value with placeholder SQL:</p>
+
+<pre>DB[:a].filter([:a, :b]=&gt;[[1, 2], [3, 4]]) # SQL: (a, b) IN ((1, 2), (3, 4))
+DB[:a].filter('(a, b) IN ?', [[1, 2], [3, 4]]) # SQL: (a, b) IN ((1 = 2) AND (3 = 4))
+DB[:a].filter('(a, b) IN ?', Sequel.value_list([[1, 2], [3, 4]])) # SQL: (a, b) IN ((1, 2), (3, 4))</pre>
+            
+
+            
+            <div class="method-source-code" id="value_list-source">
+<pre>
+<span class="ruby-comment"># File lib/sequel/sql.rb, line 634</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">value_list</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">'argument to Sequel.value_list must be an array'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+  <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">ValueList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- value_list-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- value_list-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+begin:EFI"$Sequel::Postgres::PGRange#begin;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"OThe beginning of the range.  If nil, the range has an unbounded beginning.:encoding"
+CP850:
+@file0FI"&lib/sequel/extensions/pg_range.rb;@

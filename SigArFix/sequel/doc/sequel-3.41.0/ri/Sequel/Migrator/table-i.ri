@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+table:EFI"Sequel::Migrator#table;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"VThe table to use to hold the applied migration data (defaults to :schema_info for:encoding"
+CP850I"Hinteger migrations and :schema_migrations for timestamp migrations);@:
+@file0FI"'lib/sequel/extensions/migration.rb;@

@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"server_version:EFI"*Sequel::Mock::Database#server_version;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"CMock the server version, useful when using the shared adapters:encoding"
+CP850:
+@file0FI" lib/sequel/adapters/mock.rb;@

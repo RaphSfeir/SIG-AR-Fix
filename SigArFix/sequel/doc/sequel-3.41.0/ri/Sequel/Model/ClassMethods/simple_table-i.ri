@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"simple_table:EFI"-Sequel::Model::ClassMethods#simple_table;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"oShould be the literal table name if this Model's dataset is a simple table (no select, order, join, etc.),:encoding"
+CP850I"Tor nil otherwise.  This and simple_pk are used for an optimization in Model.[].;@:
+@file0FI"lib/sequel/model/base.rb;@

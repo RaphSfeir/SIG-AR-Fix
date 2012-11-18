@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"raise_on_typecast_failure:EFI":Sequel::Model::ClassMethods#raise_on_typecast_failure;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"HWhether to raise an error when unable to typecast data for a column:encoding"
+CP850I"E(default: true).  This should be set to false if you want to use;@I"Fvalidations to display nice error messages to the user (e.g. most;@I"Iweb applications).  You can use the validates_not_string validations;@I"M(from either the validation_helpers or validation_class_methods standard;@I"Jplugins) in connection with option to check for typecast failures for;@I"*columns that aren't blobs or strings.;@:
+@file0FI"lib/sequel/model/base.rb;@

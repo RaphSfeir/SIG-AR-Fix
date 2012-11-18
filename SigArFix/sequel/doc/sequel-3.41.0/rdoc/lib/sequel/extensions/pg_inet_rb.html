@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=CP850" http-equiv="Content-Type" />
+
+  <title>File: pg_inet.rb [sequel-3.41.0 Documentation]</title>
+
+  <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet" />
+
+  <script src="../../../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-14 23:59:15 +0100</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+          <li>ipaddr</li>
+        
+          <li>adapters/utils/pg_types</li>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>The pg_inet extension adds support for <a
+href="../../../Sequel.html">Sequel</a> to handle PostgreSQL's inet and cidr
+types using ruby's IPAddr class.</p>
+
+<p>This extension integrates with Sequel's native postgres adapter, so that
+when inet/cidr fields are retrieved, they are returned as IPAddr instances</p>
+
+<p>After loading the extension, you should extend your dataset with a module
+so that it correctly handles the inet/cidr type:</p>
+
+<pre>DB.extension :pg_inet</pre>
+
+<p>If you are not using the native postgres adapter, you probably also want to
+use the typecast_on_load plugin in the model, and set it to typecast the
+inet/cidr column(s) on load.</p>
+
+<p>This extension integrates with the pg_array extension.  If you plan to use
+the inet[] or cidr[] types, load the pg_array extension before the pg_inet
+extension:</p>
+
+<pre>DB.extension :pg_array, :pg_inet</pre>
+
+<p>This extension does not add special support for the macaddr type.  Ruby
+doesn't have a stdlib class that represents mac addresses, so these will
+still be returned as strings.  The exception to this is that the pg_array
+extension integration will recognize macaddr[] types return them as arrays
+of strings.</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+
