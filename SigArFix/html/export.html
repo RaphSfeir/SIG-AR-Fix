@@ -1,10 +1,6 @@
 <html>
   <head>
-    <script>
-      function move_to_center() {
-   window.location = "skp:move@" + screen.width + "," + screen.height + ":" + document.body.offsetWidth + "," + document.body.offsetHeight;
-      };
-    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="./export.css" rel="stylesheet" type="text/css">
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGQN08AL1QcHhK6X2zn28s0JaEpIq7lic&sensor=true">
@@ -21,25 +17,25 @@
 	    		<input style="margin-left: 5px;" type="text" name="filename" value="" readonly="readonly" size="56" maxlength="100">
 	    		<br/><br/>
 	    		<label>Name of your model:</label>
-	    		<input type="text" name="modelname" value="" size="42" maxlength="100">
+	    		<input type="text" name="modelname" value="" size="42" maxlength="100" placeholder="Name...">
 	    		<br/><br/>
 	    		<label>Picture:</label>
 	    		<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
 	    		<br/><br/>
 	    		<label>Description:</label>
-	    		<textarea rows="5" cols="51" name="description"></textarea>
+	    		<textarea rows="5" cols="51" name="description" placeholder="Describe your model"></textarea>
 	    		<br/><br/>
 	    		<label>Coordinates:</label>
-	    		<p>Latitude:
-	    		<input style="margin-left: 20px;" type="text" name="latitude" value="" size="50" maxlength="80">
+	    		<p>Latitude (&deg;):
+	    		<input style="margin-left: 33px;" type="text" id="latitude" name="latitude" value="" size="20" maxlength="80" placeholder="Ready...">
 	    		<br/>
-	    		Longitude:
-	    		<input style="margin-left: 7px;" type="text" name="longitude" value="" size="50" maxlength="80">
+	    		Longitude (&deg;):
+	    		<input style="margin-left: 20px;" type="text" id="longitude" name="longitude" value="" size="20" maxlength="80" placeholder="Drag the marker">
 	    		<br/>
-	    		Altitude:
-	    		<input style="margin-left: 21px;" type="text" name="altitude" value="" size="50" maxlength="80">
+	    		Altitude (m):
+	    		<input style="margin-left: 28px;" type="text" id="altitude" name="altitude" value="" size="20" maxlength="80" placeholder="to initialize.">
 	    		</p>
-	    		<button onclick="clickRefreshCoordinates();" id="refreshCoordinatesButton">Refresh</button> 
+	    		<button onclick="return sigar_export_refresh();" id="refreshCoordinatesButton">Set Coordinates</button> 
 	    	</form>
 	    </div>
 	    <div id="export_gMapAPI">
@@ -61,8 +57,8 @@
 	    	SIG-AR Project - Google SketchUp Plugin - Export Window
 	    </div>
 	    <div id="confirm">
-	    	<button onclick="clickSendOnDB();" id="sendToDBButton">Export</button>
-	    	<button onclick="cancel();" id="cancel">Cancel</button>
+	    	<button onclick="return sigar_export_sendToDb();" id="sendToDBButton">Export</button>
+	    	<button onclick="sigar_export_close();" id="cancel">Cancel</button>
 	    </div>
 	  </div>
   </body>

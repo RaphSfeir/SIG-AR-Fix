@@ -15,12 +15,12 @@
 	font-family: "Times New Roman", Georgia, Serif;
 }
 
-#Export_editBox p {
-	margin-left : 5%;
+#export_editBox p {
+	margin-left : 35%;
 }
 
 #refreshCoordinatesButton {
-	margin-left: 80%;
+	margin-left: 70%;
 }
 
 #export_gMapAPI {
@@ -49,6 +49,7 @@
 	margin-left: 0px;
 	font-family: Courier;
 	font-size: 0.6em;
+	overflow: scroll;
 }
 
 #confirm {

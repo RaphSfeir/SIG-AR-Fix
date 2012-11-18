@@ -26,6 +26,18 @@ def sigar_export()
   dlgExport.min_height = export_height
   dlgExport.max_width = export_width
   dlgExport.max_height = export_height
+  # Add callback to test the connection to the Database
+  dlgExport.add_action_callback("sigar_export_testConnection") {|dialog, params|
+     UI.messagebox("You called sigar_export_testConnection with: " + params.to_s)
+   }
+  # Add callback to export the model to the Database
+  dlgExport.add_action_callback("sigar_export_exportModel") {|dialog, params|
+     UI.messagebox("You called sigar_export_exportModel with: " + params.to_s)
+   }
+  # Add callback to close the dialog
+  dlgExport.add_action_callback("sigar_export_close") {|dialog, params|
+     dlgExport.close
+   }
   # Show the window
   dlgExport.show
 end
