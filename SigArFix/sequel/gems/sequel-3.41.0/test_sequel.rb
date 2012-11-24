@@ -1,6 +1,7 @@
 puts "Testing sequel for Sig-Ar-Fix module. Independant from Ruby's gems."
 
-require Dir.pwd+"/lib/sequel.rb"
+require "rubygems"
+require "sequel"
 
 
 DB = Sequel.postgres(:host=>'54.246.97.87', :user=>'sigar', :password=>'rubyECN#2013', :database=>'sigar_test')

@@ -38,6 +38,21 @@ def sigar_export()
   dlgExport.add_action_callback("sigar_export_close") {|dialog, params|
      dlgExport.close
    }
+  # Add callback to get filename and dir
+  dlgExport.add_action_callback("sigar_export_getfilenamedir") {|dialog, params|
+     model = Sketchup.active_model
+     js_command = "export_setFileNameDir("+ model.path + model.name + ")"
+     dlgExport.execute_script(js_command)
+   }
   # Show the window
-  dlgExport.show
+  model = Sketchup.active_model
+  if (! model)
+    UI.messagebox "Please first open or create a model"
+  else
+    if (model.path == '')
+      UI.messagebox "Please first save your model"
+    else
+      dlgExport.show
+    end
+  end
 end

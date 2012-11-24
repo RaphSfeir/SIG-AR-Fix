@@ -119,6 +119,12 @@
 			return false;
 		}
 		
+		// Set the filename in the right textbox
+		function export_setFileNameDir(filename) {
+			sigar_export_console("Looking for active model path...");
+			document.getElementById('filename').value = filename;
+		}
+		
 		// Close the dialog
 		function sigar_export_close() {
 			callRuby('sigar_export_close','');
