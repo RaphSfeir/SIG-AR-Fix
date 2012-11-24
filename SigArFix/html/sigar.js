@@ -1,3 +1,29 @@
+		// *************
+		// Ajax driver
+		// *************
+		function getXMLHttpRequest() {
+			var xhr = null;
+			if (window.XMLHttpRequest || window.ActiveXObject) {
+				if (window.ActiveXObject) {
+					try {
+						xhr = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch(e) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				} else {
+					xhr = new XMLHttpRequest(); 
+				}
+			} else {
+				alert("Votre navigateur ne peut pas rafraîchir les données...");
+				return null;
+			}
+			
+			return xhr;
+		}
+		
+		// *************
+		// General - GMap API
+		// *************		
 		var initialLocation = new google.maps.LatLng(48.87079, 2.31689); // Initial location : Paris
 		var myMarker; // Var for the Google Maps Marker
 		var map; // Var for the Google Map
@@ -74,14 +100,7 @@
 		function rubyReturner(message) {
 			alert(message);
 		}
-		// *************
-		// Models management
-		// *************
-				
-		//Refresh models list
-		function sigar_model_refresh() {
-			//callRuby('sigar_model_refresh', "");
-		}
+
 		
 		// *************
 		// Export dialog
@@ -122,4 +141,73 @@
 		// Close the dialog
 		function sigar_export_close() {
 			callRuby('sigar_export_close','');
+		}
+		
+		
+		// *************
+		// Manage models
+		// *************		
+
+				
+		//Vars initialization
+		var selected_sources = []; /* Depends on how are sources loaded?? */
+		selected_sources[1] = false; selected_sources[2] = false; selected_sources[3] = false;
+
+		
+		//Switch a source to activated or not
+		function toggle_source(source_id)
+		{
+			selected_sources[source_id] = !selected_sources[source_id];
+		}
+		
+		//Clears the model's list by emptying the <ul>
+		function sigar_model_clear() {
+			var list_models = document.getElementById("list_models");
+			list_models.innerHTML = "";
+		}
+		
+		//Refresh button activated
+		function sigar_model_refresh_boot() {
+			sigar_model_clear();
+
+			for (var j = 0 ; j < selected_sources.length ; j++)
+			{
+				if (selected_sources[j] == true && document.getElementsByTagName("input")[j].getAttribute("source_type"))
+				{
+					var source_type = document.getElementsByTagName("input")[j - 1].getAttribute("source_type");
+					if (source_type == "remote")
+					{
+						var source_href = document.getElementsByTagName("input")[j - 1].getAttribute("source_href");
+						if (source_href) {
+							call_get_page(source_href, sigar_model_refresh);
+						}
+					}
+				}
+			}
+		}
+		
+		//Calls page using ajax (xmlhttprequest)
+		function call_get_page(page_href, callback)
+		{
+			var xhr = getXMLHttpRequest(); 
+			xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+						callback(xhr.responseText);
+					}
+				};
+				
+			xhr.open("GET", page_href, true);
+			xhr.send(null);
+		}
+		
+		//Do the refresh using incoming data
+		function sigar_model_refresh(ajData) {
+			var new_models = eval(ajData);
+			var list_models = document.getElementById("list_models");
+			for (var i = 0 ; i < new_models.length ; i++)
+			{
+				list_models.innerHTML += "<li><input type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['nom_objet'] +"</li>"
+			}
+			console.log(new_models[0]['nom_objet']);
+			console.log(new_models);
 		}
