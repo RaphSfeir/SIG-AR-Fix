@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"db:EFI"Sequel::Dataset#db;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"NThe database related to this dataset.  This is the Database instance that:encoding"
-CP850I"0will execute all of this dataset's queries.;@:
-@file0FI"lib/sequel/dataset/misc.rb;@

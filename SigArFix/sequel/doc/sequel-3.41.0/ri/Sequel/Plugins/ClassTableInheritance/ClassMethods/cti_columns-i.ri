@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"cti_columns:EFI"ESequel::Plugins::ClassTableInheritance::ClassMethods#cti_columns;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"IHash with table name symbol keys and arrays of column symbol values,:encoding"
-CP850I"Agiving the columns to update in each backing database table.;@:
-@file0FI"2lib/sequel/plugins/class_table_inheritance.rb;@

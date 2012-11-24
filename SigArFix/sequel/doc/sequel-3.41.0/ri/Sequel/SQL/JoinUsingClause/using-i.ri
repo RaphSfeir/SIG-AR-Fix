@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI"
-using:EFI"'Sequel::SQL::JoinUsingClause#using;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"AThe columns that appear in both tables that should be equal :encoding"
-CP850I"!for the conditions to match.;@:
-@file0FI"lib/sequel/sql.rb;@

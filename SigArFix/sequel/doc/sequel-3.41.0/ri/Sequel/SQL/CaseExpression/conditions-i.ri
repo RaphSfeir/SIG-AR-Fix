@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"conditions:EFI"+Sequel::SQL::CaseExpression#conditions;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"DAn array of all two pairs with the first element specifying the:encoding"
-CP850I"Bcondition and the second element specifying the result if the;@I"condition matches.;@:
-@file0FI"lib/sequel/sql.rb;@

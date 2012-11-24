@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI" transaction_isolation_level:EFI"1Sequel::Database#transaction_isolation_level;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
-I"?The default transaction isolation level for this database,:encoding"
-CP850I"Eused for all future transactions.  For MSSQL, this should be set;@I"Bto something if you ever plan to use the :isolation option to;@I"IDatabase#transaction, as on MSSQL if affects all future transactions;@I"on the same connection.;@:
-@file0FI"!lib/sequel/database/query.rb;@

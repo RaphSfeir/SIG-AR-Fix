@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"sql_log_level:EFI"#Sequel::Database#sql_log_level;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"HLog level at which to log SQL queries.  This is actually the method:encoding"
-CP850I"Lsent to the logger, so it should be the method name symbol. The default;@I"=is :info, it can be set to :debug to log at DEBUG level.;@:
-@file0FI"#lib/sequel/database/logging.rb;@

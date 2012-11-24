@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"plurals:EFI"!Sequel::Inflections::plurals;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"~Array of two element arrays, first containing a regex, and the second containing a substitution pattern, used for plurization.:encoding"
-CP850:
-@file0TI"$lib/sequel/model/inflections.rb;@

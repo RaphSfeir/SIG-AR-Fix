@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"scope_proc:EFI"3Sequel::Plugins::List::ClassMethods#scope_proc;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"MA proc that scopes the dataset, so that there can be multiple positions :encoding"
-CP850I"Lin the list, but the positions are unique with the scoped dataset. This;@I"Oproc should accept an instance and return a dataset representing the list.;@:
-@file0FI"lib/sequel/plugins/list.rb;@

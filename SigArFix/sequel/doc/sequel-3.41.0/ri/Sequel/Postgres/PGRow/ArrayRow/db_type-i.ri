@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"db_type:EFI".Sequel::Postgres::PGRow::ArrayRow#db_type;FI"W;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"CSets the database type associated with this instance.  This is:encoding"
-CP850I"8used to override the class's default database type.;@:
-@file0FI"$lib/sequel/extensions/pg_row.rb;@

@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI"cache_id:EFI"9Sequel::Postgres::StatementCache::Statement#cache_id;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"LThe id related to the statement, used as part of the prepared statement:encoding"
-CP850I"
-name.;@:
-@file0FI"0lib/sequel/extensions/pg_statement_cache.rb;@

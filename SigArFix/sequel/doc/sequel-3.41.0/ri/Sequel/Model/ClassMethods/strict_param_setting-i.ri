@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI"strict_param_setting:EFI"5Sequel::Model::ClassMethods#strict_param_setting;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
-I"DWhether new/set/update and their variants should raise an error:encoding"
-CP850I"Lif an invalid key is used.  A key is invalid if no setter method exists;@I"Rfor that key or the access to the setter method is restricted (e.g. due to it;@I"@being a primary key field).  If set to false, silently skip;@I"Qany key where the setter method doesn't exist or access to it is restricted.;@:
-@file0FI"lib/sequel/model/base.rb;@

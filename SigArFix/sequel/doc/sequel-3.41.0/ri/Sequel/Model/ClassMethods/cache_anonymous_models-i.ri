@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"cache_anonymous_models:EFI"7Sequel::Model::ClassMethods#cache_anonymous_models;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"OWhether to cache the anonymous models created by Sequel::Model().  This is:encoding"
-CP850I"Trequired for reloading them correctly (avoiding the superclass mismatch).  True;@I",by default for backwards compatibility.;@:
-@file0FI"lib/sequel/model/base.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"identifier_output_method:EFI"-Sequel::Dataset#identifier_output_method;FI"W;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"OSet the method to call on identifiers coming the database for this dataset:encoding"
-CP850:
-@file0FI"#lib/sequel/dataset/mutation.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"sti_key_map:EFI"FSequel::Plugins::SingleTableInheritance::ClassMethods#sti_key_map;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"AA hash/proc with class keys and column value values, mapping:encoding"
-CP850I"Ethe the class to a particular value given to the sti_key column.;@I"DUsed to set the column value when creating objects, and for the;@I"2filter when retrieving objects in subclasses.;@:
-@file0FI"3lib/sequel/plugins/single_table_inheritance.rb;@

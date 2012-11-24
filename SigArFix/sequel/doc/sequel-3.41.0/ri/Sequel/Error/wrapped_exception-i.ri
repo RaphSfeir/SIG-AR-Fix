@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"wrapped_exception:EFI"$Sequel::Error#wrapped_exception;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"DIf this exception wraps an underlying exception, the underlying:encoding"
-CP850I"exception is held here.;@:
-@file0FI"lib/sequel/exceptions.rb;@

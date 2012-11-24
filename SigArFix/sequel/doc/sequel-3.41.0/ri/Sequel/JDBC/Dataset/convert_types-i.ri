@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"convert_types:EFI"(Sequel::JDBC::Dataset#convert_types;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"KWhether to convert some Java types to ruby types when retrieving rows.:encoding"
-CP850I"KUses the database's setting by default, can be set to false to roughly;@I"+double performance when fetching rows.;@:
-@file0FI" lib/sequel/adapters/jdbc.rb;@

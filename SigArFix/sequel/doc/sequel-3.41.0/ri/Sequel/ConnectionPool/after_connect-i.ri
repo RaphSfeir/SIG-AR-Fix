@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"after_connect:EFI")Sequel::ConnectionPool#after_connect;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"MThe after_connect proc used for this pool.  This is called with each new:encoding"
-CP850I"Pconnection made, and is usually used to set custom per-connection settings.;@:
-@file0FI""lib/sequel/connection_pool.rb;@

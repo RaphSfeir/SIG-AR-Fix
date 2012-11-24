@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"dataset_method_modules:EFI"7Sequel::Model::ClassMethods#dataset_method_modules;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?Array of modules that extend this model's dataset.  Stored:encoding"
-CP850I"Cso that if the model's dataset is changed, it will be extended;@I"with all of these modules.;@:
-@file0FI"lib/sequel/model/base.rb;@

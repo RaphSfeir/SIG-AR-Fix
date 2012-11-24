@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"touched_associations:EFI">Sequel::Plugins::Touch::ClassMethods#touched_associations;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"CA hash specifying the associations to touch when instances are:encoding"
-CP850I"Gupdated or destroyed. Keys are association name symbols and values;@I"are column name symbols.;@:
-@file0FI" lib/sequel/plugins/touch.rb;@

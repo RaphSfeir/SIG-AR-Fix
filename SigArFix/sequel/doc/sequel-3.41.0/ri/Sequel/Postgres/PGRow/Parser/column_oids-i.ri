@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"column_oids:EFI"0Sequel::Postgres::PGRow::Parser#column_oids;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"9The OIDs for each member in the composite type.  Not:encoding"
-CP850I"6currently used, but made available for user code.;@:
-@file0FI"$lib/sequel/extensions/pg_row.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"application_timezone:EFI"+Sequel::Timezones#application_timezone;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"HThe timezone you want the application to use.  This is the timezone:encoding"
-CP850I"Lthat incoming times from the database and typecasting are converted to.;@:
-@file0FI"lib/sequel/timezones.rb;@

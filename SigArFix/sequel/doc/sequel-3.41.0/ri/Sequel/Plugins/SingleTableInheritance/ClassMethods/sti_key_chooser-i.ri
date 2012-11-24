@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"sti_key_chooser:EFI"JSequel::Plugins::SingleTableInheritance::ClassMethods#sti_key_chooser;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"=A proc which returns the value to use for new instances.:encoding"
-CP850I".This defaults to a lookup in the key map.;@:
-@file0FI"3lib/sequel/plugins/single_table_inheritance.rb;@

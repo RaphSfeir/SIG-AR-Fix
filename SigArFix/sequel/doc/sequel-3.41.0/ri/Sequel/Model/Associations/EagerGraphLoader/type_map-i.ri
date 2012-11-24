@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"type_map:EFI";Sequel::Model::Associations::EagerGraphLoader#type_map;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"RHash with table alias symbol keys and true/false values, where true means the:encoding"
-CP850I"Rassociation represented by the table alias uses an array of values instead of;@I"=a single value (i.e. true => *_many, false => *_to_one).;@:
-@file0FI"%lib/sequel/model/associations.rb;@

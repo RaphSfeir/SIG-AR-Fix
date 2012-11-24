@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"!constraint_validations_table:EFI"VSequel::Plugins::ConstraintValidations::ClassMethods#constraint_validations_table;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"JThe name of the table containing the constraint validations metadata.:encoding"
-CP850:
-@file0FI"1lib/sequel/plugins/constraint_validations.rb;@

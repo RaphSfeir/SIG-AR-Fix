@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"window:EFI"'Sequel::SQL::WindowFunction#window;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I":The window to use, should be an <tt>SQL::Window</tt>.:encoding"
-CP850:
-@file0FI"lib/sequel/sql.rb;@

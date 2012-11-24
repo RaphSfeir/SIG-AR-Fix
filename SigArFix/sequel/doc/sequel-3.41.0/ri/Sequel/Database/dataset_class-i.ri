@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"dataset_class:EFI"#Sequel::Database#dataset_class;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?The class to use for creating datasets.  Should respond to:encoding"
-CP850I">new with the Database argument as the first argument, and;@I"an optional options hash.;@:
-@file0FI",lib/sequel/database/dataset_defaults.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"dataset_methods:EFI"0Sequel::Model::ClassMethods#dataset_methods;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"KHash of dataset methods with method name keys and proc values that are:encoding"
-CP850I"Pstored so when the dataset changes, methods defined with def_dataset_method;@I"(will be applied to the new dataset.;@:
-@file0FI"lib/sequel/model/base.rb;@

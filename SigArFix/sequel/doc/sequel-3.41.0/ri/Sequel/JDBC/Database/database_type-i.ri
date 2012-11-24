@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"database_type:EFI")Sequel::JDBC::Database#database_type;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I".The type of database we are connecting to:encoding"
-CP850:
-@file0FI" lib/sequel/adapters/jdbc.rb;@

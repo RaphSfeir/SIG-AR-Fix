@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"ds:EFI"Sequel::Migrator#ds;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"TThe dataset for this migrator, representing the +schema_info+ table for integer:encoding"
-CP850I"Jmigrations and the +schema_migrations+ table for timestamp migrations;@:
-@file0FI"'lib/sequel/extensions/migration.rb;@

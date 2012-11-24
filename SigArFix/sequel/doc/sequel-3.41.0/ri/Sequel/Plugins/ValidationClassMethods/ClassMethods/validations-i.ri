@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"validations:EFI"FSequel::Plugins::ValidationClassMethods::ClassMethods#validations;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"JA hash of validations for this model class.  Keys are column symbols,:encoding"
-CP850I"+values are arrays of validation procs.;@:
-@file0FI"3lib/sequel/plugins/validation_class_methods.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"migration_tuples:EFI"/Sequel::TimestampMigrator#migration_tuples;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"HGet tuples of migrations, filenames, and actions for each migration:encoding"
-CP850:
-@file0FI"'lib/sequel/extensions/migration.rb;@

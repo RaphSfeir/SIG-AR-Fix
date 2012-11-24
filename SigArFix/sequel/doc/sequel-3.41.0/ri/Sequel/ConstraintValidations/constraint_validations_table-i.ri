@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"!constraint_validations_table:EFI"?Sequel::ConstraintValidations#constraint_validations_table;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"NThe name of the table storing the validation metadata.  If modifying this:encoding"
-CP850I"Hfrom the default, this should be changed directly after loading the;@I" extension into the database;@:
-@file0FI"4lib/sequel/extensions/constraint_validations.rb;@

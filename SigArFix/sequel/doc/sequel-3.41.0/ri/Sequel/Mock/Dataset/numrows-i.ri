@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"numrows:EFI""Sequel::Mock::Dataset#numrows;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I">Override the databases's numrows setting for this dataset:encoding"
-CP850:
-@file0FI" lib/sequel/adapters/mock.rb;@

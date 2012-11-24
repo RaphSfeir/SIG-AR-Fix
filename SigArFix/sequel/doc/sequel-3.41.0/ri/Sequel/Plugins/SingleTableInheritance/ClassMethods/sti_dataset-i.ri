@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"sti_dataset:EFI"FSequel::Plugins::SingleTableInheritance::ClassMethods#sti_dataset;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@The base dataset for STI, to which filters are added to get:encoding"
-CP850I"3only the models for the specific STI subclass.;@:
-@file0FI"3lib/sequel/plugins/single_table_inheritance.rb;@

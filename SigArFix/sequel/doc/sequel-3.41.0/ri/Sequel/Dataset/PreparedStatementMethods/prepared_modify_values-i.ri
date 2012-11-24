@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"prepared_modify_values:EFI"ESequel::Dataset::PreparedStatementMethods#prepared_modify_values;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?The argument to supply to insert and update, which may use:encoding"
-CP850I",placeholders specified by prepared_args;@:
-@file0FI".lib/sequel/dataset/prepared_statements.rb;@

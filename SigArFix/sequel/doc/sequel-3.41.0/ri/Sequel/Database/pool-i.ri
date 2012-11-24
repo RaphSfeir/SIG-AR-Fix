@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"	pool:EFI"Sequel::Database#pool;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"QThe connection pool for this Database instance.  All Database instances have:encoding"
-CP850I" their own connection pools.;@:
-@file0FI"&lib/sequel/database/connecting.rb;@

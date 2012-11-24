@@ -1,8 +1,0 @@
-U:RDoc::Attr[iI"	opts:EFI"Sequel::SQL::Window#opts;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?The options for this window.  Options currently supported::encoding"
-CP850o:RDoc::Markup::List:
-@type:	NOTE:@items[	o:RDoc::Markup::ListItem:@labelI":frame ;@;	[o;
-;	[I"wif specified, should be :all, :rows, or a String that is used literally. :all always operates over all rows in the;@I"^partition, while :rows excludes the current row's later peers.  The default is to include;@I"Jall previous rows in the partition up to the current row's last peer.;@o;;I":order ;@;	[o;
-;	[I"!order on the column(s) given;@o;;I":partition ;@;	[o;
-;	[I"+partition/group on the column(s) given;@o;;I":window ;@;	[o;
-;	[I"8base results on a previously specified named window;@:
-@file0FI"lib/sequel/sql.rb;@

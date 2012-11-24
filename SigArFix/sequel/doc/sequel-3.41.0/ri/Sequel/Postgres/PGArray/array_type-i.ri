@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"array_type:EFI")Sequel::Postgres::PGArray#array_type;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"HThe type of this array.  May be nil if no type was given. If a type:encoding"
-CP850I"Eis provided, the array is automatically casted to this type when;@I"Hliteralizing.  This type is the underlying type, not the array type;@I"Iitself, so for an int4[] database type, it should be :int4 or 'int4';@:
-@file0FI"&lib/sequel/extensions/pg_array.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"typecaster:EFI"/Sequel::Postgres::PGRow::Parser#typecaster;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"<A callable object used for typecasting the object. This:encoding"
-CP850I"9is similar to the converter, but it is called by the;@I";typecasting code, which has different assumptions than;@I":the converter.  For instance, the converter should be;@I";called with all of the member values already typecast,;@I"#but the typecaster may not be.;@:
-@file0FI"$lib/sequel/extensions/pg_row.rb;@

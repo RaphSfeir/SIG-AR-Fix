@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"convert_tinyint_to_bool:EFI"+Sequel::MySQL::convert_tinyint_to_bool;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"LSequel converts the column type tinyint(1) to a boolean by default when:encoding"
-CP850I"Zusing the native MySQL or Mysql2 adapter.  You can turn off the conversion by setting;@I"Wthis to false. This setting is ignored when connecting to MySQL via the do or jdbc;@I"=adapters, both of which automatically do the conversion.;@:
-@file0TI"(lib/sequel/adapters/shared/mysql.rb;@

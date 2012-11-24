@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"column_maps:EFI">Sequel::Model::Associations::EagerGraphLoader#column_maps;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"]Hash with table alias symbol keys and subhash values mapping column_alias symbols to the:encoding"
-CP850I"*symbol of the real name of the column;@:
-@file0FI"%lib/sequel/model/associations.rb;@

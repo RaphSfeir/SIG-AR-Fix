@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"lock_column:EFI"ASequel::Plugins::OptimisticLocking::ClassMethods#lock_column;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"/The column holding the version of the lock:encoding"
-CP850:
-@file0FI"-lib/sequel/plugins/optimistic_locking.rb;@

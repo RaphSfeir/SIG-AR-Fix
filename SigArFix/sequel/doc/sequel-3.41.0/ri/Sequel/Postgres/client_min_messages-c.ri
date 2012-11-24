@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"client_min_messages:EFI"*Sequel::Postgres::client_min_messages;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"QBy default, Sequel sets the minimum level of log messages sent to the client:encoding"
-CP850I"Sto WARNING, where PostgreSQL uses a default of NOTICE.  This is to avoid a lot;@I"Rof mostly useless messages when running migrations, such as a couple of lines;@I"(for every serial primary key field.;@:
-@file0TI"+lib/sequel/adapters/shared/postgres.rb;@

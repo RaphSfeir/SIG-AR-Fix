@@ -16,20 +16,18 @@
 <div class="navigation-right">
 	<div class="sources-list">
 	<h3>Sources</h3>
-		<ul>
-			<li><input type="checkbox" name="source1" value = "source1"/>Source 1</li>
-			<li><input type="checkbox" name="source2" value = "source2" />Source 2</li>
-			<li><input type="checkbox" name="source3" value = "source3" />Source 3</li>
+		<ul class="list_sources" id = "list_sources">
+			<li><input id = "source1" onclick="toggle_source(1);" type="checkbox" name="source1" value = "source1" source_type="remote" source_href="AAAPAGETEST.php" />BDD 1</li>
+			<li><input id = "source2" onclick="toggle_source(2);" type="checkbox" name="source2" value = "source2" source_type="remote" />BDD 2</li>
+			<li><input id = "source3" onclick="toggle_source(3);" type="checkbox" name="source3" value = "source3" source_type="hardware" />Périph. externe</li>
 		</ul>
 		<input type="button" value ="Source Settings" />
 	</div>
 	<div class="models-list">
 	<h3>Models</h3>
-	<input id="refreshModelButton" onclick="sigar_model_refresh();" type="button" value ="Refresh Models" />
-		<ul>
-			<li><input type="checkbox" name="model1" value = "model1"/>Model 1</li>
-			<li><input type="checkbox" name="model2" value = "model2"/>Model 2</li>
-			<li><input type="checkbox" name="model3" value = "model3"/>Model 3</li>	
+	<input id="refreshModelButton" onclick="sigar_model_refresh_boot();" type="button" value ="Refresh Models" />
+		<ul class="list_models" id="list_models">
+			<li><em>[Please refresh models to load available models]</em></li>
 		</ul>
 	</div>
 </div>

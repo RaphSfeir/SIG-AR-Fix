@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"use_after_commit_rollback:EFI":Sequel::Model::ClassMethods#use_after_commit_rollback;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"WWhether to enable the after_commit and after_rollback hooks when saving/destroying:encoding"
-CP850I"Winstances.  On by default, can be turned off for performance reasons or when using;@I"Pprepared transactions (which aren't compatible with after commit/rollback).;@:
-@file0FI"lib/sequel/model/base.rb;@

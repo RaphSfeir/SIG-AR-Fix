@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"lazy_attributes_module:EFI"ISequel::Plugins::LazyAttributes::ClassMethods#lazy_attributes_module;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"CModule to store the lazy attribute getter methods, so they can:encoding"
-CP850I"Dbe overridden and call super to get the lazy attribute behavior;@:
-@file0FI"*lib/sequel/plugins/lazy_attributes.rb;@

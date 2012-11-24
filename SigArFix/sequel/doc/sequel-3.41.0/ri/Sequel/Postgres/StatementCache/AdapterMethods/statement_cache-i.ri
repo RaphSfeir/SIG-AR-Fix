@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"statement_cache:EFI"ESequel::Postgres::StatementCache::AdapterMethods#statement_cache;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@The StatementCache instance for this connection.  Note that:encoding"
-CP850I"Deach connection has a separate StatementCache, because prepared;@I"(statements are connection-specific.;@:
-@file0FI"0lib/sequel/extensions/pg_statement_cache.rb;@

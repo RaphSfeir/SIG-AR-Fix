@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"conversion_procs:EFI"7Sequel::Postgres::DatabaseMethods#conversion_procs;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@A hash of conversion procs, keyed by type integer (oid) and:encoding"
-CP850I"Bhaving callable values for the conversion proc for that type.;@:
-@file0FI"+lib/sequel/adapters/shared/postgres.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"sti_key_array:EFI"HSequel::Plugins::SingleTableInheritance::ClassMethods#sti_key_array;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"FArray holding keys for all subclasses of this class, used for the:encoding"
-CP850I"9dataset filter in subclasses. Nil in the main class.;@:
-@file0FI"3lib/sequel/plugins/single_table_inheritance.rb;@

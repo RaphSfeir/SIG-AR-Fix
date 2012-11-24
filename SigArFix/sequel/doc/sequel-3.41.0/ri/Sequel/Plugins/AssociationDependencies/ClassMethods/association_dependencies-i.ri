@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"association_dependencies:EFI"TSequel::Plugins::AssociationDependencies::ClassMethods#association_dependencies;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"MA hash specifying the association dependencies for each model.  The keys:encoding"
-CP850I"Mare symbols indicating the type of action and when it should be executed;@I"C(e.g. :before_delete).  Values are an array of method symbols.;@I"SFor before_nullify, the symbols are remove_all_association methods.  For other;@I"Ktypes, the symbols are association_dataset methods, on which delete or;@I"destroy is called.;@:
-@file0FI"3lib/sequel/plugins/association_dependencies.rb;@

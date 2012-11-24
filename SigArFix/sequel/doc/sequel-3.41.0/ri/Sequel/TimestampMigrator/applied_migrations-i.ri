@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"applied_migrations:EFI"1Sequel::TimestampMigrator#applied_migrations;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"4Array of strings of applied migration filenames:encoding"
-CP850:
-@file0FI"'lib/sequel/extensions/migration.rb;@

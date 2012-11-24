@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"last_seen:EFI":Sequel::Postgres::StatementCache::Statement#last_seen;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"GThe last time this statement was seen by the cache, persumably the:encoding"
-CP850I"last time it was executed.;@:
-@file0FI"0lib/sequel/extensions/pg_statement_cache.rb;@

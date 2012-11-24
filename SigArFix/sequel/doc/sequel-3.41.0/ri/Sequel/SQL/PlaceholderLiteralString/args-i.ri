@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"	args:EFI"/Sequel::SQL::PlaceholderLiteralString#args;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[	I"AThe arguments that will be subsituted into the placeholders.:encoding"
-CP850I"JEither an array of unnamed placeholders (which will be substituted in;@I"Lorder for ? characters), or a hash of named placeholders (which will be;@I"#substituted for :key phrases).;@:
-@file0FI"lib/sequel/sql.rb;@

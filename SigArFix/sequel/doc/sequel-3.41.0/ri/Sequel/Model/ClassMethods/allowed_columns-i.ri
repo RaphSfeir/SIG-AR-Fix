@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"allowed_columns:EFI"0Sequel::Model::ClassMethods#allowed_columns;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"fWhich columns should be the only columns allowed in a call to a mass assignment method (e.g. set):encoding"
-CP850I"M(default: not set, so all columns not otherwise restricted are allowed).;@:
-@file0FI"lib/sequel/model/base.rb;@

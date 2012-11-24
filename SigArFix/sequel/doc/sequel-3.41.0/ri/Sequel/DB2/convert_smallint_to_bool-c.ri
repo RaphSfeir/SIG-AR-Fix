@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"convert_smallint_to_bool:EFI"*Sequel::DB2::convert_smallint_to_bool;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"AWhether to convert smallint values to bool, true by default.:encoding"
-CP850I"(Can also be overridden per dataset.;@:
-@file0TI"lib/sequel/adapters/db2.rb;@

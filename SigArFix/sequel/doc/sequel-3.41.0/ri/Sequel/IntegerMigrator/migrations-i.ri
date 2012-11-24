@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"migrations:EFI"'Sequel::IntegerMigrator#migrations;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I")The migrations used by this migrator:encoding"
-CP850:
-@file0FI"'lib/sequel/extensions/migration.rb;@

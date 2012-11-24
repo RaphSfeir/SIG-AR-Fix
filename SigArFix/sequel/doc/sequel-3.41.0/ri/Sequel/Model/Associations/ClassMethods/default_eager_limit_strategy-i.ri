@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"!default_eager_limit_strategy:EFI"KSequel::Model::Associations::ClassMethods#default_eager_limit_strategy;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"[The default :eager_limit_strategy option to use for *_many associations (default: nil):encoding"
-CP850:
-@file0FI"%lib/sequel/model/associations.rb;@

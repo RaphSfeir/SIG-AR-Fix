@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"require_modification:EFI"5Sequel::Model::ClassMethods#require_modification;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"FWhether to raise an error if an UPDATE or DELETE query related to:encoding"
-CP850I"Fa model instance does not modify exactly 1 row.  If set to false,;@I"GSequel will not check the number of rows modified (default: true).;@:
-@file0FI"lib/sequel/model/base.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"use_iso_date_format:EFI"*Sequel::Postgres::use_iso_date_format;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"WAs an optimization, Sequel sets the date style to ISO, so that PostgreSQL provides:encoding"
-CP850I"Uthe date in a known format that Sequel can parse faster.  This can be turned off;@I"0if you require a date style other than ISO.;@:
-@file0TI"*lib/sequel/adapters/utils/pg_types.rb;@

@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"timezone:EFI"Sequel::Database#timezone;FI"W;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"^Set the timezone to use for this database, overridding <tt>Sequel.database_timezone</tt>.:encoding"
-CP850:
-@file0FI" lib/sequel/database/misc.rb;@

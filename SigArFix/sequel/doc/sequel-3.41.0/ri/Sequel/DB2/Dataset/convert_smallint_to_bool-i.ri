@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"convert_smallint_to_bool:EFI"2Sequel::DB2::Dataset#convert_smallint_to_bool;FI"W;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"POverride the default DB2.convert_smallint_to_bool setting for this dataset.:encoding"
-CP850:
-@file0FI"lib/sequel/adapters/db2.rb;@

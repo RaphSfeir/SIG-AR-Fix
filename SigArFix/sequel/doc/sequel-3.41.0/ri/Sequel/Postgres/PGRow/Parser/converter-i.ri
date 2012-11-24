@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"converter:EFI".Sequel::Postgres::PGRow::Parser#converter;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"9A converter for the object as a whole.  Used to wrap:encoding"
-CP850I":the returned array/hash in another object, such as an;@I":ArrayRow or HashRow.  If present, should be callable.;@:
-@file0FI"$lib/sequel/extensions/pg_row.rb;@

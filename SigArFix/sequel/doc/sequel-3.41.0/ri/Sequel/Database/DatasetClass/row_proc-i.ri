@@ -1,3 +1,0 @@
-U:RDoc::Attr[iI"row_proc:EFI"Sequel::Dataset#row_proc;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"VThe row_proc for this database, should be any object that responds to +call+ with:encoding"
-CP850I"La single hash argument and returns the object you want #each to return.;@:
-@file0FI"#lib/sequel/dataset/mutation.rb;@

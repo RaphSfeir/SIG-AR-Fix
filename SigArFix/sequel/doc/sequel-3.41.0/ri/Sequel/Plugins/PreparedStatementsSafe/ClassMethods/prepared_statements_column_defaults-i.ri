@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI"(prepared_statements_column_defaults:EFI"^Sequel::Plugins::PreparedStatementsSafe::ClassMethods#prepared_statements_column_defaults;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
-I"CA hash with column symbol keys and default values.  Instance's:encoding"
-CP850I"Cvalues are merged into this hash before creating to reduce the;@I"Cnumber of free columns (columns that may or may not be present;@I"Cin the INSERT statement), as the number of prepared statements;@I"Hthat can be created is 2^N (where N is the number of free columns).;@:
-@file0FI"3lib/sequel/plugins/prepared_statements_safe.rb;@

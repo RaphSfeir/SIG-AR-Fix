@@ -1,4 +1,0 @@
-U:RDoc::Attr[iI"!typecast_empty_string_to_nil:EFI"=Sequel::Model::ClassMethods#typecast_empty_string_to_nil;FI"RW;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[
-I"FWhether to typecast the empty string ('') to nil for columns that:encoding"
-CP850I"Iare not string or blob.  In most cases the empty string would be the;@I"Eway to specify a NULL SQL value in string form (nil.to_s == ''),;@I"Jand an empty string would not usually be typecast correctly for other;@I"#types, so the default is true.;@:
-@file0FI"lib/sequel/model/base.rb;@
