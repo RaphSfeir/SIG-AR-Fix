@@ -1,0 +1,18 @@
+# Alias Wavefront MTL File Exported from SketchUp
+# with OBJexporter (c) 2010/2011 TIG
+# Made for 'CubeECN.obj'
+
+newmtl Default_Material
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+
+newmtl logo_CENTRALE_NANTES
+Ka 0.000000 0.000000 0.000000
+Kd 0.670588 0.800000 0.866667
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+map_Kd texture.jpg
+
+#EOF
