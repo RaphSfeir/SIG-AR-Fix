@@ -17,6 +17,7 @@
 load "SigArFix/export.rb"
 load "SigArFix/manage.rb"
 load "SigArFix/about.rb"
+load "SigArFix/OBJexporter.rb"
 
 # Append functions to the interface
 sig_ar_plugins_menu = UI.menu("Plugins")

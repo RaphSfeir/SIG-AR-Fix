@@ -12,9 +12,13 @@
   <body onLoad="move_to_center();initialize('export_gMapAPI');">
 	  <div id="export_global">
 	    <div id="export_editBox">
-	    	<form onsubmit="sigar_export_model()" name="editBox" method="post" action="#" enctype="multipart/form-data">
+	    	<form name="editBox" method="post" action="http://54.246.97.87/SIG-AR/write_object.php" target="uploadFrame" enctype="multipart/form-data">
 	    		<label>File :</label>
-	    		<input style="margin-left: 5px;" type="file" name="file" value="" readonly="readonly" size="56" maxlength="100">
+	    		<input style="margin-left: 5px;" type="file" name="file" value="" readonly="readonly" size="56" maxlength="100"><br />
+	    		<label>MTL :</label>
+				<input style="margin-left: 5px;" type="file" name="mtl" value="" readonly="readonly" size="56" maxlength="100"><br />
+				<label>Textures :</label>
+	    		<input style="margin-left: 5px;" type="file" name="textures[]" value="" readonly="readonly" size="56" maxlength="100" multiple="multiple">
 	    		<br/><br/>
 	    		<label>Name of your model:</label>
 	    		<input type="text" name="modelname" value="" size="42" maxlength="100" placeholder="Name...">
@@ -50,28 +54,24 @@
 	    		<input style="margin-left: 28px;" type="text" id="altitude" name="altitude" value="" size="20" maxlength="80" placeholder="to initialize.">
 	    		</p>
 	    		<button onclick="return sigar_export_refresh();" id="refreshCoordinatesButton">Set Coordinates</button> 
-	    	
+
 	    </div>
 	    <div id="export_gMapAPI">
 	    </div>
 	    <div id="export_DBInfo">
-		    <form name="editDBInfo" method="post" action="#">
-		    		<label>Address:</label>
-		    		<input type="text" name="addressDB" value="127.0.0.1" size="20" maxlength="100">
-		    		<label>Port:</label>
-		    		<input type="text" name="portDB" value="5432" size="10" maxlength="10">
-		    		<label>Login:</label>
-		    		<input type="text" name="loginDB" value="" size="20" maxlength="100">
-		    		<label>Password:</label>
-		    		<input type="password" name="passDB" value="" size="20" maxlength="100">
-		    		<button onclick="clickTestDB();" id="testDBButton">Test</button> 
-		    	</form>
+			<label>Address:</label>
+			<input type="text" name="addressDB" value="127.0.0.1" size="20" maxlength="100">
+			<label>Port:</label>
+			<input type="text" name="portDB" value="5432" size="10" maxlength="10">
+			<label>Login:</label>
+			<input type="text" name="loginDB" value="" size="20" maxlength="100">
+			<label>Password:</label>
+			<input type="password" name="passDB" value="" size="20" maxlength="100">
+			<button onclick="clickTestDB();" id="testDBButton">Test</button> 
 	    </div>
-	    <div id="export_console">
-	    	SIG-AR Project - Google SketchUp Plugin - Export Window
-	    </div>
+	  <iframe id="uploadFrame" name="uploadFrame" src="" style=""></iframe>
 	    <div id="confirm">
-	    	<input type="submit" onclick="return sigar_export_sendToDb();" id="sendToDBButton" value="Export"/>
+	    	<input type="submit" id="sendToDBButton" value="Export"/>
 	    	<button onclick="sigar_export_close();" id="cancel">Cancel</button>
 	    </div>
 		</form>
