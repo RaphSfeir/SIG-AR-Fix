@@ -23,7 +23,8 @@
 		
 		// *************
 		// General - GMap API
-		// *************		
+		// *************
+		var serverUrl = "http://54.246.97.87/SIG-AR/";
 		var initialLocation = new google.maps.LatLng(48.87079, 2.31689); // Initial location : Paris
 		var myMarker; // Var for the Google Maps Marker
 		var map; // Var for the Google Map
@@ -120,8 +121,7 @@
 			return false;
 		}
 
-		
-		// Add the ability to refresh coordinatesin both ways
+		// Add the ability to refresh coordinates in both ways
 		function sigar_export_refresh() {
     		var latlng = new google.maps.LatLng(document.getElementById('latitude').value, document.getElementById('longitude').value);
     		myMarker.setPosition(latlng);
@@ -149,6 +149,18 @@
 			callRuby('sigar_export_close','');
 		}
 		
+		// Function to get categories
+		function sigar_export_getCategories() {
+			var reponse = sigar_export_console("Fetching categories...");
+			$.getJSON(serverURL + "categories.php", function(data) {
+  				$.each(data, function(key, val) {
+    				sigar_export_console(key +" "+ val);
+  				}); //getJSON end
+  				reponse = sigar_export_console("Done!");
+  				return false;
+			});
+			return false;
+		}
 		
 		// *************
 		// Manage models
