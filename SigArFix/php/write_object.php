@@ -3,17 +3,20 @@
 require_once "interface.php";
 try {
     $dbh = new PDO($dsn, $user, $pass);
-	
+	var_dump($_FILES);
 	$file_object = $_FILES['file'];
 	$file_mtl = $_FILES['mtl'];
 	$file_picture = $_FILES['picture'];
-
+	
 	//Treatment object file
 	$modelname = $file_object['name'];
-	$scenename = mysql_real_escape_string($_POST['modelname']);
-	$authorid = 1; //mysql_real_escape_string($_POST['authorid']);   ########################################## TO CHANGE #######################
-	$categoryid = 1; // mysql_real_escape_string($_POST['categoryid']);
-	$description = mysql_real_escape_string($_POST['description']);
+	$scenename = $_POST['modelname']; // Pas de mysql_escape_string avec PDO pour Postgresql. SŽcuritŽ ˆ voir plus tard.
+	$authorid = 1; //mysql_escape_string($_POST['authorid']);   ########################################## TO CHANGE #######################
+	$categoryid = 1; // mysql_escape_string($_POST['categoryid']);
+	$description = $_POST['description'];
+	$gps_longitude = $_POST['longitude'];
+	$gps_latitude = $_POST['latitude'];
+	$gps_altitude = $_POST['altitude'];
 
 	//Get obj content
 	$tmpname = $file_object['tmp_name'];
@@ -38,13 +41,15 @@ try {
 	fclose($fp);
 	
 	//Get textures content
-	foreach ($_FILES['textures'] as $file_texture) {
-		$tmpname = $file_texture['tmp_name'];
-    	$fp = fopen($tmpname, 'r');
-		$texturesContentTmp = fread($fp, filesize($tmpname));
-		$texturesContent[] = addslashes($texturesContentTmp);
-		$texturesNames[] = $file_texture['name'];
-		fclose($fp);
+	if(array_key_exists("textures", $_FILES) && ) {
+		foreach ($_FILES['textures'] as $file_texture) {
+			$tmpname = $file_texture['tmp_name'];
+	    	$fp = fopen($tmpname, 'r');
+			$texturesContentTmp = fread($fp, filesize($tmpname));
+			$texturesContent[] = addslashes($texturesContentTmp);
+			$texturesNames[] = $file_texture['name'];
+			fclose($fp);
+		}
 	}
 	
 	//Store object
@@ -69,7 +74,7 @@ try {
 	$req = $dbh->prepare($request_object);
 	$req->execute();
 	$result_object = $req->fetch(PDO::FETCH_ASSOC);
-	$result_object = $result_object["id_object3d"];
+	$id_object = $result_object["id_object3d"];
 	
 	//Store icon
 	$request_picture = "INSERT INTO icon (
@@ -83,7 +88,7 @@ try {
 	echo "Executing icon upload...\n";
 	$req->execute();
 	$result_picture = $req->fetch(PDO::FETCH_ASSOC);
-	$result_picture = $result_picture["id_icon"];
+	$id_icon = $result_picture["id_icon"];
 
 	//Store scene
 	$request_scene = "INSERT INTO scene(
@@ -112,14 +117,14 @@ try {
 								'".$scenename."',
 								'".$description."',
 								".$categoryid.",
-								".$iconid.",
+								".$id_icon.",
 								false,
-								".$gpslongitude.",
+								".$gps_longitude.",
 								".$gps_latitude.",
 								".$gps_altitude.",
 								".$authorid.",
 								'".date("Y-m-d H:i:s")."',
-								'".$idobject."',
+								'".$id_object."',
 								0,
 								0,
 								0,
@@ -137,21 +142,23 @@ try {
 	$result_scene = $req->fetch(PDO::FETCH_ASSOC);
 	$result_scene = $result_scene["id_scene"];
 	
-	//Store textures
-	for($j=0;$j<count($texturesContent);$j++) {
-		$request_texture = "INSERT INTO texture (
-								'name_texture',
-								'file_texture',
-								'id_object3d'
-								)
-							VALUES (
-								'".$texturesNames[$j]."',
-								'".$texturesContent[$j]."',
-								".$result_object."
-								);";
-		$req = $dbh->prepare($request_texture);
-		echo "Executing texture upload...\n";
-		$req->execute();	
+	if(array_key_exists("textures", $_FILES)) {
+		//Store textures
+		for($j=0;$j<count($texturesContent);$j++) {
+			$request_texture = "INSERT INTO texture (
+									'name_texture',
+									'file_texture',
+									'id_object3d'
+									)
+								VALUES (
+									'".$texturesNames[$j]."',
+									'".$texturesContent[$j]."',
+									".$id_object."
+									);";
+			$req = $dbh->prepare($request_texture);
+			echo "Executing texture upload...\n";
+			$req->execute();	
+		}
 	}
 	echo "Done!";
     $dbh = null;
@@ -160,4 +167,4 @@ try {
         echo json_encode(array("error" => $e->getMessage()));
     die();
 }
-
+?>
