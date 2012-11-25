@@ -12,9 +12,9 @@
   <body onLoad="move_to_center();initialize('export_gMapAPI');">
 	  <div id="export_global">
 	    <div id="export_editBox">
-	    	<form name="editBox" method="post" action="#">
-	    		<label>Filename:</label>
-	    		<input style="margin-left: 5px;" type="text" name="filename" id="filename" value="" readonly="readonly" size="56" maxlength="100">
+	    	<form onsubmit="sigar_export_model()" name="editBox" method="post" action="#" enctype="multipart/form-data">
+	    		<label>File :</label>
+	    		<input style="margin-left: 5px;" type="file" name="file" value="" readonly="readonly" size="56" maxlength="100">
 	    		<br/><br/>
 	    		<label>Name of your model:</label>
 	    		<input type="text" name="modelname" value="" size="42" maxlength="100" placeholder="Name...">
@@ -37,7 +37,7 @@
 	    		</p>
 	    		<button onclick="return sigar_export_getCategories();" id="getCategoriesButton">Get Categories</button>
 	    		<button onclick="return sigar_export_refresh();" id="refreshCoordinatesButton">Set Coordinates</button> 
-	    	</form>
+	    	
 	    </div>
 	    <div id="export_gMapAPI">
 	    </div>
@@ -58,9 +58,10 @@
 	    	SIG-AR Project - Google SketchUp Plugin - Export Window
 	    </div>
 	    <div id="confirm">
-	    	<button onclick="return sigar_export_sendToDb();" id="sendToDBButton">Export</button>
+	    	<input type="submit" onclick="return sigar_export_sendToDb();" id="sendToDBButton" />Export
 	    	<button onclick="sigar_export_close();" id="cancel">Cancel</button>
 	    </div>
+		</form>
 	  </div>
   </body>
 </html>
