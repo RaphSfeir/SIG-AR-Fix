@@ -1,3 +1,5 @@
+		var serverUrl = "http://54.246.97.87/SIG-AR/";
+		
 		// *************
 		// Ajax driver
 		// *************
@@ -24,7 +26,6 @@
 		// *************
 		// General - GMap API
 		// *************
-		var serverUrl = "http://54.246.97.87/SIG-AR/";
 		var initialLocation = new google.maps.LatLng(48.87079, 2.31689); // Initial location : Paris
 		var myMarker; // Var for the Google Maps Marker
 		var map; // Var for the Google Map
@@ -151,14 +152,71 @@
 		
 		// Function to get categories
 		function sigar_export_getCategories() {
-			var reponse = sigar_export_console("Fetching categories...");
-			$.getJSON(serverURL + "categories.php", function(data) {
-  				$.each(data, function(key, val) {
-    				sigar_export_console(key +" "+ val);
-  				}); //getJSON end
-  				reponse = sigar_export_console("Done!");
-  				return false;
+			sigar_export_console("Fetching categories...");
+			call_get_page(serverUrl + "categories.php",function(data) {
+  				var categoriesFetched = eval(data);
+  				var chaineCategories = "<SELECT>";
+  				for (var i = 0 ; i < categoriesFetched.length ; i++)
+				{
+					chaineCategories += '<option value="'+categoriesFetched[i]["id_category"]+'">'+categoriesFetched[i]["name_category"]+'</option>';
+				}
+  				chaineCategories += "</SELECT>";
+  				document.getElementById('categoriesList').innerHTML = chaineCategories;
+  				sigar_export_console("Done!");
 			});
+			return false;
+		}
+		
+		// Function to add category
+		function sigar_export_addCategory() {
+			sigar_export_console("Sending new category...");
+			/*call_get_page(serverUrl + "categories.php",function(data) {
+  				var categoriesFetched = eval(data);
+  				var chaineCategories = "<SELECT>";
+  				for (var i = 0 ; i < categoriesFetched.length ; i++)
+				{
+					chaineCategories += '<option value="'+categoriesFetched[i]["id_category"]+'">'+categoriesFetched[i]["name_category"]+'</option>';
+				}
+  				chaineCategories += "</SELECT>";
+  				document.getElementById('categoriesList').innerHTML = chaineCategories;
+  				sigar_export_console("Done!");
+			});*/
+			sigar_export_console(document.getElementById('newcategoryname').value);
+			return false;
+		}
+		
+		// Function to get authors
+		function sigar_export_getAuthors() {
+			sigar_export_console("Fetching authors...");
+			call_get_page(serverUrl + "authors.php",function(data) {
+  				var authorsFetched = eval(data);
+  				var chaineAuthors = "<SELECT>";
+  				for (var i = 0 ; i < authorsFetched.length ; i++)
+				{
+					chaineAuthors += '<option value="'+authorsFetched[i]["id_person"]+'">'+authorsFetched[i]["name_person"]+', '+authorsFetched[i]["firstname_person"]+'</option>';
+				}
+  				chaineAuthors += "</SELECT>";
+  				document.getElementById('authorsList').innerHTML = chaineAuthors;
+  				sigar_export_console("Done!");
+			});
+			return false;
+		}
+		
+		// Function to add category
+		function sigar_export_addCategory() {
+			sigar_export_console("Sending new author...");
+			/*call_get_page(serverUrl + "categories.php",function(data) {
+  				var categoriesFetched = eval(data);
+  				var chaineCategories = "<SELECT>";
+  				for (var i = 0 ; i < categoriesFetched.length ; i++)
+				{
+					chaineCategories += '<option value="'+categoriesFetched[i]["id_category"]+'">'+categoriesFetched[i]["name_category"]+'</option>';
+				}
+  				chaineCategories += "</SELECT>";
+  				document.getElementById('categoriesList').innerHTML = chaineCategories;
+  				sigar_export_console("Done!");
+			});*/
+			sigar_export_console(document.getElementById('newauthorname').value);
 			return false;
 		}
 		

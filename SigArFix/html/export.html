@@ -18,13 +18,27 @@
 	    		<br/><br/>
 	    		<label>Name of your model:</label>
 	    		<input type="text" name="modelname" value="" size="42" maxlength="100" placeholder="Name...">
-	    		<br/><br/>
+	    		<div id="categories">
+	    			<label>Category:</label> <span id="categoriesList"></span>
+	    			<a href="#" onclick="return sigar_export_getCategories();">Get categories</a>
+	    			<br/>
+	    			<input type="text" name="categoryname" id="newcategoryname" value="" size="20" maxlength="100" placeholder="New category...">
+	    			<a href="#" onclick="return sigar_export_addCategory();">Add</a>
+	    		</div>
 	    		<label>Picture:</label>
 	    		<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
-	    		<br/><br/>
+	    		<br/>
 	    		<label>Description:</label>
-	    		<textarea rows="5" cols="51" name="description" placeholder="Describe your model"></textarea>
-	    		<br/><br/>
+	    		<textarea rows="3" cols="51" name="description" placeholder="Describe your model"></textarea>
+	    		<br/>
+	    		<div id="authors">
+	    			<label>Author:</label> <span id="authorsList"></span>
+	    			<a href="#" onclick="return sigar_export_getAuthors();">Get authors</a>
+	    			<br/>
+	    			<input type="text" name="authorname" id="newauthorname" value="" size="20" maxlength="100" placeholder="New name...">
+	    			<input type="text" name="authorfirstname" id="newauthorfirstname" value="" size="20" maxlength="100" placeholder="New firstname...">
+	    			<a href="#" onclick="return sigar_export_addAuthor();">Add</a>
+	    		</div>
 	    		<label>Coordinates:</label>
 	    		<p>Latitude (&deg;):
 	    		<input style="margin-left: 33px;" type="text" id="latitude" name="latitude" value="" size="20" maxlength="80" placeholder="Ready...">
@@ -35,7 +49,6 @@
 	    		Altitude (m):
 	    		<input style="margin-left: 28px;" type="text" id="altitude" name="altitude" value="" size="20" maxlength="80" placeholder="to initialize.">
 	    		</p>
-	    		<button onclick="return sigar_export_getCategories();" id="getCategoriesButton">Get Categories</button>
 	    		<button onclick="return sigar_export_refresh();" id="refreshCoordinatesButton">Set Coordinates</button> 
 	    	
 	    </div>
@@ -58,7 +71,7 @@
 	    	SIG-AR Project - Google SketchUp Plugin - Export Window
 	    </div>
 	    <div id="confirm">
-	    	<input type="submit" onclick="return sigar_export_sendToDb();" id="sendToDBButton" />Export
+	    	<input type="submit" onclick="return sigar_export_sendToDb();" id="sendToDBButton" value="Export"/>
 	    	<button onclick="sigar_export_close();" id="cancel">Cancel</button>
 	    </div>
 		</form>

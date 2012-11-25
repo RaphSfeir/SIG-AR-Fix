@@ -1,3 +1,11 @@
+label {
+	text-decoration:underline;
+}
+
+a {
+	text-decoration:none;
+}
+
 #export_editBox {
 	position:absolute;
 	width: 400px;
