@@ -41,7 +41,7 @@ try {
 	fclose($fp);
 	
 	//Get textures content
-	if(array_key_exists("textures", $_FILES) && ) {
+	if(array_key_exists("textures", $_FILES)) {
 		foreach ($_FILES['textures'] as $file_texture) {
 			$tmpname = $file_texture['tmp_name'];
 	    	$fp = fopen($tmpname, 'r');
