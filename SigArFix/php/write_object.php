@@ -42,13 +42,15 @@ try {
 	
 	//Get textures content
 	if(array_key_exists("textures", $_FILES)) {
-		foreach ($_FILES['textures'] as $file_texture) {
-			$tmpname = $file_texture['tmp_name'];
-	    	$fp = fopen($tmpname, 'r');
+		foreach ($_FILES['textures']['tmp_name'] as $k => $d) {
+			$tmpname = $d;
+	    		$fp = fopen($tmpname, 'r');
 			$texturesContentTmp = fread($fp, filesize($tmpname));
 			$texturesContent[] = pg_escape_bytea($texturesContentTmp);
-			$texturesNames[] = $file_texture['name'];
 			fclose($fp);
+		}
+		foreach ($_FILES['textures']['name'] as $k => $d) {
+			$texturesNames[] = $d;
 		}
 	}
 	
@@ -144,7 +146,7 @@ try {
 	
 	if(array_key_exists("textures", $_FILES)) {
 		//Store textures
-		for($j=0;$j<count($texturesContent);$j++) {
+		for($j=0;$j < count($texturesContent);$j++) {
 			$request_texture = "INSERT INTO texture (
 									name_texture,
 									file_texture,
