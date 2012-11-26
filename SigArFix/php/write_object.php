@@ -10,7 +10,7 @@ try {
 	
 	//Treatment object file
 	$modelname = $file_object['name'];
-	$scenename = $_POST['modelname']; // Pas de mysql_escape_string avec PDO pour Postgresql. SŽcuritŽ ˆ voir plus tard.
+	$scenename = $_POST['modelname']; // Pas de mysql_escape_string avec PDO pour Postgresql. Sï¿½curitï¿½ ï¿½ voir plus tard.
 	$authorid = 1; //mysql_escape_string($_POST['authorid']);   ########################################## TO CHANGE #######################
 	$categoryid = 1; // mysql_escape_string($_POST['categoryid']);
 	$description = $_POST['description'];
@@ -22,7 +22,7 @@ try {
 	$tmpname = $file_object['tmp_name'];
 	$fp = fopen($tmpname, 'r');
 	$modelcontent = fread($fp, filesize($tmpname));
-	$modelcontent = addslashes($modelcontent);
+	$modelcontent = pg_escape_bytea($modelcontent);
 	fclose($fp);
 
 	//Get mtl content
@@ -30,14 +30,14 @@ try {
 	$tmpname = $file_mtl['tmp_name'];
 	$fp = fopen($tmpname, 'r');
 	$mtlcontent = fread($fp, filesize($tmpname));
-	$mtlcontent = addslashes($mtlcontent);
+	$mtlcontent = pg_escape_bytea($mtlcontent);
 	fclose($fp);
 
 	//Get picture content
 	$tmpname = $file_picture['tmp_name'];
 	$fp = fopen($tmpname, 'r');
 	$picturecontent = fread($fp, filesize($tmpname));
-	$picturecontent = addslashes($picturecontent);
+	$picturecontent = pg_escape_bytea($picturecontent);
 	fclose($fp);
 	
 	//Get textures content
@@ -46,7 +46,7 @@ try {
 			$tmpname = $file_texture['tmp_name'];
 	    	$fp = fopen($tmpname, 'r');
 			$texturesContentTmp = fread($fp, filesize($tmpname));
-			$texturesContent[] = addslashes($texturesContentTmp);
+			$texturesContent[] = pg_escape_bytea($texturesContentTmp);
 			$texturesNames[] = $file_texture['name'];
 			fclose($fp);
 		}
