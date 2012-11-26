@@ -54,12 +54,12 @@ try {
 	
 	//Store object
 	$request_object = "INSERT INTO object3d (
-								'name_object',
-								'file_obj',
-								'name_mtl',
-								'file_mtl',
-								'date_creation',
-								'id_author'
+								name_object,
+								file_obj,
+								name_mtl,
+								file_mtl,
+								date_creation,
+								id_author
 								)
 							VALUES (
 								'".$modelname."',
@@ -78,7 +78,7 @@ try {
 	
 	//Store icon
 	$request_picture = "INSERT INTO icon (
-								'file_icon'
+								file_icon
 								)
 							VALUES (
 								'".$picturecontent."'
@@ -92,26 +92,26 @@ try {
 
 	//Store scene
 	$request_scene = "INSERT INTO scene(
-								'name_scene',
-								'description',
-								'id_category',
-								'id_icon',
-								'activation',
-								'gps_longitude',
-								'gps_latitude',
-								'gps_altitude',
-								'id_author',
-								'date_creation',
-								'id_object3d',
-								'translation_x',
-								'translation_y',
-								'translation_z',
-								'rotation_x',
-								'rotation_y',
-								'rotation_z',
-								'scale_x',
-								'scale_y',
-								'scale_z'
+								name_scene,
+								description,
+								id_category,
+								id_icon,
+								activation,
+								gps_longitude,
+								gps_latitude,
+								gps_altitude,
+								id_author,
+								date_creation,
+								id_object3d,
+								translation_x,
+								translation_y,
+								translation_z,
+								rotation_x,
+								rotation_y,
+								rotation_z,
+								scale_x,
+								scale_y,
+								scale_z
 								)
 							VALUES (
 								'".$scenename."',
@@ -146,9 +146,9 @@ try {
 		//Store textures
 		for($j=0;$j<count($texturesContent);$j++) {
 			$request_texture = "INSERT INTO texture (
-									'name_texture',
-									'file_texture',
-									'id_object3d'
+									name_texture,
+									file_texture,
+									id_object3d
 									)
 								VALUES (
 									'".$texturesNames[$j]."',
