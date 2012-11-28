@@ -21,3 +21,34 @@ ul {
 	background-color:white;
 	border-radius:20px;
 }
+.list_models ul {
+	list-style-type:none;
+}
+.models-list{
+	height:250px;
+	overflow-y:scroll;
+	margin-left:0px;
+}
+.models-editbox {
+	position:absolute;
+	left: 33%;
+	bottom:5%;
+	width:400px;
+	height:20%;
+	border:1px solid black;
+	background-color:white;
+}
+.narrow_input {
+	width:25px;
+}
+.medium_input {
+	width:50px;
+}
+.wide_input {
+	width:75px;
+}
+.edit-box-float {
+	float:left;
+	width:180px;
+	height:85px;
+}
