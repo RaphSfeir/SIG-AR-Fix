@@ -9,8 +9,8 @@ $longitude = $_POST['longitude'];
 $latitude = $_POST['latitude'];
 $altitude = $_POST['altitude'];
 
-$name_scene = mysql_real_escape_string($_POST['filename']);
-$name_object = mysql_real_escape_string($_POST['name']);
+$name_scene = addslashes($_POST['filename']);
+$name_object = addslashes($_POST['name']);
 
 $id_auteur = 1;
 //$id_auteur = base64_decode($_GET['idauth']);
