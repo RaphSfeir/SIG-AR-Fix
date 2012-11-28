@@ -133,10 +133,12 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 		// Add some text to the console
 		function sigar_export_console(message) {
 			var outputDiv = document.getElementById('export_console');
-			var sigar_export_console_text = outputDiv.innerHTML;
-			outputDiv.innerHTML = sigar_export_console_text + '<br/>' + message;
-			outputDiv.scrollTop = outputDiv.scrollHeight;
-			return false;
+			if (outputDiv) {
+				var sigar_export_console_text = outputDiv.innerHTML;
+				outputDiv.innerHTML = sigar_export_console_text + '<br/>' + message;
+				outputDiv.scrollTop = outputDiv.scrollHeight;
+				return false;
+			}
 		}
 
 		// Set the filename in the right textbox
@@ -228,7 +230,7 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 		//Vars initialization
 		var selected_sources = []; /* Depends on how are sources loaded?? */
 		selected_sources[1] = false; selected_sources[2] = false; selected_sources[3] = false;
-
+		var model_list = [];
 
 		//Switch a source to activated or not
 		function toggle_source(source_id)
@@ -279,9 +281,28 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 		//Do the refresh using incoming data
 		function sigar_model_refresh(ajData) {
 			var new_models = eval(ajData);
+			model_list = new_models;
 			var list_models = document.getElementById("list_models");
 			for (var i = 0 ; i < new_models.length ; i++)
 			{
-				list_models.innerHTML += "<li><input type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['name_object'] +"</li>"
+				list_models.innerHTML += "<li onclick='sigar_info_show("+ i + ")'><input  type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['name_object'] +"</li>"
 			}
 		}
+		
+		//Show's the model informations in the infobox at the right-bottom corner of the page.
+		function sigar_info_show(id_model) 
+		{
+			var infobox = document.getElementById("models-infobox");
+			infobox.innerHTML = "Loading model data...";
+			infobox.innerHTML = model_list[id_model]['name_object'] + '<br /><input onclick="sigar_edit_model(' + id_model + ')" type=button value="Edit model" />';
+		}
+		
+		//Edit the model's information. Show or hide edit box depending on the box's current style.
+		function sigar_edit_model(id_model) 
+		{
+			var latlng = new google.maps.LatLng(model_list[id_model]['gps_latitude'], model_list[id_model]['gps_longitude']);
+			myMarker.setPosition(latlng);
+			var editbox = document.getElementById("form-editbox-innercontent");	
+			editbox.innerHTML = "Loading edit data...";
+			editbox.innerHTML = "<div class='edit-box-float'><input style='display:none' name='id_scene' type='text' value = '" + model_list[id_model]['id_scene'] + "' /><input style='display:none' name='id_object' type='text' value='" + model_list[id_model]['id_object3d'] + "' />Longitude : <input class='narrow_input' type='text' id='longitude' name='longitude' value = '" + model_list[id_model]['gps_longitude'] + "'/><br />Latitude : <input type='text' class='narrow_input' id='latitude' name='latitude' value = '" + model_list[id_model]['gps_latitude'] + "' /><br />Altitude : <input class='narrow_input' type='text' id='altitude' name='altitude' value = '" + model_list[id_model]['gps_altitude'] + "' /></div><div class='edit-box-float'>Filename : <input class='wide_input' type='text' id='filename' name='filename' value = '" + model_list[id_model]['name_scene'] + "' /><br />Model name : <input class='wide_input' type='text' id='name' name='name' value = '" + model_list[id_model]['name_object'] + "' /></div><br /><br /><input type='submit' value='Submit Modifications' />";
+		}		
