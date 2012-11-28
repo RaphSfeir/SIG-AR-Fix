@@ -17,20 +17,29 @@
 	<div class="sources-list">
 	<h3>Sources</h3>
 		<ul class="list_sources" id = "list_sources">
-			<li><input id = "source1" onclick="toggle_source(1);" type="checkbox" name="source1" value = "source1" source_type="remote" source_href="http://54.246.97.87/SIG-AR/fetch_objects.php" />BDD 1</li>
+			<li><input id = "source1" onclick="toggle_source(1);" type="checkbox" name="source1" value = "source1" source_type="remote" source_href="http://54.246.97.87/SIG-AR/fetch_scenes.php"  />BDD 1</li>
 			<li><input id = "source2" onclick="toggle_source(2);" type="checkbox" name="source2" value = "source2" source_type="remote" />BDD 2</li>
-			<li><input id = "source3" onclick="toggle_source(3);" type="checkbox" name="source3" value = "source3" source_type="hardware" />P곩ph. externe</li>
+			<li><input id = "source3" onclick="toggle_source(3);" type="checkbox" name="source3" value = "source3" source_type="hardware" />Périph. externe</li>
 		</ul>
 		<input type="button" value ="Source Settings" />
 	</div>
-	<div class="models-list">
 	<h3>Models</h3>
 	<input id="refreshModelButton" onclick="sigar_model_refresh_boot();" type="button" value ="Refresh Models" />
+	<div id="models-list" class="models-list">
 		<ul class="list_models" id="list_models">
 			<li><em>[Please refresh models to load available models]</em></li>
 		</ul>
 	</div>
+	<div id="models-infobox" class="models-infobox">
+	
+	</div>
 </div>
-<iframe id="uploadFrame" name="uploadFrame" src="" style="display:none"></iframe>
+<div id="models-editbox" class="models-editbox">
+<form id="form-editbox" name="form-editbox" method="post" action="http://127.0.0.1/Phobos%200.1/edit_object.php" target="uploadFrame" enctype="multipart/form-data">
+	<div id="form-editbox-innercontent">
+	</div>
+</form>
+</div>
+<iframe id="uploadFrame" name="uploadFrame" src="" style='display:none;'></iframe>
 </body>
 </html>
