@@ -1,5 +1,5 @@
-		var serverUrl = "http://54.246.97.87/SIG-AR/";
-		
+var serverUrl = "http://54.246.97.87/SIG-AR/";
+
 		// *************
 		// Ajax driver
 		// *************
@@ -16,13 +16,13 @@
 					xhr = new XMLHttpRequest(); 
 				}
 			} else {
-				alert("Votre navigateur ne peut pas rafraîchir les données...");
+				alert("Votre navigateur ne peut pas rafraÃ®chir les donnÃ©es...");
 				return null;
 			}
-			
+
 			return xhr;
 		}
-		
+
 		// *************
 		// General - GMap API
 		// *************
@@ -30,12 +30,12 @@
 		var myMarker; // Var for the Google Maps Marker
 		var map; // Var for the Google Map
 		var elSvc; // Var for the Elevation Service
-		
+
 		// Function to put the window on the center of the screen
 		function move_to_center() {
    			window.location = "skp:move@" + screen.width + "," + screen.height + ":" + document.body.offsetWidth + "," + document.body.offsetHeight;
       	};
-		
+
 		// Function to initialize the Google Map part
 		function initialize(divId) {
 		  var myOptions = {
@@ -46,7 +46,7 @@
 		  map = new google.maps.Map(document.getElementById(divId), myOptions);
 		  // Center the map on the initial location
 		  map.setCenter(initialLocation);
-		  
+
 		  // Defining the principal marker
 		  myMarker = new google.maps.Marker({
 			position: initialLocation,
@@ -54,10 +54,10 @@
 			title: "Location",
 			draggable: true
 		  });
-		  
+
 		  // Initializing the Google Maps Elevation Service
 		  elSvc = new google.maps.ElevationService();
-		  
+
 		  // Function to get elevation from event
 		  function getElevation(event) {
 		  	var locations = [];
@@ -79,7 +79,7 @@
 						}
 				});
 		  }
-		  
+
 		  // Adding the right callbacks to the principal marker
 		  google.maps.event.addListener(myMarker, 'dragend', function(evt) {
 			// Get longitude
@@ -91,33 +91,33 @@
 			sigar_export_console("Marker released with coordinates ("+evt.latLng.lat().toFixed(9)+", "+evt.latLng.lng().toFixed(9)+")");
 		  });
 		};
-		
+
 		// Generic function to use a ruby callback from Javascript
 		function callRuby(callbackName, params) {
 			fake_url = 'skp:'+callbackName+'@'+params;
 			window.location.href = fake_url;
 		}
-		
+
 		// Generic function to get messages sent from Ruby, and use them with Javascript
 		function rubyReturner(message) {
 			alert(message);
 		}
 
-		
+
 		// *************
 		// Export dialog
 		// *************
-		
+
 		// Export to the DB
 		function sigar_export_sendToDb() {
 			sigar_export_console("Exporting to the DB...");
 			sigar_export_console("-- Connecting to the DB...");
 			// Connecting to the DB
-			
+
 			sigar_export_console("-- Connection succeed!");
 			sigar_export_console("-- Sending datas...");
 			// Sending datas to the DB
-			
+
 			sigar_export_console("-- Error: not implemented yet!");
 			return false;
 		}
@@ -129,7 +129,7 @@
     		sigar_export_console("Coordinates set to ("+document.getElementById('latitude').value+", "+document.getElementById('longitude').value+")");
     		return false;
 		}
-		
+
 		// Add some text to the console
 		function sigar_export_console(message) {
 			var outputDiv = document.getElementById('export_console');
@@ -138,18 +138,18 @@
 			outputDiv.scrollTop = outputDiv.scrollHeight;
 			return false;
 		}
-		
+
 		// Set the filename in the right textbox
 		function export_setFileNameDir(filename) {
 			sigar_export_console("Looking for active model path...");
 			document.getElementById('filename').value = filename;
 		}
-		
+
 		// Close the dialog
 		function sigar_export_close() {
 			callRuby('sigar_export_close','');
 		}
-		
+
 		// Function to get categories
 		function sigar_export_getCategories() {
 			sigar_export_console("Fetching categories...");
@@ -166,7 +166,7 @@
 			});
 			return false;
 		}
-		
+
 		// Function to add category
 		function sigar_export_addCategory() {
 			sigar_export_console("Sending new category...");
@@ -184,7 +184,7 @@
 			sigar_export_console(document.getElementById('newcategoryname').value);
 			return false;
 		}
-		
+
 		// Function to get authors
 		function sigar_export_getAuthors() {
 			sigar_export_console("Fetching authors...");
@@ -201,7 +201,7 @@
 			});
 			return false;
 		}
-		
+
 		// Function to add category
 		function sigar_export_addCategory() {
 			sigar_export_console("Sending new author...");
@@ -219,29 +219,29 @@
 			sigar_export_console(document.getElementById('newauthorname').value);
 			return false;
 		}
-		
+
 		// *************
 		// Manage models
 		// *************		
 
-				
+
 		//Vars initialization
 		var selected_sources = []; /* Depends on how are sources loaded?? */
 		selected_sources[1] = false; selected_sources[2] = false; selected_sources[3] = false;
 
-		
+
 		//Switch a source to activated or not
 		function toggle_source(source_id)
 		{
 			selected_sources[source_id] = !selected_sources[source_id];
 		}
-		
+
 		//Clears the model's list by emptying the <ul>
 		function sigar_model_clear() {
 			var list_models = document.getElementById("list_models");
 			list_models.innerHTML = "";
 		}
-		
+
 		//Refresh button activated
 		function sigar_model_refresh_boot() {
 			sigar_model_clear();
@@ -261,7 +261,7 @@
 				}
 			}
 		}
-		
+
 		//Calls page using ajax (xmlhttprequest)
 		function call_get_page(page_href, callback)
 		{
@@ -271,19 +271,17 @@
 						callback(xhr.responseText);
 					}
 				};
-				
+
 			xhr.open("GET", page_href, true);
 			xhr.send(null);
 		}
-		
+
 		//Do the refresh using incoming data
 		function sigar_model_refresh(ajData) {
 			var new_models = eval(ajData);
 			var list_models = document.getElementById("list_models");
 			for (var i = 0 ; i < new_models.length ; i++)
 			{
-				list_models.innerHTML += "<li><input type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['nom_objet'] +"</li>"
+				list_models.innerHTML += "<li><input type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['name_object'] +"</li>"
 			}
-			console.log(new_models[0]['nom_objet']);
-			console.log(new_models);
 		}
