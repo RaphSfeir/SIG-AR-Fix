@@ -13,7 +13,7 @@ try {
 
 	$qry->execute();
 	$objets3d = $qry->fetchAll();
-	print_r($objets3d);echo "<br />";
+	//print_r($objets3d);echo "<br />";
 	echo json_encode($objets3d);
 	$dbh = null;
 } 
