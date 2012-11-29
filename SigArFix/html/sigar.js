@@ -285,7 +285,7 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 			var list_models = document.getElementById("list_models");
 			for (var i = 0 ; i < new_models.length ; i++)
 			{
-				list_models.innerHTML += "<li onclick='sigar_info_show("+ i + ")'><input  type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i]['name_object'] +"</li>"
+				list_models.innerHTML += "<li onclick='sigar_info_show("+ i + ")'><input  type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i].name_scene +"</li>"
 			}
 		}
 		
@@ -304,5 +304,5 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 			myMarker.setPosition(latlng);
 			var editbox = document.getElementById("form-editbox-innercontent");	
 			editbox.innerHTML = "Loading edit data...";
-			editbox.innerHTML = "<div class='edit-box-float'><input style='display:none' name='id_scene' type='text' value = '" + model_list[id_model]['id_scene'] + "' /><input style='display:none' name='id_object' type='text' value='" + model_list[id_model]['id_object3d'] + "' />Longitude : <input class='narrow_input' type='text' id='longitude' name='longitude' value = '" + model_list[id_model]['gps_longitude'] + "'/><br />Latitude : <input type='text' class='narrow_input' id='latitude' name='latitude' value = '" + model_list[id_model]['gps_latitude'] + "' /><br />Altitude : <input class='narrow_input' type='text' id='altitude' name='altitude' value = '" + model_list[id_model]['gps_altitude'] + "' /></div><div class='edit-box-float'>Filename : <input class='wide_input' type='text' id='filename' name='filename' value = '" + model_list[id_model]['name_scene'] + "' /><br />Model name : <input class='wide_input' type='text' id='name' name='name' value = '" + model_list[id_model]['name_object'] + "' /></div><br /><br /><input type='submit' value='Submit Modifications' />";
+			editbox.innerHTML = "<form name='editBox' method='post' action='http://54.246.97.87/SIG-AR/edit_object.php' target='uploadFrame'><div class='edit-box-float'><input style='display:none' name='id_scene' type='text' value = '" + model_list[id_model]['id_scene'] + "' /><input style='display:none' name='id_object' type='text' value='" + model_list[id_model]['id_object3d'] + "' />Longitude : <input class='narrow_input' type='text' id='longitude' name='longitude' value = '" + model_list[id_model]['gps_longitude'] + "'/><br />Latitude : <input type='text' class='narrow_input' id='latitude' name='latitude' value = '" + model_list[id_model]['gps_latitude'] + "' /><br />Altitude : <input class='narrow_input' type='text' id='altitude' name='altitude' value = '" + model_list[id_model]['gps_altitude'] + "' /></div><div class='edit-box-float'>Filename : <input class='wide_input' type='text' id='filename' name='filename' value = '" + model_list[id_model]['name_scene'] + "' /><br />Model name : <input class='wide_input' type='text' id='name' name='name' value = '" + model_list[id_model]['name_object'] + "' /></div><br /><br /><input type='submit' value='Submit Modifications' /></form>";
 		}		
