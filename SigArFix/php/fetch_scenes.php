@@ -1,6 +1,9 @@
 <?php
 
 require_once "interface.php";
+$method = $_SERVER['REQUEST_METHOD'];
+header("Access-Control-Allow-Origin: *");
+header('Content-type: application/json');
 $id_auteur = 1;
 //$id_auteur = base64_decode($_GET['idauth']);
 try {
