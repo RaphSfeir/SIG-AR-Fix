@@ -229,15 +229,51 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 
 		//Vars initialization
 		var selected_sources = []; /* Depends on how are sources loaded?? */
-		selected_sources[1] = false; selected_sources[2] = false; selected_sources[3] = false;
+		var model_switch = 1; // 0 : models are hidden. 1 : models are shown
+		selected_sources[0] = false; selected_sources[1] = false;
 		var model_list = [];
-
+		var source_counter = 2; //Initialized to 2 when source1 is already on manage.html
 		//Switch a source to activated or not
 		function toggle_source(source_id)
 		{
 			selected_sources[source_id] = !selected_sources[source_id];
 		}
 
+		function toggle_model_source() 
+		{
+			var model_container = document.getElementById("models-container");
+			var source_add = document.getElementById("source-add");
+			model_switch = !model_switch;
+			if (model_switch)
+			{
+				model_container.style.display = "inline";
+				source_add.style.display = "none";
+			}
+			else
+			{
+				model_container.style.display = "none";
+				source_add.style.display = "inline";
+			}
+		}
+		
+		//Adds a selectable source to the sources list
+		function sigar_add_source() 
+		{
+			var source_name = document.forms["source-add-form"]["source-name"].value;
+			var source_href = document.forms["source-add-form"]["source-href"].value;
+			var sources_list = document.getElementById('list_sources');
+			
+			var source_html = '<li><input id = "source' + source_counter +'" onclick="toggle_source('+ source_counter +');" type="checkbox" name="source'+ source_counter +'" value = "source'+ source_counter +'" source_type="remote" source_href='+ source_href +' />' + source_name +'</li>';
+			selected_sources[source_counter] = false;
+			source_counter++;
+			sources_list.innerHTML += (source_html);
+			for (var j = 0 ; j < selected_sources.length ; j++)
+			{
+				selected_sources[j] = false;
+			}
+			return false;
+		}
+		
 		//Clears the model's list by emptying the <ul>
 		function sigar_model_clear() {
 			var list_models = document.getElementById("list_models");
@@ -247,15 +283,15 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 		//Refresh button activated
 		function sigar_model_refresh_boot() {
 			sigar_model_clear();
-
+			console.log(selected_sources);
 			for (var j = 0 ; j < selected_sources.length ; j++)
 			{
 				if (selected_sources[j] == true && document.getElementsByTagName("input")[j].getAttribute("source_type"))
 				{
-					var source_type = document.getElementsByTagName("input")[j - 1].getAttribute("source_type");
+					var source_type = document.getElementsByTagName("input")[j].getAttribute("source_type");
 					if (source_type == "remote")
 					{
-						var source_href = document.getElementsByTagName("input")[j - 1].getAttribute("source_href");
+						var source_href = document.getElementsByTagName("input")[j].getAttribute("source_href");
 						if (source_href) {
 							call_get_page(source_href, sigar_model_refresh);
 						}
@@ -288,7 +324,7 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 				list_models.innerHTML += "<li onclick='sigar_info_show("+ i + ")'><input  type='checkbox' name='model" + i +"' value = 'model" + i + "'/>" + new_models[i].name_scene +"</li>"
 			}
 		}
-		
+
 		//Show's the model informations in the infobox at the right-bottom corner of the page.
 		function sigar_info_show(id_model) 
 		{
@@ -296,7 +332,7 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 			infobox.innerHTML = "Loading model data...";
 			infobox.innerHTML = model_list[id_model]['name_object'] + '<br /><input onclick="sigar_edit_model(' + id_model + ')" type=button value="Edit model" />';
 		}
-		
+
 		//Edit the model's information. Show or hide edit box depending on the box's current style.
 		function sigar_edit_model(id_model) 
 		{
@@ -305,4 +341,4 @@ var serverUrl = "http://54.246.97.87/SIG-AR/";
 			var editbox = document.getElementById("form-editbox-innercontent");	
 			editbox.innerHTML = "Loading edit data...";
 			editbox.innerHTML = "<form name='editBox' method='post' action='http://54.246.97.87/SIG-AR/edit_object.php' target='uploadFrame'><div class='edit-box-float'><input style='display:none' name='id_scene' type='text' value = '" + model_list[id_model]['id_scene'] + "' /><input style='display:none' name='id_object' type='text' value='" + model_list[id_model]['id_object3d'] + "' />Longitude : <input class='narrow_input' type='text' id='longitude' name='longitude' value = '" + model_list[id_model]['gps_longitude'] + "'/><br />Latitude : <input type='text' class='narrow_input' id='latitude' name='latitude' value = '" + model_list[id_model]['gps_latitude'] + "' /><br />Altitude : <input class='narrow_input' type='text' id='altitude' name='altitude' value = '" + model_list[id_model]['gps_altitude'] + "' /></div><div class='edit-box-float'>Filename : <input class='wide_input' type='text' id='filename' name='filename' value = '" + model_list[id_model]['name_scene'] + "' /><br />Model name : <input class='wide_input' type='text' id='name' name='name' value = '" + model_list[id_model]['name_object'] + "' /></div><br /><br /><input type='submit' value='Submit Modifications' /></form>";
-		}		
+		}
