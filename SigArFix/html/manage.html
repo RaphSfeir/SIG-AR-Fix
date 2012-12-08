@@ -17,21 +17,30 @@
 	<div class="sources-list">
 	<h3>Sources</h3>
 		<ul class="list_sources" id = "list_sources">
-			<li><input id = "source1" onclick="toggle_source(1);" type="checkbox" name="source1" value = "source1" source_type="remote" source_href="http://54.246.97.87/SIG-AR/fetch_scenes.php"  />BDD 1</li>
-			<li><input id = "source2" onclick="toggle_source(2);" type="checkbox" name="source2" value = "source2" source_type="remote" />BDD 2</li>
-			<li><input id = "source3" onclick="toggle_source(3);" type="checkbox" name="source3" value = "source3" source_type="hardware" />Périph. externe</li>
+			<li><input id = "source0" onclick="toggle_source(0);" type="checkbox" name="source0" value = "source0" source_type="remote" source_href="http://54.246.97.87/SIG-AR/fetch_scenes.php"  />BDD 1</li>
+			<li><input id = "source1" onclick="toggle_source(1);" type="checkbox" name="source1" value = "source1" source_type="remote" />BDD 2</li>
+		
 		</ul>
-		<input type="button" value ="Source Settings" />
+		<input type="button" onclick="toggle_model_source();" value ="Source Settings" />
 	</div>
-	<h3>Models</h3>
-	<input id="refreshModelButton" onclick="sigar_model_refresh_boot();" type="button" value ="Refresh Models" />
-	<div id="models-list" class="models-list">
-		<ul class="list_models" id="list_models">
-			<li><em>[Please refresh models to load available models]</em></li>
-		</ul>
+	<div id="models-container">
+		<h3>Models</h3>
+		<input id="refreshModelButton" onclick="sigar_model_refresh_boot();" type="button" value ="Refresh Models" />
+		<div id="models-list" class="models-list">
+			<ul class="list_models" id="list_models">
+				<li><em>[Please refresh models to load available models]</em></li>
+			</ul>
+		</div>
+	</div>
+	<div id="source-add" class="source-add">
+		<form onsubmit="return sigar_add_source();" name="source-add-form">
+		Name : <input type="text" name="source-name" value = "" /><br />
+		Link Source : <input type="text" name="source-href" value= "" /><br />
+		<input type="submit" name="source-add-button" value="Add source" />
+		</form>
 	</div>
 	<div id="models-infobox" class="models-infobox">
-	
+
 	</div>
 </div>
 <div id="models-editbox" class="models-editbox">
