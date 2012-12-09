@@ -26,23 +26,19 @@
 	    			<label>Category:</label> <span id="categoriesList"></span>
 	    			<a href="#" onclick="return sigar_export_getCategories();">Get categories</a>
 	    			<br/>
-	    			<input type="text" name="categoryname" id="newcategoryname" value="" size="20" maxlength="100" placeholder="New category...">
-	    			<a href="#" onclick="return sigar_export_addCategory();">Add</a>
 	    		</div>
+				
+				<div id="authors">
+					<label>Author:</label> <span id="authorsList"></span>
+					<a href="#" onclick="return sigar_export_getAuthors();">Get authors</a>
+					<br/>
+				</div>
 	    		<label>Picture:</label>
 	    		<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
 	    		<br/>
 	    		<label>Description:</label>
 	    		<textarea rows="3" cols="51" name="description" placeholder="Describe your model"></textarea>
 	    		<br/>
-	    		<div id="authors">
-	    			<label>Author:</label> <span id="authorsList"></span>
-	    			<a href="#" onclick="return sigar_export_getAuthors();">Get authors</a>
-	    			<br/>
-	    			<input type="text" name="authorname" id="newauthorname" value="" size="20" maxlength="100" placeholder="New name...">
-	    			<input type="text" name="authorfirstname" id="newauthorfirstname" value="" size="20" maxlength="100" placeholder="New firstname...">
-	    			<a href="#" onclick="return sigar_export_addAuthor();">Add</a>
-	    		</div>
 	    		<label>Coordinates:</label>
 	    		<div>Latitude (&deg;):
 	    		<input style="margin-left: 33px;" type="text" id="latitude" name="latitude" value="" size="20" maxlength="80" placeholder="Ready...">
@@ -60,13 +56,7 @@
 	    </div>
 	    <div id="export_DBInfo">
 			<label>Address:</label>
-			<input type="text" name="addressDB" value="127.0.0.1" size="20" maxlength="100">
-			<label>Port:</label>
-			<input type="text" name="portDB" value="5432" size="10" maxlength="10">
-			<label>Login:</label>
-			<input type="text" name="loginDB" value="" size="20" maxlength="100">
-			<label>Password:</label>
-			<input type="password" name="passDB" value="" size="20" maxlength="100">
+			<input type="text" name="addressDB" value="http://54.246.97.87/SIG-AR/write_object.php" size="20" maxlength="100">
 			<button onclick="clickTestDB();" id="testDBButton">Test</button> 
 	    </div>
 	  <iframe id="uploadFrame" name="uploadFrame" src="" style=""></iframe>
@@ -75,6 +65,19 @@
 	    	<button onclick="sigar_export_close();" id="cancel">Cancel</button>
 	    </div>
 		</form>
+		<div id="add_elements">
+			<form onsubmit="return false;" name="addCategory" method="post" action="http://54.246.97.87/SIG-AR/categories.php" target="uploadFrame">
+				<label>Add Category :</label>
+				<input type="text" name="categoryname" id="newcategoryname" value="" size="20" maxlength="100" placeholder="New category...">
+				<input type="submit" value="Add" />
+			</form>
+			<form onsubmit="return false;" name="addAuthor" method="post" action="http://54.246.97.87/SIG-AR/authors.php" target="uploadFrame">
+				<label>Add Author (Name, Firstname) :</label>
+				<input type="text" name="authorname" id="newauthorname" value="" size="20" maxlength="100" placeholder="New name...">
+				<input type="text" name="authorfirstname" id="newauthorfirstname" value="" size="20" maxlength="100" placeholder="New firstname...">
+				<input type="submit" value="Add" />
+			</form>
+		</div>
 	  </div>
   </body>
 </html>
