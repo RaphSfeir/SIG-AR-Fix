@@ -16,13 +16,13 @@ try {
       case 'POST':
         header('Content-type: text/plain');
         if(is_null($_POST["category_name"])) {
-            echo "Impossible de r&eacute;cup&eacute;rer le nom de la cat&eacute;gorie."
+            echo "Can't get the name."
         }
         else {
-          echo "Tentative d'insertion...";
+          echo "Attempting to add category...";
           $qry = $dbh->prepare("insert into category(name_category) values ('".$_POST["category_name"]."');");
           $qry->execute();
-          echo "Nouvelle cat&eacute;gorie cr&eacute;e !"
+          echo "New category added !"
         }
         break;
       default:
