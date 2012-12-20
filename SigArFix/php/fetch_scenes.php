@@ -9,7 +9,7 @@ $id_auteur = 1;
 try {
 	$dbh = new PDO($dsn, $user, $pass);
 	
-	$qry = $dbh->prepare("select A.id_scene, A.gps_longitude, A.gps_altitude, A.gps_latitude, A.name_scene, B.name_object, B.date_creation, B.id_author from scene A, object3d B where A.id_author = ".$id_auteur." AND A.id_object3d = B.id_object3d;");    
+	$qry = $dbh->prepare("select A.id_scene, A.rotation_x, A.rotation_y, A.rotation_z, A.gps_longitude, A.gps_altitude, A.gps_latitude, A.name_scene, B.name_object, B.date_creation, B.id_author from scene A, object3d B where A.id_author = ".$id_auteur." AND A.id_object3d = B.id_object3d;");    
 
 	$qry->execute();
 	$objets3d = $qry->fetchAll();
